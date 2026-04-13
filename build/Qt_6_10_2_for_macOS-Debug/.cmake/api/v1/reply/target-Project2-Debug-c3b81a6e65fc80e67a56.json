@@ -256,7 +256,7 @@
 			[
 				{
 					"backtrace" : 0,
-					"path" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/include"
+					"path" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/include"
 				},
 				{
 					"backtrace" : 23,
@@ -305,11 +305,11 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "Project2_autogen::@6890427a1f51a3e7e1df"
+			"id" : "Project2_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "Project2_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "Project2_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "Project2::@6890427a1f51a3e7e1df",

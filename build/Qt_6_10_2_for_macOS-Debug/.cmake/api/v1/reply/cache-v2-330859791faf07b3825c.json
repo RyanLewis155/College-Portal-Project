@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug"
+			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -431,7 +431,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -503,7 +503,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2"
+			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -1055,7 +1055,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/.qtc/package-manager/auto-setup.cmake"
+			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/.qtc/package-manager/auto-setup.cmake"
 		},
 		{
 			"name" : "CMAKE_PROJECT_NAME",
@@ -1547,7 +1547,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug"
+			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug"
 		},
 		{
 			"name" : "Project2_IS_TOP_LEVEL",
@@ -1571,7 +1571,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2"
+			"value" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2"
 		},
 		{
 			"name" : "QT_ADDITIONAL_HOST_PACKAGES_PREFIX_PATH",

@@ -1,2 +1,2 @@
-set(__QT_DEPLOY_TARGET_Project2_FILE /Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2.app/Contents/MacOS/Project2)
+set(__QT_DEPLOY_TARGET_Project2_FILE /Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2.app/Contents/MacOS/Project2)
 set(__QT_DEPLOY_TARGET_Project2_TYPE EXECUTABLE)

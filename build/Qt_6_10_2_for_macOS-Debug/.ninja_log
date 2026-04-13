@@ -1,9 +1,7 @@
 # ninja log v6
 11	56	1776113034945971623	Project2_autogen/timestamp	8f14a9245241397f
-11	56	1776113034945971623	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/timestamp	8f14a9245241397f
 378	1308	1776110829294864469	CMakeFiles/Project2.dir/main.cpp.o	c93d369058d2409f
 1181	1389	1776113036116762715	Project2.app/Contents/MacOS/Project2	b51af0e90b6955b5
 378	1308	1776110829294701012	CMakeFiles/Project2.dir/Project2_autogen/mocs_compilation.cpp.o	f1c07b83454d5e41
-11	56	1776113034945971623	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/mocs_compilation.cpp	8f14a9245241397f
 11	56	1776113034945971623	Project2_autogen/mocs_compilation.cpp	8f14a9245241397f
 57	1181	1776113034992649409	CMakeFiles/Project2.dir/loginwindow.cpp.o	3efdafccb68cc279

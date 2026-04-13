@@ -1,18 +1,18 @@
 {
-	"BUILD_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen",
-	"CMAKE_BINARY_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug",
-	"CMAKE_CURRENT_BINARY_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2",
+	"BUILD_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen",
+	"CMAKE_BINARY_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2",
 	"CMAKE_EXECUTABLE" : "/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/bin/cmake",
 	"CMAKE_LIST_FILES" : 
 	[
-		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/CMakeLists.txt",
-		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/.qtc/package-manager/auto-setup.cmake",
-		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake",
-		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/.qtc/package-manager/maintenance_tool_provider.cmake",
+		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/CMakeLists.txt",
+		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/.qtc/package-manager/auto-setup.cmake",
+		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake",
+		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/.qtc/package-manager/maintenance_tool_provider.cmake",
 		"/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake",
 		"/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Platform/Darwin-Initialize.cmake",
-		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
+		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
 		"/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake",
 		"/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeGenericSystem.cmake",
 		"/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake",
@@ -355,22 +355,22 @@
 		"/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/GNUInstallDirs.cmake",
 		"/Users/ryanlewis/Qt/6.10.2/macos/lib/cmake/Qt6/macos/Info.plist.app.in"
 	],
-	"CMAKE_SOURCE_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2",
+	"CMAKE_SOURCE_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2",
 	"CROSS_CONFIG" : false,
-	"DEP_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/deps",
+	"DEP_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "Project2_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/loginwindow.h",
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/loginwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_loginwindow.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/include",
-	"MOC_COMPILATION_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/include",
+	"MOC_COMPILATION_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -414,26 +414,26 @@
 		"-c",
 		"/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
-	"PARSE_CACHE_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/Project2_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/Project2_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/Users/ryanlewis/Qt/6.10.2/macos/libexec/moc",
 	"QT_UIC_EXECUTABLE" : "/Users/ryanlewis/Qt/6.10.2/macos/libexec/uic",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 10,
-	"SETTINGS_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/Project2_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/Project2_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/loginwindow.cpp",
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/loginwindow.cpp",
 			"MU",
 			null
 		],
 		[
-			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/main.cpp",
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/main.cpp",
 			"MU",
 			null
 		]
