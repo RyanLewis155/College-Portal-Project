@@ -362,9 +362,21 @@
 	"HEADERS" : 
 	[
 		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/dashboard.h",
+			"MU",
+			"EWIEGA46WW/moc_dashboard.cpp",
+			null
+		],
+		[
 			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/loginwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_loginwindow.cpp",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/mainwindow.h",
+			"MU",
+			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
 		]
 	],
@@ -428,12 +440,22 @@
 	"SOURCES" : 
 	[
 		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/dashboard.cpp",
+			"MU",
+			null
+		],
+		[
 			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/loginwindow.cpp",
 			"MU",
 			null
 		],
 		[
 			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/main.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/mainwindow.cpp",
 			"MU",
 			null
 		]

@@ -1,5 +1,7 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
+#include "dashboard.h"
+#include "ui_dashboard.h"
 #include <QGraphicsDropShadowEffect>
 
 
@@ -29,6 +31,9 @@ LoginWindow::LoginWindow(QWidget *parent)
     applyDropShadow(ui->lineEdit_RegRePassword);
     applyDropShadow(ui->lineEdit_FirstName);
     applyDropShadow(ui->lineEdit_LastName);
+    applyDropShadow(ui->lineEdit_ForgotPass);
+    applyDropShadow(ui->pushButton_ForgotSubmit);
+    applyDropShadow(ui->pushButton_ForgotCancel);
 }
 
 LoginWindow::~LoginWindow()
@@ -46,6 +51,36 @@ void LoginWindow::applyDropShadow(QWidget *widget) {
 
 void LoginWindow::on_pushButton_Registration_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentWidget(ui->page_Registration);
+}
+
+
+void LoginWindow::on_pushButton_GoToLogin_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_Login);
+}
+
+
+void LoginWindow::on_pushButton_ForgotPassword_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_ForgotPassword);
+}
+
+
+void LoginWindow::on_pushButton_ForgotSubmit_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_Login);
+}
+
+
+void LoginWindow::on_pushButton_Login_clicked()
+{
+    DashBoard* launchWindow = new DashBoard();
+
+    launchWindow->setAttribute(Qt::WA_DeleteOnClose);
+
+    launchWindow->show();
+
+    this->close();
 }
 

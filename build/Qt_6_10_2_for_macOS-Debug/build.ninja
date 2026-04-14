@@ -73,6 +73,22 @@ build CMakeFiles/Project2.dir/loginwindow.cpp.o: CXX_COMPILER__Project2_unscanne
   OBJECT_DIR = CMakeFiles/Project2.dir
   OBJECT_FILE_DIR = CMakeFiles/Project2.dir
 
+build CMakeFiles/Project2.dir/dashboard.cpp.o: CXX_COMPILER__Project2_unscanned_Debug /Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/dashboard.cpp || cmake_object_order_depends_target_Project2
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/Project2.dir/dashboard.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/include -isystem /Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Headers -iframework /Users/ryanlewis/Qt/6.10.2/macos/lib -isystem /Users/ryanlewis/Qt/6.10.2/macos/mkspecs/macx-clang -isystem /Users/ryanlewis/Qt/6.10.2/macos/include -isystem /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Headers -isystem /Users/ryanlewis/Qt/6.10.2/macos/lib/QtGui.framework/Headers
+  OBJECT_DIR = CMakeFiles/Project2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project2.dir
+
+build CMakeFiles/Project2.dir/mainwindow.cpp.o: CXX_COMPILER__Project2_unscanned_Debug /Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/mainwindow.cpp || cmake_object_order_depends_target_Project2
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/Project2.dir/mainwindow.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/include -isystem /Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Headers -iframework /Users/ryanlewis/Qt/6.10.2/macos/lib -isystem /Users/ryanlewis/Qt/6.10.2/macos/mkspecs/macx-clang -isystem /Users/ryanlewis/Qt/6.10.2/macos/include -isystem /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Headers -isystem /Users/ryanlewis/Qt/6.10.2/macos/lib/QtGui.framework/Headers
+  OBJECT_DIR = CMakeFiles/Project2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project2.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Project2
@@ -81,7 +97,7 @@ build CMakeFiles/Project2.dir/loginwindow.cpp.o: CXX_COMPILER__Project2_unscanne
 #############################################
 # Link the executable Project2.app/Contents/MacOS/Project2
 
-build Project2.app/Contents/MacOS/Project2: CXX_EXECUTABLE_LINKER__Project2_Debug CMakeFiles/Project2.dir/Project2_autogen/mocs_compilation.cpp.o CMakeFiles/Project2.dir/main.cpp.o CMakeFiles/Project2.dir/loginwindow.cpp.o | /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/QtWidgets /Users/ryanlewis/Qt/6.10.2/macos/lib/QtGui.framework/Versions/A/QtGui /Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/QtCore || Project2_autogen Project2_autogen_timestamp_deps
+build Project2.app/Contents/MacOS/Project2: CXX_EXECUTABLE_LINKER__Project2_Debug CMakeFiles/Project2.dir/Project2_autogen/mocs_compilation.cpp.o CMakeFiles/Project2.dir/main.cpp.o CMakeFiles/Project2.dir/loginwindow.cpp.o CMakeFiles/Project2.dir/dashboard.cpp.o CMakeFiles/Project2.dir/mainwindow.cpp.o | /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/QtWidgets /Users/ryanlewis/Qt/6.10.2/macos/lib/QtGui.framework/Versions/A/QtGui /Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/QtCore || Project2_autogen Project2_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk
   LINK_LIBRARIES = -Wl,-rpath,/Users/ryanlewis/Qt/6.10.2/macos/lib  /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/QtWidgets  /Users/ryanlewis/Qt/6.10.2/macos/lib/QtGui.framework/Versions/A/QtGui  -framework AppKit  -framework OpenGL  -framework ImageIO  -framework Metal  /Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/QtCore  -framework IOKit  -framework DiskArbitration  -framework UniformTypeIdentifiers
   LINK_PATH = -F/Users/ryanlewis/Qt/6.10.2/macos/lib
@@ -167,7 +183,7 @@ build Project2_autogen_timestamp_deps: phony
 #############################################
 # Utility command for Project2_autogen
 
-build Project2_autogen: phony CMakeFiles/Project2_autogen Project2_autogen/include/ui_loginwindow.h Project2_autogen/timestamp Project2_autogen/mocs_compilation.cpp Project2_autogen_timestamp_deps
+build Project2_autogen: phony CMakeFiles/Project2_autogen Project2_autogen/include/ui_loginwindow.h Project2_autogen/include/ui_dashboard.h Project2_autogen/include/ui_mainwindow.h Project2_autogen/timestamp Project2_autogen/mocs_compilation.cpp Project2_autogen_timestamp_deps
 
 
 #############################################
@@ -184,7 +200,7 @@ build Project2_autogen/timestamp Project2_autogen/mocs_compilation.cpp | ${cmake
 #############################################
 # Phony custom command for CMakeFiles/Project2_autogen
 
-build CMakeFiles/Project2_autogen Project2_autogen/include/ui_loginwindow.h | ${cmake_ninja_workdir}CMakeFiles/Project2_autogen ${cmake_ninja_workdir}Project2_autogen/include/ui_loginwindow.h: phony Project2_autogen/timestamp || Project2_autogen_timestamp_deps
+build CMakeFiles/Project2_autogen Project2_autogen/include/ui_loginwindow.h Project2_autogen/include/ui_dashboard.h Project2_autogen/include/ui_mainwindow.h | ${cmake_ninja_workdir}CMakeFiles/Project2_autogen ${cmake_ninja_workdir}Project2_autogen/include/ui_loginwindow.h ${cmake_ninja_workdir}Project2_autogen/include/ui_dashboard.h ${cmake_ninja_workdir}Project2_autogen/include/ui_mainwindow.h: phony Project2_autogen/timestamp || Project2_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.

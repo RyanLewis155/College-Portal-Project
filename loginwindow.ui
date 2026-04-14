@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>639</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -73,20 +73,20 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>364</width>
-            <height>389</height>
+            <width>525</width>
+            <height>364</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>364</width>
-            <height>389</height>
+            <width>525</width>
+            <height>364</height>
            </size>
           </property>
           <property name="baseSize">
            <size>
-            <width>364</width>
-            <height>389</height>
+            <width>525</width>
+            <height>364</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -102,10 +102,10 @@ border-radius: 8px;</string>
           <widget class="QWidget" name="layoutWidget">
            <property name="geometry">
             <rect>
-             <x>15</x>
-             <y>15</y>
-             <width>331</width>
-             <height>361</height>
+             <x>10</x>
+             <y>10</y>
+             <width>501</width>
+             <height>341</height>
             </rect>
            </property>
            <layout class="QFormLayout" name="formLayout">
@@ -181,7 +181,9 @@ text-align: left;</string>
               <property name="styleSheet">
                <string notr="true">background: white;
 border: 0px solid gray;
-border-radius: 8px;</string>
+border-radius: 8px;
+color: black;
+padding-left: 10px;</string>
               </property>
               <property name="echoMode">
                <enum>QLineEdit::EchoMode::Normal</enum>
@@ -265,7 +267,9 @@ border-radius: 8px;</string>
               <property name="styleSheet">
                <string notr="true">background: white;
 border: 0px solid gray;
-border-radius: 8px;</string>
+border-radius: 8px;
+color: black;
+padding-left: 10px;</string>
               </property>
               <property name="frame">
                <bool>true</bool>
@@ -292,6 +296,11 @@ border-radius: 8px;</string>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+               </font>
+              </property>
               <property name="cursor">
                <cursorShape>PointingHandCursor</cursorShape>
               </property>
@@ -316,6 +325,11 @@ text-align: left;</string>
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+               </font>
               </property>
               <property name="cursor">
                <cursorShape>PointingHandCursor</cursorShape>
@@ -380,6 +394,229 @@ border-radius: 8px;</string>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="page_ForgotPassword">
+       <widget class="QFrame" name="frame_ForgotPassword">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>170</y>
+          <width>505</width>
+          <height>182</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>505</width>
+          <height>182</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>505</width>
+          <height>182</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>505</width>
+          <height>182</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: white;
+border-radius: 8px;</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <property name="leftMargin">
+          <number>15</number>
+         </property>
+         <property name="topMargin">
+          <number>15</number>
+         </property>
+         <property name="rightMargin">
+          <number>15</number>
+         </property>
+         <property name="bottomMargin">
+          <number>15</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_ForgotPass">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>Verdana</family>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: black;
+text-align: left;</string>
+             </property>
+             <property name="text">
+              <string>Email:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_ForgotPass">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="baseSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Verdana</family>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background: white;
+border: 0px solid gray;
+border-radius: 8px;
+color: black;
+padding-left: 10px;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Email...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="leftMargin">
+            <number>15</number>
+           </property>
+           <property name="topMargin">
+            <number>15</number>
+           </property>
+           <property name="rightMargin">
+            <number>15</number>
+           </property>
+           <property name="bottomMargin">
+            <number>15</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="pushButton_ForgotSubmit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Verdana</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #2C2C2C;
+color: white;
+border-radius: 8px;</string>
+             </property>
+             <property name="text">
+              <string>Cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_ForgotCancel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Verdana</family>
+               <pointsize>14</pointsize>
+               <kerning>true</kerning>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #006747;
+color: white;
+border-radius: 8px;</string>
+             </property>
+             <property name="text">
+              <string>Reset</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
       <widget class="QWidget" name="page_Registration">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="1" column="0">
@@ -434,6 +671,9 @@ border-radius: 8px;</string>
             </sizepolicy>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
+            <property name="spacing">
+             <number>15</number>
+            </property>
             <property name="leftMargin">
              <number>15</number>
             </property>
@@ -448,8 +688,14 @@ border-radius: 8px;</string>
             </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="spacing">
+               <number>50</number>
+              </property>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                 <item>
                  <widget class="QLabel" name="label_FirstName">
                   <property name="sizePolicy">
@@ -461,7 +707,7 @@ border-radius: 8px;</string>
                   <property name="font">
                    <font>
                     <family>Verdana</family>
-                    <pointsize>12</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -498,6 +744,10 @@ text-align: left;</string>
                     <family>Verdana</family>
                    </font>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: black;
+padding-left: 10px;</string>
+                  </property>
                   <property name="placeholderText">
                    <string>First name...</string>
                   </property>
@@ -507,6 +757,9 @@ text-align: left;</string>
               </item>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_2">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                 <item>
                  <widget class="QLabel" name="label_LastName">
                   <property name="sizePolicy">
@@ -518,7 +771,7 @@ text-align: left;</string>
                   <property name="font">
                    <font>
                     <family>Verdana</family>
-                    <pointsize>12</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -555,6 +808,10 @@ text-align: left;</string>
                     <family>Verdana</family>
                    </font>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: black;
+padding-left: 10px;</string>
+                  </property>
                   <property name="placeholderText">
                    <string>Last name...</string>
                   </property>
@@ -566,6 +823,9 @@ text-align: left;</string>
             </item>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_3">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QLabel" name="label_RegEmail">
                 <property name="sizePolicy">
@@ -577,7 +837,7 @@ text-align: left;</string>
                 <property name="font">
                  <font>
                   <family>Verdana</family>
-                  <pointsize>12</pointsize>
+                  <pointsize>16</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -614,6 +874,10 @@ text-align: left;</string>
                   <family>Verdana</family>
                  </font>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: black;
+padding-left: 10px;</string>
+                </property>
                 <property name="placeholderText">
                  <string>Email...</string>
                 </property>
@@ -623,6 +887,9 @@ text-align: left;</string>
             </item>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_4">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QLabel" name="label_RegPassword">
                 <property name="sizePolicy">
@@ -634,7 +901,7 @@ text-align: left;</string>
                 <property name="font">
                  <font>
                   <family>Verdana</family>
-                  <pointsize>12</pointsize>
+                  <pointsize>16</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -666,6 +933,10 @@ text-align: left;</string>
                   <height>40</height>
                  </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: black;
+padding-left: 10px;</string>
+                </property>
                 <property name="placeholderText">
                  <string>Password...</string>
                 </property>
@@ -675,6 +946,9 @@ text-align: left;</string>
             </item>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_5">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <property name="sizeConstraint">
                <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
               </property>
@@ -689,7 +963,7 @@ text-align: left;</string>
                 <property name="font">
                  <font>
                   <family>Verdana</family>
-                  <pointsize>12</pointsize>
+                  <pointsize>16</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -720,6 +994,10 @@ text-align: left;</string>
                   <width>0</width>
                   <height>40</height>
                  </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: black;
+padding-left: 10px;</string>
                 </property>
                 <property name="placeholderText">
                  <string>Password...</string>
@@ -753,6 +1031,11 @@ text-align: left;</string>
                 <width>0</width>
                 <height>40</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+               </font>
               </property>
               <property name="cursor">
                <cursorShape>PointingHandCursor</cursorShape>
@@ -793,6 +1076,11 @@ text-align: left;</string>
                 <width>0</width>
                 <height>20</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+               </font>
               </property>
               <property name="cursor">
                <cursorShape>PointingHandCursor</cursorShape>
@@ -863,7 +1151,7 @@ text-align: left;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>36</height>
     </rect>
    </property>
   </widget>
