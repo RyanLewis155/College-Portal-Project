@@ -16,6 +16,9 @@ public:
     ~LoginWindow();
     void applyDropShadow(QWidget *widget);
 
+private slots:
+    void on_pushButton_Registration_clicked();
+
 private:
     Ui::LoginWindow *ui;
 };

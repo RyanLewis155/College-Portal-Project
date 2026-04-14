@@ -24,6 +24,11 @@ LoginWindow::LoginWindow(QWidget *parent)
     applyDropShadow(ui->lineEdit_Email);
     applyDropShadow(ui->lineEdit_Password);
     applyDropShadow(ui->pushButton_Login);
+    applyDropShadow(ui->lineEdit_RegPassword);
+    applyDropShadow(ui->lineEdit_RegEmail);
+    applyDropShadow(ui->lineEdit_RegRePassword);
+    applyDropShadow(ui->lineEdit_FirstName);
+    applyDropShadow(ui->lineEdit_LastName);
 }
 
 LoginWindow::~LoginWindow()
@@ -38,3 +43,9 @@ void LoginWindow::applyDropShadow(QWidget *widget) {
     shadow->setColor(QColor(0, 0, 0, 160));
     widget->setGraphicsEffect(shadow);
 }
+
+void LoginWindow::on_pushButton_Registration_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
