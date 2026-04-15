@@ -14,18 +14,18 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-
-
-
 )
+
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Project2
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         loginwindow.h loginwindow.cpp loginwindow.ui
-        dashboard.h dashboard.cpp dashboard.ui
+
         mainwindow.h mainwindow.cpp mainwindow.ui
+        studentdisplay.h studentdisplay.cpp studentdisplay.ui
+        resources.qrc
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Project2 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

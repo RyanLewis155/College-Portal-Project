@@ -1,6 +1,7 @@
 #ifndef DASHBOARD_H
 #define DASHBOARD_H
 
+#include "studentdisplay.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -21,8 +22,9 @@ public:
 
 
     explicit DashBoard(QWidget *parent = nullptr);
-    explicit DashBoard(Role role, QWidget *parent = nullptr);
     ~DashBoard();
+
+    void setDisplay(QWidget *displayWidget);
 
 
 

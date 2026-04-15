@@ -1,7 +1,5 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
-#include "dashboard.h"
-#include "ui_dashboard.h"
 #include <QGraphicsDropShadowEffect>
 
 
@@ -75,12 +73,9 @@ void LoginWindow::on_pushButton_ForgotSubmit_clicked()
 
 void LoginWindow::on_pushButton_Login_clicked()
 {
-    DashBoard* launchWindow = new DashBoard();
-
-    launchWindow->setAttribute(Qt::WA_DeleteOnClose);
-
-    launchWindow->show();
-
-    this->close();
+    if(true)
+    {
+        loginSuccessful();
+    }
 }
 

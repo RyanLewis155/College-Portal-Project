@@ -2,10 +2,8 @@
 #define MAINWINDOW_H
 
 #include "loginwindow.h"
-#include "dashboard.h"
 
 #include <QMainWindow>
-#include <QMdiArea>
 
 namespace Ui {
 class MainWindow;
@@ -20,11 +18,15 @@ public:
     ~MainWindow();
 
 private:
+
+private slots:
+    void handleLoginSuccess();
+
+private:
     Ui::MainWindow *ui;
-    QMdiArea *mdiArea;
 
     LoginWindow *loginWindow;
-    DashBoard *dashBoardWindow;
+    QWidget *dashBoardWindow;
 };
 
 #endif // MAINWINDOW_H

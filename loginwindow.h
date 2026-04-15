@@ -27,6 +27,9 @@ private slots:
 
     void on_pushButton_Login_clicked();
 
+signals:
+    void loginSuccessful();
+
 private:
     Ui::LoginWindow *ui;
 };

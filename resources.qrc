@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/ClassSchedule.png</file>
+        <file>assets/Register.png</file>
+        <file>assets/SearchCourses.png</file>
+        <file>assets/ViewPlans.png</file>
+        <file>assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf</file>
+        <file>assets/fonts/Inter-VariableFont_opsz,wght.ttf</file>
+    </qresource>
+</RCC>
