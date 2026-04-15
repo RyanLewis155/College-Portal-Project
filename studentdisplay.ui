@@ -33,16 +33,16 @@
     <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
    </property>
    <property name="leftMargin">
-    <number>0</number>
+    <number>15</number>
    </property>
    <property name="topMargin">
-    <number>0</number>
+    <number>15</number>
    </property>
    <property name="rightMargin">
-    <number>0</number>
+    <number>15</number>
    </property>
    <property name="bottomMargin">
-    <number>0</number>
+    <number>15</number>
    </property>
    <property name="spacing">
     <number>0</number>
@@ -146,7 +146,7 @@
          <string notr="true">background-color: #CFC493;</string>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page_ClassSchedule">
          <property name="styleSheet">
@@ -318,6 +318,41 @@ QPushButton#pushButton_CSSC:hover {
           <property name="default">
            <bool>false</bool>
           </property>
+         </widget>
+         <widget class="QWidget" name="widget_ClassSchedule" native="true">
+          <property name="geometry">
+           <rect>
+            <x>260</x>
+            <y>50</y>
+            <width>1125</width>
+            <height>825</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>1125</width>
+            <height>825</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1125</width>
+            <height>825</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget#widget_ClassSchedule {
+background-color: white;
+border-radius: 25px;
+}</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3"/>
          </widget>
         </widget>
         <widget class="QWidget" name="page_Register">
@@ -497,6 +532,41 @@ QPushButton#pushButton_RegSC:hover {
            <bool>false</bool>
           </property>
          </widget>
+         <widget class="QWidget" name="widget_Register" native="true">
+          <property name="geometry">
+           <rect>
+            <x>260</x>
+            <y>50</y>
+            <width>1125</width>
+            <height>825</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>1125</width>
+            <height>825</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1125</width>
+            <height>825</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget#widget_Register {
+background-color: white;
+border-radius: 25px;
+}</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4"/>
+         </widget>
         </widget>
         <widget class="QWidget" name="page_ViewPlans">
          <property name="styleSheet">
@@ -675,6 +745,40 @@ QPushButton#pushButton_VPCS:hover {
            <bool>false</bool>
           </property>
          </widget>
+         <widget class="QWidget" name="widget_ViewPlans" native="true">
+          <property name="geometry">
+           <rect>
+            <x>260</x>
+            <y>50</y>
+            <width>1125</width>
+            <height>825</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>1125</width>
+            <height>825</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1125</width>
+            <height>825</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget#widget_ViewPlans {
+background-color: white;
+border-radius: 25px;
+}</string>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="page_SearchCourses">
          <property name="styleSheet">
@@ -851,6 +955,34 @@ QPushButton#pushButton_SCViewPlans:hover {
           </property>
           <property name="flat">
            <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QWidget" name="widget_SearchCourses" native="true">
+          <property name="geometry">
+           <rect>
+            <x>260</x>
+            <y>50</y>
+            <width>1125</width>
+            <height>825</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>1125</width>
+            <height>825</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1125</width>
+            <height>825</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget#widget_SearchCourses {
+background-color: white;
+border-radius: 25px;
+}</string>
           </property>
          </widget>
         </widget>

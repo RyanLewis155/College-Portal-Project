@@ -734,13 +734,29 @@ Project2_autogen/timestamp: \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/build/Qt_6_10_2_for_macOS-Debug/Project2_autogen/moc_predefs.h \
-	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/dashboard.cpp \
-	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/dashboard.h \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/classscheduleitem.cpp \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/classscheduleitem.h \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/course.cpp \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/course.h \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/loginwindow.cpp \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/loginwindow.h \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/main.cpp \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/mainwindow.cpp \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/mainwindow.h \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/resources.qrc \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/room.cpp \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/room.h \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/schedule.cpp \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/schedule.h \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/section.cpp \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/section.h \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentdisplay.cpp \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentdisplay.h \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/user.cpp \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/user.h \
+	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/QDate \
+	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/QObject \
+	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/QTime \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/q17memory.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/q20functional.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/q20iterator.h \
@@ -764,6 +780,7 @@ Project2_autogen/timestamp: \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qbytearrayalgorithms.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qbytearraylist.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qbytearrayview.h \
+	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qcalendar.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qchar.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qcheckedint_impl.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qcompare.h \
@@ -778,6 +795,7 @@ Project2_autogen/timestamp: \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qcontiguouscache.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qdarwinhelpers.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qdatastream.h \
+	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qdatetime.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qdebug.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qendian.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qexceptionhandling.h \
@@ -797,6 +815,7 @@ Project2_autogen/timestamp: \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qlatin1stringview.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qline.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qlist.h \
+	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qlocale.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qlogging.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qmalloc.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/qmap.h \
@@ -894,11 +913,8 @@ Project2_autogen/timestamp: \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtGui.framework/Versions/A/Headers/qtransform.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
-	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QMdiArea \
-	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractscrollarea.h \
-	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
+	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QWidget \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
-	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qmdiarea.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h \
@@ -1124,7 +1140,8 @@ Project2_autogen/timestamp: \
 	/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Platform/Darwin-Initialize.cmake \
 	/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Platform/Darwin.cmake \
 	/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/Platform/UnixPaths.cmake \
-	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/dashboard.ui \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/classscheduleitem.ui \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/loginwindow.ui \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/mainwindow.ui \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentdisplay.ui \
 	/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/bin/cmake

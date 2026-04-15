@@ -729,7 +729,6 @@
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/limits.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/ptrcheck.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h \
-  /Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/dashboard.h \
   /Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/loginwindow.h \
   /Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/q17memory.h \
   /Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/q20functional.h \
@@ -884,11 +883,7 @@
   /Users/ryanlewis/Qt/6.10.2/macos/lib/QtGui.framework/Versions/A/Headers/qtransform.h \
   /Users/ryanlewis/Qt/6.10.2/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
   /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
-  /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/QMdiArea \
-  /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractscrollarea.h \
-  /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qframe.h \
   /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qmainwindow.h \
-  /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qmdiarea.h \
   /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \
   /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \
   /Users/ryanlewis/Qt/6.10.2/macos/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h \

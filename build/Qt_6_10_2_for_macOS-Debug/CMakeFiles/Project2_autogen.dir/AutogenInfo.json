@@ -353,7 +353,8 @@
 		"/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake",
 		"/Users/ryanlewis/Qt/6.10.2/macos/lib/cmake/Qt6/Qt6Dependencies.cmake",
 		"/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.30/Modules/GNUInstallDirs.cmake",
-		"/Users/ryanlewis/Qt/6.10.2/macos/lib/cmake/Qt6/macos/Info.plist.app.in"
+		"/Users/ryanlewis/Qt/6.10.2/macos/lib/cmake/Qt6/macos/Info.plist.app.in",
+		"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/resources.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2",
 	"CROSS_CONFIG" : false,
@@ -362,9 +363,15 @@
 	"HEADERS" : 
 	[
 		[
-			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/dashboard.h",
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/classscheduleitem.h",
 			"MU",
-			"EWIEGA46WW/moc_dashboard.cpp",
+			"EWIEGA46WW/moc_classscheduleitem.cpp",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/course.h",
+			"MU",
+			"EWIEGA46WW/moc_course.cpp",
 			null
 		],
 		[
@@ -377,6 +384,42 @@
 			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/room.h",
+			"MU",
+			"EWIEGA46WW/moc_room.cpp",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/schedule.h",
+			"MU",
+			"EWIEGA46WW/moc_schedule.cpp",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/section.h",
+			"MU",
+			"EWIEGA46WW/moc_section.cpp",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentdisplay.h",
+			"MU",
+			"EWIEGA46WW/moc_studentdisplay.cpp",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentregistrationform.h",
+			"MU",
+			"EWIEGA46WW/moc_studentregistrationform.cpp",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/user.h",
+			"MU",
+			"EWIEGA46WW/moc_user.cpp",
 			null
 		]
 	],
@@ -440,7 +483,12 @@
 	"SOURCES" : 
 	[
 		[
-			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/dashboard.cpp",
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/classscheduleitem.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/course.cpp",
 			"MU",
 			null
 		],
@@ -456,6 +504,36 @@
 		],
 		[
 			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/room.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/schedule.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/section.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentdisplay.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentregistrationform.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/user.cpp",
 			"MU",
 			null
 		]

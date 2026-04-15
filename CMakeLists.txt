@@ -26,6 +26,17 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         mainwindow.h mainwindow.cpp mainwindow.ui
         studentdisplay.h studentdisplay.cpp studentdisplay.ui
         resources.qrc
+        classscheduleitem.h classscheduleitem.cpp classscheduleitem.ui
+        course.h course.cpp
+        section.h section.cpp
+        room.h room.cpp
+        schedule.h schedule.cpp
+        user.h user.cpp
+        studentregistrationform.h studentregistrationform.cpp studentregistrationform.ui
+
+
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Project2 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

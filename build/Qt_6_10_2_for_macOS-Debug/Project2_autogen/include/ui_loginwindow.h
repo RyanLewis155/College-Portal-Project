@@ -18,11 +18,9 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -50,6 +48,8 @@ public:
     QPushButton *pushButton_Login;
     QSpacerItem *verticalSpacer_2;
     QWidget *page_ForgotPassword;
+    QGridLayout *gridLayout_3;
+    QSpacerItem *verticalSpacer_5;
     QFrame *frame_ForgotPassword;
     QVBoxLayout *verticalLayout_8;
     QVBoxLayout *verticalLayout_7;
@@ -59,6 +59,7 @@ public:
     QPushButton *pushButton_ForgotSubmit;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *pushButton_ForgotCancel;
+    QSpacerItem *verticalSpacer_6;
     QWidget *page_Registration;
     QGridLayout *gridLayout_2;
     QFrame *frame_Registration;
@@ -85,8 +86,6 @@ public:
     QSpacerItem *verticalSpacer_3;
     QSpacerItem *verticalSpacer_4;
     QSpacerItem *horizontalSpacer;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
 
     void setupUi(QMainWindow *LoginWindow)
     {
@@ -271,9 +270,14 @@ public:
         stackedWidget->addWidget(page_Login);
         page_ForgotPassword = new QWidget();
         page_ForgotPassword->setObjectName("page_ForgotPassword");
+        gridLayout_3 = new QGridLayout(page_ForgotPassword);
+        gridLayout_3->setObjectName("gridLayout_3");
+        verticalSpacer_5 = new QSpacerItem(20, 202, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        gridLayout_3->addItem(verticalSpacer_5, 0, 0, 1, 1);
+
         frame_ForgotPassword = new QFrame(page_ForgotPassword);
         frame_ForgotPassword->setObjectName("frame_ForgotPassword");
-        frame_ForgotPassword->setGeometry(QRect(20, 170, 505, 182));
         sizePolicy1.setHeightForWidth(frame_ForgotPassword->sizePolicy().hasHeightForWidth());
         frame_ForgotPassword->setSizePolicy(sizePolicy1);
         frame_ForgotPassword->setMinimumSize(QSize(505, 182));
@@ -358,6 +362,13 @@ public:
 
 
         verticalLayout_8->addLayout(horizontalLayout_3);
+
+
+        gridLayout_3->addWidget(frame_ForgotPassword, 1, 0, 1, 1);
+
+        verticalSpacer_6 = new QSpacerItem(20, 201, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        gridLayout_3->addItem(verticalSpacer_6, 2, 0, 1, 1);
 
         stackedWidget->addWidget(page_ForgotPassword);
         page_Registration = new QWidget();
@@ -542,9 +553,9 @@ public:
         pushButton_GoToLogin->setEnabled(true);
         sizePolicy3.setHeightForWidth(pushButton_GoToLogin->sizePolicy().hasHeightForWidth());
         pushButton_GoToLogin->setSizePolicy(sizePolicy3);
-        pushButton_GoToLogin->setMinimumSize(QSize(0, 20));
-        pushButton_GoToLogin->setMaximumSize(QSize(16777215, 20));
-        pushButton_GoToLogin->setBaseSize(QSize(0, 20));
+        pushButton_GoToLogin->setMinimumSize(QSize(0, 30));
+        pushButton_GoToLogin->setMaximumSize(QSize(16777215, 30));
+        pushButton_GoToLogin->setBaseSize(QSize(0, 30));
         pushButton_GoToLogin->setFont(font2);
         pushButton_GoToLogin->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         pushButton_GoToLogin->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
@@ -574,13 +585,6 @@ public:
         horizontalLayout->addItem(horizontalSpacer);
 
         LoginWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(LoginWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 36));
-        LoginWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(LoginWindow);
-        statusbar->setObjectName("statusbar");
-        LoginWindow->setStatusBar(statusbar);
 
         retranslateUi(LoginWindow);
 

@@ -2,6 +2,7 @@
 #define STUDENTDISPLAY_H
 
 #include <QMainWindow>
+#include "classscheduleitem.h"
 
 namespace Ui {
 class StudentDisplay;
@@ -14,6 +15,8 @@ class StudentDisplay : public QWidget
 public:
     explicit StudentDisplay(QWidget *parent = nullptr);
     ~StudentDisplay();
+
+    void PopulateClasses(QList<ClassScheduleItem*> classSchedule);
 
 private slots:
 
