@@ -146,7 +146,7 @@
          <string notr="true">background-color: #CFC493;</string>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="page_ClassSchedule">
          <property name="styleSheet">
@@ -1004,6 +1004,39 @@ background-color: white;
 border-radius: 25px;
 }</string>
           </property>
+          <widget class="QTableView" name="tableView_results">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>150</y>
+             <width>1051</width>
+             <height>641</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_CRN">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>90</y>
+             <width>113</width>
+             <height>26</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_search">
+           <property name="geometry">
+            <rect>
+             <x>990</x>
+             <y>90</y>
+             <width>86</width>
+             <height>26</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
          </widget>
         </widget>
        </widget>

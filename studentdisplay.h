@@ -2,6 +2,8 @@
 #define STUDENTDISPLAY_H
 
 #include <QMainWindow>
+#include <QVector>
+#include <QMap>
 #include "classscheduleitem.h"
 
 namespace Ui {
@@ -43,6 +45,8 @@ private slots:
     void on_pushButton_CSViewPlans_clicked();
 
     void on_pushButton_CSSC_clicked();
+
+    void handleSearchResults(const QVector<QMap<QString, QString>> &results);
 
 private:
     Ui::StudentDisplay *ui;
