@@ -778,9 +778,9 @@ background-color: white;
 border-radius: 25px;
 }</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_5">
+          <layout class="QGridLayout" name="gridLayout_5" rowstretch="0" columnstretch="0">
            <property name="sizeConstraint">
-            <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
+            <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
            </property>
            <property name="leftMargin">
             <number>0</number>
@@ -795,7 +795,7 @@ border-radius: 25px;
             <number>0</number>
            </property>
            <property name="spacing">
-            <number>0</number>
+            <number>6</number>
            </property>
           </layout>
          </widget>

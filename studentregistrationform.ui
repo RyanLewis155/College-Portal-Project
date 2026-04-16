@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>411</width>
-    <height>300</height>
+    <height>425</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>600</width>
-    <height>300</height>
+    <height>500</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -48,6 +48,7 @@
      <property name="styleSheet">
       <string notr="true">QFrame#frame_CourseEntries {
 	background-color: #EDEBD1;
+	border-radius: 25px;
 }</string>
      </property>
      <property name="frameShape">
@@ -158,7 +159,7 @@ QPushButton#pushButton_CRNRegister:hover {
 }</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
+      <item alignment="Qt::AlignmentFlag::AlignBottom">
        <widget class="QLabel" name="label_SemesterPicker">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -210,10 +211,14 @@ QPushButton#pushButton_CRNRegister:hover {
          <string notr="true">QComboBox#comboBox_RegSemester {
 	background-color: #EDEBD1;
 	color: black;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 }</string>
         </property>
         <property name="currentText">
-         <string>Summer 2026</string>
+         <string/>
         </property>
         <property name="placeholderText">
          <string>Semester...</string>
