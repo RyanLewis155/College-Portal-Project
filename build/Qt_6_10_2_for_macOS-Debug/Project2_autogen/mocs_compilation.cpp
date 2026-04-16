@@ -7,4 +7,6 @@
 #include "EWIEGA46WW/moc_schedule.cpp"
 #include "EWIEGA46WW/moc_section.cpp"
 #include "EWIEGA46WW/moc_studentdisplay.cpp"
+#include "EWIEGA46WW/moc_studentregistrationform.cpp"
 #include "EWIEGA46WW/moc_user.cpp"
+#include "EWIEGA46WW/moc_viewplanform.cpp"

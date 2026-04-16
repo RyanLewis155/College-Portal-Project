@@ -1,5 +1,7 @@
 #include "studentdisplay.h"
 #include "ui_studentdisplay.h"
+#include "studentregistrationform.h"
+#include "viewplanform.h"
 
 StudentDisplay::StudentDisplay(QWidget *parent)
     : QWidget(parent)
@@ -29,6 +31,11 @@ StudentDisplay::StudentDisplay(QWidget *parent)
     PopulateClasses(classList);
 
     QGridLayout *registrationLayout = qobject_cast<QGridLayout*>(ui->widget_Register->layout());
+    QGridLayout *viewPlanLayout = qobject_cast<QGridLayout*>(ui->widget_ViewPlans->layout());
+
+
+    registrationLayout->addWidget(new StudentRegistrationForm());
+    viewPlanLayout->addWidget(new ViewPlanForm());
 
 
 

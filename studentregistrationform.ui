@@ -6,47 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>411</width>
     <height>300</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>300</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#StudentRegistrationForm {
+	background-color: white;
+}</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-    <widget class="QComboBox" name="comboBox">
-     <property name="minimumSize">
-      <size>
-       <width>200</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>250</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <item>
-      <property name="text">
-       <string>Summer 2026</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Fall 2026</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Spring 2027</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="3" column="0" rowspan="2" colspan="4" alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-    <widget class="QFrame" name="frame">
+   <item row="1" column="0">
+    <widget class="QFrame" name="frame_CourseEntries">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -65,6 +45,11 @@
        <height>100</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame#frame_CourseEntries {
+	background-color: #EDEBD1;
+}</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::Shape::StyledPanel</enum>
      </property>
@@ -75,8 +60,28 @@
       <number>1</number>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="2">
+       <widget class="QTextEdit" name="textEdit_course3">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QTextEdit" name="textEdit_course2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
-       <widget class="QTextEdit" name="textEdit">
+       <widget class="QTextEdit" name="textEdit_course1">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -91,37 +96,146 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QTextEdit" name="textEdit_2">
-        <property name="maximumSize">
+      <item row="1" column="1">
+       <widget class="QPushButton" name="pushButton_CRNRegister">
+        <property name="minimumSize">
          <size>
-          <width>16777215</width>
-          <height>40</height>
+          <width>0</width>
+          <height>35</height>
          </size>
         </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QTextEdit" name="textEdit_3">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>40</height>
-         </size>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton#pushButton_CRNRegister {
+    font: 16pt 'Inter-VariableFont_opsz,wght';
+    color: white;
+    border-radius: 8px;
+	background-color: #006747;
+	border: 1px solid #006747; 
+}
+
+QPushButton#pushButton_CRNRegister:hover {
+    font: 16pt 'Inter-VariableFont_opsz,wght';
+    color: white;
+    border-radius: 8px;
+	background-color: #005432;
+	border: 1px solid #005432; 
+}</string>
+        </property>
+        <property name="text">
+         <string>Register</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="0" column="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-    <widget class="QLabel" name="label_SemesterPicker">
+   <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+    <widget class="QFrame" name="frame_Semester">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>150</height>
+      </size>
+     </property>
      <property name="styleSheet">
-      <string notr="true">color: black;</string>
+      <string notr="true">QFrame#frame_Semester {
+	background-color: white;
+}</string>
      </property>
-     <property name="text">
-      <string>Semester: </string>
-     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label_SemesterPicker">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel#label_SemesterPicker {
+	background-color: white;
+	color: black;
+}</string>
+        </property>
+        <property name="text">
+         <string>Semester: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_RegSemester">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox#comboBox_RegSemester {
+	background-color: #EDEBD1;
+	color: black;
+}</string>
+        </property>
+        <property name="currentText">
+         <string>Summer 2026</string>
+        </property>
+        <property name="placeholderText">
+         <string>Semester...</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Summer 2026</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Fall 2026</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Spring 2027</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

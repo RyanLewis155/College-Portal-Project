@@ -33,6 +33,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         schedule.h schedule.cpp
         user.h user.cpp
         studentregistrationform.h studentregistrationform.cpp studentregistrationform.ui
+        viewplanform.h viewplanform.cpp viewplanform.ui
 
 
 

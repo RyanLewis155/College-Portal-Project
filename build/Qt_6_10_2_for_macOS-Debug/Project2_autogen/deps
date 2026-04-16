@@ -752,8 +752,12 @@ Project2_autogen/timestamp: \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/section.h \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentdisplay.cpp \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentdisplay.h \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentregistrationform.cpp \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentregistrationform.h \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/user.cpp \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/user.h \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/viewplanform.cpp \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/viewplanform.h \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/QDate \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/QObject \
 	/Users/ryanlewis/Qt/6.10.2/macos/lib/QtCore.framework/Versions/A/Headers/QTime \
@@ -1144,4 +1148,6 @@ Project2_autogen/timestamp: \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/loginwindow.ui \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/mainwindow.ui \
 	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentdisplay.ui \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/studentregistrationform.ui \
+	/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/viewplanform.ui \
 	/Users/ryanlewis/Qt/Tools/CMake/CMake.app/Contents/bin/cmake

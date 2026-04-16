@@ -421,6 +421,12 @@
 			"MU",
 			"EWIEGA46WW/moc_user.cpp",
 			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/viewplanform.h",
+			"MU",
+			"EWIEGA46WW/moc_viewplanform.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -534,6 +540,11 @@
 		],
 		[
 			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/user.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/ryanlewis/Documents/CEN4020SoftwareEngineering/Project2/Project2/viewplanform.cpp",
 			"MU",
 			null
 		]

@@ -40,11 +40,13 @@ public:
     QPushButton *pushButton_RegCS;
     QPushButton *pushButton_RegSC;
     QWidget *widget_Register;
+    QGridLayout *gridLayout_4;
     QWidget *page_ViewPlans;
     QPushButton *pushButton_VPSC;
     QPushButton *pushButton_VPReg;
     QPushButton *pushButton_VPCS;
     QWidget *widget_ViewPlans;
+    QGridLayout *gridLayout_5;
     QWidget *page_SearchCourses;
     QPushButton *pushButton_SCCS;
     QPushButton *pushButton_SCReg;
@@ -284,6 +286,8 @@ public:
 "background-color: white;\n"
 "border-radius: 25px;\n"
 "}"));
+        gridLayout_4 = new QGridLayout(widget_Register);
+        gridLayout_4->setObjectName("gridLayout_4");
         stackedWidget->addWidget(page_Register);
         page_ViewPlans = new QWidget();
         page_ViewPlans->setObjectName("page_ViewPlans");
@@ -373,6 +377,11 @@ public:
 "background-color: white;\n"
 "border-radius: 25px;\n"
 "}"));
+        gridLayout_5 = new QGridLayout(widget_ViewPlans);
+        gridLayout_5->setSpacing(0);
+        gridLayout_5->setObjectName("gridLayout_5");
+        gridLayout_5->setSizeConstraint(QLayout::SizeConstraint::SetMaximumSize);
+        gridLayout_5->setContentsMargins(0, 0, 0, 0);
         stackedWidget->addWidget(page_ViewPlans);
         page_SearchCourses = new QWidget();
         page_SearchCourses->setObjectName("page_SearchCourses");
@@ -474,7 +483,7 @@ public:
 
         retranslateUi(StudentDisplay);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
         pushButton_CSReg->setDefault(false);
         pushButton_CSViewPlans->setDefault(false);
         pushButton_CSSC->setDefault(false);
