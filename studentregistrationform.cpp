@@ -6,6 +6,8 @@ StudentRegistrationForm::StudentRegistrationForm(QWidget *parent)
     , ui(new Ui::StudentRegistrationForm)
 {
     ui->setupUi(this);
+
+
 }
 
 StudentRegistrationForm::~StudentRegistrationForm()

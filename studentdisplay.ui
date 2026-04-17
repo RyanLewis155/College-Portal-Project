@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1523</width>
-    <height>1001</height>
+    <width>1570</width>
+    <height>1035</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -30,7 +30,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="sizeConstraint">
-    <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
+    <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
    </property>
    <property name="leftMargin">
     <number>15</number>
@@ -55,7 +55,15 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#CentralWidget {
+	background-color: #CFC493;
+}</string>
+     </property>
      <layout class="QGridLayout" name="gridLayout_2">
+      <property name="sizeConstraint">
+       <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+      </property>
       <property name="leftMargin">
        <number>0</number>
       </property>
@@ -71,955 +79,228 @@
       <property name="spacing">
        <number>0</number>
       </property>
-      <item row="0" column="2">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Orientation::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Policy::Expanding</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="3">
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="0">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="2">
-       <widget class="QStackedWidget" name="stackedWidget">
+      <item row="0" column="1">
+       <widget class="QTabWidget" name="tabWidget">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>1440</width>
-          <height>921</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>1440</width>
-          <height>921</height>
-         </size>
-        </property>
-        <property name="baseSize">
-         <size>
-          <width>1440</width>
-          <height>921</height>
-         </size>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
         </property>
         <property name="autoFillBackground">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: #CFC493;</string>
+         <string notr="true">QTabWidget::tab-bar {
+	left: 15px;
+}
+
+QTabBar::tab {
+    background-color: #EDEBD1;
+	color: black;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+	margin-right: 12px;
+    padding: 15px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background-color: #006747;
+	color: white;
+}
+
+QTabBar::tab:selected {
+    border-color: #9B9B9B;
+    border-bottom-color: #006747; /* same as pane color */
+	color: white;
+}
+
+QTabBar::tab:!selected {
+    margin-top: 10px; /* make non-selected tabs look smaller */
+}
+
+QTabBar::tab:last {
+    margin-right: 0px;
+}
+</string>
+        </property>
+        <property name="tabPosition">
+         <enum>QTabWidget::TabPosition::North</enum>
+        </property>
+        <property name="tabShape">
+         <enum>QTabWidget::TabShape::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
-        <widget class="QWidget" name="page_ClassSchedule">
+        <property name="elideMode">
+         <enum>Qt::TextElideMode::ElideMiddle</enum>
+        </property>
+        <widget class="QWidget" name="tabWidgetPage_ClassSchedule" native="true">
          <property name="styleSheet">
-          <string notr="true">QWidget#page_ClassSchedule{ 
-	background-image:url(:/assets/ClassSchedule.png);
-}</string>
+          <string notr="true">QWidget#tabWidgetPage_ClassSchedule {
+	background-color: #EDEBD1;
+	border-radius: 15px;
+}
+</string>
          </property>
-         <widget class="QPushButton" name="pushButton_CSReg">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>300</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_CSReg {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_CSReg:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
+         <attribute name="title">
+          <string>Class Schedule</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_ClassSchedule" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget#widget_ClassSchedule {
+	background-color: white;
+	border-radius: 25px;
 }</string>
-          </property>
-          <property name="text">
-           <string>Register</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_CSViewPlans">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>500</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_CSViewPlans {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_CSViewPlans:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>View Plans</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_CSSC">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>700</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_CSSC {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_CSSC:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>Search Courses</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QWidget" name="widget_ClassSchedule" native="true">
-          <property name="geometry">
-           <rect>
-            <x>260</x>
-            <y>50</y>
-            <width>1125</width>
-            <height>825</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>1125</width>
-            <height>825</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>1125</width>
-            <height>825</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QWidget#widget_ClassSchedule {
-background-color: white;
-border-radius: 25px;
-}</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_3"/>
-         </widget>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_3">
+             <property name="sizeConstraint">
+              <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+             </property>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
-        <widget class="QWidget" name="page_Register">
-         <property name="styleSheet">
-          <string notr="true">QWidget#page_Register{ 
-	background-image:url(:/assets/Register.png);
-}</string>
+        <widget class="QWidget" name="tabWidgetPage_Register" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <widget class="QPushButton" name="pushButton_RegViewPlans">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>500</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_RegViewPlans {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
+         <property name="styleSheet">
+          <string notr="true">QWidget#tabWidgetPage_Register {
 	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
+	border-radius: 15px;
 }
-
-QPushButton#pushButton_RegViewPlans:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>View Plans</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_RegCS">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>100</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_RegCS {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_RegCS:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>Class Schedule</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_RegSC">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>700</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_RegSC {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_RegSC:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>Search Courses</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QWidget" name="widget_Register" native="true">
-          <property name="geometry">
-           <rect>
-            <x>260</x>
-            <y>50</y>
-            <width>1125</width>
-            <height>825</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>1125</width>
-            <height>825</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>1125</width>
-            <height>825</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QWidget#widget_Register {
+</string>
+         </property>
+         <attribute name="title">
+          <string>Register</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_Register" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget#widget_Register {
 background-color: white;
 border-radius: 25px;
 }</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_4"/>
-         </widget>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_4">
+             <property name="sizeConstraint">
+              <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+             </property>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
-        <widget class="QWidget" name="page_ViewPlans">
+        <widget class="QWidget" name="tabWidgetPage_ViewPlans" native="true">
          <property name="styleSheet">
-          <string notr="true">QWidget#page_ViewPlans{ 
-	background-image:url(:/assets/ViewPlans.png);
-}</string>
+          <string notr="true">QWidget#tabWidgetPage_ViewPlans {
+	background-color: #EDEBD1;
+	border-radius: 15px;
+}
+</string>
          </property>
-         <widget class="QPushButton" name="pushButton_VPSC">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>700</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_VPSC {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_VPSC:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>Search Courses</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_VPReg">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>300</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_VPReg {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_VPReg:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>Register</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_VPCS">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>100</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_VPCS {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_VPCS:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>Class Schedule</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QWidget" name="widget_ViewPlans" native="true">
-          <property name="geometry">
-           <rect>
-            <x>260</x>
-            <y>50</y>
-            <width>1125</width>
-            <height>825</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>1125</width>
-            <height>825</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>1125</width>
-            <height>825</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QWidget#widget_ViewPlans {
+         <attribute name="title">
+          <string>View Plans</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_ViewPlans" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget#widget_ViewPlans {
 background-color: white;
 border-radius: 25px;
 }</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_5" rowstretch="0" columnstretch="0">
-           <property name="sizeConstraint">
-            <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-           </property>
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <property name="spacing">
-            <number>6</number>
-           </property>
-          </layout>
-         </widget>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_5" rowstretch="0" columnstretch="0">
+             <property name="sizeConstraint">
+              <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>6</number>
+             </property>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
-        <widget class="QWidget" name="page_SearchCourses">
-         <property name="styleSheet">
-          <string notr="true">QWidget#page_SearchCourses{ 
-	background-image:url(:/assets/SearchCourses.png);
-}</string>
+        <widget class="QWidget" name="tabWidgetPage_SearchCourses" native="true">
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
          </property>
-         <widget class="QPushButton" name="pushButton_SCCS">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>100</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_SCCS {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
+         <property name="styleSheet">
+          <string notr="true">QWidget#tabWidgetPage_SearchCourses {
 	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
+	border-radius: 15px;
 }
-
-QPushButton#pushButton_SCCS:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>Class Schedule</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_SCReg">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>300</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_SCReg {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_SCReg:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>Register</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_SCViewPlans">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>500</y>
-            <width>208</width>
-            <height>97</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <family>Inter-VariableFont_opsz,wght</family>
-            <pointsize>16</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton#pushButton_SCViewPlans {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: #006747;
-    border-radius: 8px;
-	background-color: #EDEBD1;
-	border: 1px solid #EDEBD1; 
-}
-
-QPushButton#pushButton_SCViewPlans:hover {
-    font: 16pt 'Inter-VariableFont_opsz,wght';
-    color: white;
-    border-radius: 8px;
-	background-color: #006747;
-	border: 1px solid #006747; 
-}</string>
-          </property>
-          <property name="text">
-           <string>View Plans</string>
-          </property>
-          <property name="default">
-           <bool>false</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QWidget" name="widget_SearchCourses" native="true">
-          <property name="geometry">
-           <rect>
-            <x>260</x>
-            <y>50</y>
-            <width>1125</width>
-            <height>825</height>
-           </rect>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>1125</width>
-            <height>825</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>1125</width>
-            <height>825</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QWidget#widget_SearchCourses {
+</string>
+         </property>
+         <attribute name="title">
+          <string>Search Courses</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_SearchCourses" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget#widget_SearchCourses {
 background-color: white;
 border-radius: 25px;
 }</string>
-          </property>
-         </widget>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
-      </item>
-      <item row="2" column="2">
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Orientation::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </widget>
