@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1570</width>
-    <height>1035</height>
+    <width>1189</width>
+    <height>831</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,18 +15,6 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
-  </property>
-  <property name="sizeIncrement">
-   <size>
-    <width>0</width>
-    <height>0</height>
-   </size>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
-  <property name="styleSheet">
-   <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="sizeConstraint">
@@ -57,8 +45,8 @@
      </property>
      <property name="styleSheet">
       <string notr="true">QWidget#CentralWidget {
-	background-color: #CFC493;
-}</string>
+            background-color: #CFC493;
+            }</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <property name="sizeConstraint">
@@ -79,7 +67,7 @@
       <property name="spacing">
        <number>0</number>
       </property>
-      <item row="0" column="1">
+      <item row="0" column="0">
        <widget class="QTabWidget" name="tabWidget">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -96,38 +84,39 @@
          <bool>true</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">QTabWidget::tab-bar {
-	left: 15px;
-}
+         <string notr="true">
+                            QTabWidget::tab-bar {
+                            left: 15px;
+                            }
 
-QTabBar::tab {
-    background-color: #EDEBD1;
-	color: black;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-	margin-right: 12px;
-    padding: 15px;
-}
+                            QTabBar::tab {
+                            background-color: #EDEBD1;
+                            color: black;
+                            border-top-left-radius: 8px;
+                            border-top-right-radius: 8px;
+                            margin-right: 12px;
+                            padding: 15px;
+                            }
 
-QTabBar::tab:selected, QTabBar::tab:hover {
-    background-color: #006747;
-	color: white;
-}
+                            QTabBar::tab:selected, QTabBar::tab:hover {
+                            background-color: #006747;
+                            color: white;
+                            }
 
-QTabBar::tab:selected {
-    border-color: #9B9B9B;
-    border-bottom-color: #006747; /* same as pane color */
-	color: white;
-}
+                            QTabBar::tab:selected {
+                            border-color: #9B9B9B;
+                            border-bottom-color: #006747; /* same as pane color */
+                            color: white;
+                            }
 
-QTabBar::tab:!selected {
-    margin-top: 10px; /* make non-selected tabs look smaller */
-}
+                            QTabBar::tab:!selected {
+                            margin-top: 10px; /* make non-selected tabs look smaller */
+                            }
 
-QTabBar::tab:last {
-    margin-right: 0px;
-}
-</string>
+                            QTabBar::tab:last {
+                            margin-right: 0px;
+                            }
+                        </string>
         </property>
         <property name="tabPosition">
          <enum>QTabWidget::TabPosition::North</enum>
@@ -136,22 +125,19 @@ QTabBar::tab:last {
          <enum>QTabWidget::TabShape::Rounded</enum>
         </property>
         <property name="currentIndex">
-<<<<<<< HEAD
          <number>0</number>
-=======
-         <number>3</number>
->>>>>>> c0144334e1c664c51a63687de216404671a9009a
         </property>
         <property name="elideMode">
          <enum>Qt::TextElideMode::ElideMiddle</enum>
         </property>
-        <widget class="QWidget" name="tabWidgetPage_ClassSchedule" native="true">
+        <widget class="QWidget" name="tabWidgetPage_ClassSchedule">
          <property name="styleSheet">
-          <string notr="true">QWidget#tabWidgetPage_ClassSchedule {
-	background-color: #EDEBD1;
-	border-radius: 15px;
-}
-</string>
+          <string notr="true">
+                                    QWidget#tabWidgetPage_ClassSchedule {
+                                        background-color: #EDEBD1;
+                                        border-radius: 15px;
+                                    }
+                                </string>
          </property>
          <attribute name="title">
           <string>Class Schedule</string>
@@ -166,10 +152,12 @@ QTabBar::tab:last {
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">QWidget#widget_ClassSchedule {
-	background-color: white;
-	border-radius: 25px;
-}</string>
+             <string notr="true">
+                                                QWidget#widget_ClassSchedule {
+                                                    background-color: white;
+                                                    border-radius: 25px;
+                                                }
+                                            </string>
             </property>
             <layout class="QGridLayout" name="gridLayout_3">
              <property name="sizeConstraint">
@@ -180,7 +168,7 @@ QTabBar::tab:last {
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tabWidgetPage_Register" native="true">
+        <widget class="QWidget" name="tabWidgetPage_Register">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -188,11 +176,12 @@ QTabBar::tab:last {
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#tabWidgetPage_Register {
-	background-color: #EDEBD1;
-	border-radius: 15px;
-}
-</string>
+          <string notr="true">
+                                    QWidget#tabWidgetPage_Register {
+                                        background-color: #EDEBD1;
+                                        border-radius: 15px;
+                                    }
+                                </string>
          </property>
          <attribute name="title">
           <string>Register</string>
@@ -208,9 +197,9 @@ QTabBar::tab:last {
             </property>
             <property name="styleSheet">
              <string notr="true">QWidget#widget_Register {
-background-color: white;
-border-radius: 25px;
-}</string>
+                                          background-color: white;
+                                          border-radius: 25px;
+                                          }</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_4">
              <property name="sizeConstraint">
@@ -221,13 +210,14 @@ border-radius: 25px;
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tabWidgetPage_ViewPlans" native="true">
+        <widget class="QWidget" name="tabWidgetPage_ViewPlans">
          <property name="styleSheet">
-          <string notr="true">QWidget#tabWidgetPage_ViewPlans {
-	background-color: #EDEBD1;
-	border-radius: 15px;
-}
-</string>
+          <string notr="true">
+                                    QWidget#tabWidgetPage_ViewPlans {
+                                        background-color: #EDEBD1;
+                                        border-radius: 15px;
+                                    }
+                                </string>
          </property>
          <attribute name="title">
           <string>View Plans</string>
@@ -242,10 +232,12 @@ border-radius: 25px;
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">QWidget#widget_ViewPlans {
-background-color: white;
-border-radius: 25px;
-}</string>
+             <string notr="true">
+                                                QWidget#widget_ViewPlans {
+                                                    background-color: white;
+                                                    border-radius: 25px;
+                                                }
+                                            </string>
             </property>
             <layout class="QGridLayout" name="gridLayout_5" rowstretch="0" columnstretch="0">
              <property name="sizeConstraint">
@@ -271,16 +263,17 @@ border-radius: 25px;
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tabWidgetPage_SearchCourses" native="true">
+        <widget class="QWidget" name="tabWidgetPage_SearchCourses">
          <property name="layoutDirection">
           <enum>Qt::LayoutDirection::LeftToRight</enum>
          </property>
          <property name="styleSheet">
-          <string notr="true">QWidget#tabWidgetPage_SearchCourses {
-	background-color: #EDEBD1;
-	border-radius: 15px;
-}
-</string>
+          <string notr="true">
+                                    QWidget#tabWidgetPage_SearchCourses {
+                                        background-color: #EDEBD1;
+                                        border-radius: 15px;
+                                    }
+                                </string>
          </property>
          <attribute name="title">
           <string>Search Courses</string>
@@ -295,52 +288,31 @@ border-radius: 25px;
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">QWidget#widget_SearchCourses {
-background-color: white;
-border-radius: 25px;
-}</string>
-<<<<<<< HEAD
+             <string notr="true">
+                                                QWidget#widget_SearchCourses {
+                                                    background-color: white;
+                                                    border-radius: 25px;
+                                                }
+                                            </string>
             </property>
+            <layout class="QGridLayout" name="gridLayout_search">
+             <item row="0" column="0">
+              <widget class="QLineEdit" name="lineEdit_CRN"/>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="pushButton_search">
+               <property name="text">
+                <string>Search</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="2">
+              <widget class="QTableView" name="tableView_results"/>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
-=======
-          </property>
-          <widget class="QTableView" name="tableView_results">
-           <property name="geometry">
-            <rect>
-             <x>40</x>
-             <y>150</y>
-             <width>1051</width>
-             <height>641</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QLineEdit" name="lineEdit_CRN">
-           <property name="geometry">
-            <rect>
-             <x>40</x>
-             <y>90</y>
-             <width>113</width>
-             <height>26</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="pushButton_search">
-           <property name="geometry">
-            <rect>
-             <x>990</x>
-             <y>90</y>
-             <width>86</width>
-             <height>26</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Search</string>
-           </property>
-          </widget>
-         </widget>
->>>>>>> c0144334e1c664c51a63687de216404671a9009a
         </widget>
        </widget>
       </item>

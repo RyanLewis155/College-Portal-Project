@@ -13,8 +13,6 @@ StudentDisplay::StudentDisplay(QWidget *parent)
 {
     ui->setupUi(this);
 
-<<<<<<< HEAD
-=======
     User* u = new User();
 
     // course search handlers
@@ -23,7 +21,6 @@ StudentDisplay::StudentDisplay(QWidget *parent)
     });
     connect(u, &User::searchResultsReady,
             this, &StudentDisplay::handleSearchResults);
->>>>>>> c0144334e1c664c51a63687de216404671a9009a
 
     QList<ClassScheduleItem*> classList;
     ClassScheduleItem* class1 = new ClassScheduleItem();
