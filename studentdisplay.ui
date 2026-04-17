@@ -1,90 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>StudentDisplay</class>
- <widget class="QWidget" name="StudentDisplay">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1189</width>
-    <height>831</height>
-   </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <property name="sizeConstraint">
-    <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-   </property>
-   <property name="leftMargin">
-    <number>15</number>
-   </property>
-   <property name="topMargin">
-    <number>15</number>
-   </property>
-   <property name="rightMargin">
-    <number>15</number>
-   </property>
-   <property name="bottomMargin">
-    <number>15</number>
-   </property>
-   <property name="spacing">
-    <number>0</number>
-   </property>
-   <item row="0" column="0">
-    <widget class="QWidget" name="CentralWidget" native="true">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget#CentralWidget {
+        <class>StudentDisplay</class>
+        <widget class="QWidget"
+                name="StudentDisplay">
+                <property name="geometry">
+                        <rect>
+                                <x>0</x>
+                                <y>0</y>
+                                <width>1189</width>
+                                <height>831</height>
+                        </rect>
+                </property>
+                <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed"
+                                    vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                        </sizepolicy>
+                </property>
+                <layout class="QGridLayout"
+                        name="gridLayout">
+                        <property name="sizeConstraint">
+                                <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                        </property>
+                        <property name="leftMargin">
+                                <number>15</number>
+                        </property>
+                        <property name="topMargin">
+                                <number>15</number>
+                        </property>
+                        <property name="rightMargin">
+                                <number>15</number>
+                        </property>
+                        <property name="bottomMargin">
+                                <number>15</number>
+                        </property>
+                        <property name="spacing">
+                                <number>0</number>
+                        </property>
+                        <item row="0"
+                              column="0">
+                                <widget class="QWidget"
+                                        name="CentralWidget"
+                                        native="true">
+                                        <property name="sizePolicy">
+                                                <sizepolicy hsizetype="Expanding"
+                                                            vsizetype="Expanding">
+                                                        <horstretch>0</horstretch>
+                                                        <verstretch>0</verstretch>
+                                                </sizepolicy>
+                                        </property>
+                                        <property name="styleSheet">
+                                                <string notr="true">QWidget#CentralWidget {
             background-color: #CFC493;
             }</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <property name="sizeConstraint">
-       <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QTabWidget" name="tabWidget">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="autoFillBackground">
-         <bool>true</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">
+                                        </property>
+                                        <layout class="QGridLayout"
+                                                name="gridLayout_2">
+                                                <property name="sizeConstraint">
+                                                        <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                                                </property>
+                                                <property name="leftMargin">
+                                                        <number>0</number>
+                                                </property>
+                                                <property name="topMargin">
+                                                        <number>0</number>
+                                                </property>
+                                                <property name="rightMargin">
+                                                        <number>0</number>
+                                                </property>
+                                                <property name="bottomMargin">
+                                                        <number>0</number>
+                                                </property>
+                                                <property name="spacing">
+                                                        <number>0</number>
+                                                </property>
+                                                <item row="0"
+                                                      column="0">
+                                                        <widget class="QTabWidget"
+                                                                name="tabWidget">
+                                                                <property name="sizePolicy">
+                                                                        <sizepolicy hsizetype="Expanding"
+                                                                                    vsizetype="Expanding">
+                                                                                <horstretch>0</horstretch>
+                                                                                <verstretch>0</verstretch>
+                                                                        </sizepolicy>
+                                                                </property>
+                                                                <property name="font">
+                                                                        <font>
+                                                                                <pointsize>16</pointsize>
+                                                                        </font>
+                                                                </property>
+                                                                <property name="autoFillBackground">
+                                                                        <bool>true</bool>
+                                                                </property>
+                                                                <property name="styleSheet">
+                                                                        <string notr="true">
                             QTabWidget::tab-bar {
                             left: 15px;
                             }
@@ -117,358 +128,402 @@
                             margin-right: 0px;
                             }
                         </string>
-        </property>
-        <property name="tabPosition">
-         <enum>QTabWidget::TabPosition::North</enum>
-        </property>
-        <property name="tabShape">
-         <enum>QTabWidget::TabShape::Rounded</enum>
-        </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <property name="elideMode">
-         <enum>Qt::TextElideMode::ElideMiddle</enum>
-        </property>
-        <widget class="QWidget" name="tabWidgetPage_ClassSchedule">
-         <property name="styleSheet">
-          <string notr="true">
+                                                                </property>
+                                                                <property name="tabPosition">
+                                                                        <enum>QTabWidget::TabPosition::North</enum>
+                                                                </property>
+                                                                <property name="tabShape">
+                                                                        <enum>QTabWidget::TabShape::Rounded</enum>
+                                                                </property>
+                                                                <property name="currentIndex">
+                                                                        <number>0</number>
+                                                                </property>
+                                                                <property name="elideMode">
+                                                                        <enum>Qt::TextElideMode::ElideMiddle</enum>
+                                                                </property>
+                                                                <widget class="QWidget"
+                                                                        name="tabWidgetPage_ClassSchedule">
+                                                                        <property name="styleSheet">
+                                                                                <string notr="true">
                                     QWidget#tabWidgetPage_ClassSchedule {
                                         background-color: #EDEBD1;
                                         border-radius: 15px;
                                     }
                                 </string>
-         </property>
-         <attribute name="title">
-          <string>Class Schedule</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="0">
-           <widget class="QWidget" name="widget_ClassSchedule" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">
+                                                                        </property>
+                                                                        <attribute name="title">
+                                                                                <string>Class Schedule</string>
+                                                                        </attribute>
+                                                                        <layout class="QGridLayout"
+                                                                                name="gridLayout_6">
+                                                                                <item row="0"
+                                                                                      column="0">
+                                                                                        <widget class="QWidget"
+                                                                                                name="widget_ClassSchedule"
+                                                                                                native="true">
+                                                                                                <property name="sizePolicy">
+                                                                                                        <sizepolicy hsizetype="Expanding"
+                                                                                                                    vsizetype="Expanding">
+                                                                                                                <horstretch>0</horstretch>
+                                                                                                                <verstretch>0</verstretch>
+                                                                                                        </sizepolicy>
+                                                                                                </property>
+                                                                                                <property name="styleSheet">
+                                                                                                        <string notr="true">
                                                 QWidget#widget_ClassSchedule {
                                                     background-color: white;
                                                     border-radius: 25px;
                                                 }
                                             </string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_3">
-             <property name="sizeConstraint">
-              <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
-             </property>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="tabWidgetPage_Register">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
+                                                                                                </property>
+                                                                                                <layout class="QGridLayout"
+                                                                                                        name="gridLayout_3">
+                                                                                                        <property name="sizeConstraint">
+                                                                                                                <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+                                                                                                        </property>
+                                                                                                </layout>
+                                                                                        </widget>
+                                                                                </item>
+                                                                        </layout>
+                                                                </widget>
+                                                                <widget class="QWidget"
+                                                                        name="tabWidgetPage_Register">
+                                                                        <property name="sizePolicy">
+                                                                                <sizepolicy hsizetype="Expanding"
+                                                                                            vsizetype="Expanding">
+                                                                                        <horstretch>0</horstretch>
+                                                                                        <verstretch>0</verstretch>
+                                                                                </sizepolicy>
+                                                                        </property>
+                                                                        <property name="styleSheet">
+                                                                                <string notr="true">
                                     QWidget#tabWidgetPage_Register {
                                         background-color: #EDEBD1;
                                         border-radius: 15px;
                                     }
                                 </string>
-         </property>
-         <attribute name="title">
-          <string>Register</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_7">
-          <item row="0" column="0">
-           <widget class="QWidget" name="widget_Register" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QWidget#widget_Register {
+                                                                        </property>
+                                                                        <attribute name="title">
+                                                                                <string>Register</string>
+                                                                        </attribute>
+                                                                        <layout class="QGridLayout"
+                                                                                name="gridLayout_7">
+                                                                                <item row="0"
+                                                                                      column="0">
+                                                                                        <widget class="QWidget"
+                                                                                                name="widget_Register"
+                                                                                                native="true">
+                                                                                                <property name="sizePolicy">
+                                                                                                        <sizepolicy hsizetype="Expanding"
+                                                                                                                    vsizetype="Expanding">
+                                                                                                                <horstretch>0</horstretch>
+                                                                                                                <verstretch>0</verstretch>
+                                                                                                        </sizepolicy>
+                                                                                                </property>
+                                                                                                <property name="styleSheet">
+                                                                                                        <string notr="true">QWidget#widget_Register {
                                           background-color: white;
                                           border-radius: 25px;
                                           }</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_4">
-             <property name="sizeConstraint">
-              <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
-             </property>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="tabWidgetPage_ViewPlans">
-         <property name="styleSheet">
-          <string notr="true">
+                                                                                                </property>
+                                                                                                <layout class="QGridLayout"
+                                                                                                        name="gridLayout_4">
+                                                                                                        <property name="sizeConstraint">
+                                                                                                                <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+                                                                                                        </property>
+                                                                                                </layout>
+                                                                                        </widget>
+                                                                                </item>
+                                                                        </layout>
+                                                                </widget>
+                                                                <widget class="QWidget"
+                                                                        name="tabWidgetPage_ViewPlans">
+                                                                        <property name="styleSheet">
+                                                                                <string notr="true">
                                     QWidget#tabWidgetPage_ViewPlans {
                                         background-color: #EDEBD1;
                                         border-radius: 15px;
                                     }
                                 </string>
-         </property>
-         <attribute name="title">
-          <string>View Plans</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_8">
-          <item row="0" column="0">
-           <widget class="QWidget" name="widget_ViewPlans" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">
+                                                                        </property>
+                                                                        <attribute name="title">
+                                                                                <string>View Plans</string>
+                                                                        </attribute>
+                                                                        <layout class="QGridLayout"
+                                                                                name="gridLayout_8">
+                                                                                <item row="0"
+                                                                                      column="0">
+                                                                                        <widget class="QWidget"
+                                                                                                name="widget_ViewPlans"
+                                                                                                native="true">
+                                                                                                <property name="sizePolicy">
+                                                                                                        <sizepolicy hsizetype="Expanding"
+                                                                                                                    vsizetype="Expanding">
+                                                                                                                <horstretch>0</horstretch>
+                                                                                                                <verstretch>0</verstretch>
+                                                                                                        </sizepolicy>
+                                                                                                </property>
+                                                                                                <property name="styleSheet">
+                                                                                                        <string notr="true">
                                                 QWidget#widget_ViewPlans {
                                                     background-color: white;
                                                     border-radius: 25px;
                                                 }
                                             </string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_5" rowstretch="0" columnstretch="0">
-             <property name="sizeConstraint">
-              <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <property name="spacing">
-              <number>6</number>
-             </property>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="tabWidgetPage_SearchCourses">
-         <property name="layoutDirection">
-          <enum>Qt::LayoutDirection::LeftToRight</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
+                                                                                                </property>
+                                                                                                <layout class="QGridLayout"
+                                                                                                        name="gridLayout_5"
+                                                                                                        rowstretch="0"
+                                                                                                        columnstretch="0">
+                                                                                                        <property name="sizeConstraint">
+                                                                                                                <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+                                                                                                        </property>
+                                                                                                        <property name="leftMargin">
+                                                                                                                <number>0</number>
+                                                                                                        </property>
+                                                                                                        <property name="topMargin">
+                                                                                                                <number>0</number>
+                                                                                                        </property>
+                                                                                                        <property name="rightMargin">
+                                                                                                                <number>0</number>
+                                                                                                        </property>
+                                                                                                        <property name="bottomMargin">
+                                                                                                                <number>0</number>
+                                                                                                        </property>
+                                                                                                        <property name="spacing">
+                                                                                                                <number>6</number>
+                                                                                                        </property>
+                                                                                                </layout>
+                                                                                        </widget>
+                                                                                </item>
+                                                                        </layout>
+                                                                </widget>
+                                                                <widget class="QWidget"
+                                                                        name="tabWidgetPage_SearchCourses">
+                                                                        <property name="layoutDirection">
+                                                                                <enum>Qt::LayoutDirection::LeftToRight</enum>
+                                                                        </property>
+                                                                        <property name="styleSheet">
+                                                                                <string notr="true">
                                     QWidget#tabWidgetPage_SearchCourses {
                                         background-color: #EDEBD1;
                                         border-radius: 15px;
                                     }
                                 </string>
-         </property>
-         <attribute name="title">
-          <string>Search Courses</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_9">
-          <item row="0" column="0">
-           <widget class="QWidget" name="widget_SearchCourses" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">
+                                                                        </property>
+                                                                        <attribute name="title">
+                                                                                <string>Search Courses</string>
+                                                                        </attribute>
+                                                                        <layout class="QGridLayout"
+                                                                                name="gridLayout_9">
+                                                                                <item row="0"
+                                                                                      column="0">
+                                                                                        <widget class="QWidget"
+                                                                                                name="widget_SearchCourses"
+                                                                                                native="true">
+                                                                                                <property name="sizePolicy">
+                                                                                                        <sizepolicy hsizetype="Expanding"
+                                                                                                                    vsizetype="Expanding">
+                                                                                                                <horstretch>0</horstretch>
+                                                                                                                <verstretch>0</verstretch>
+                                                                                                        </sizepolicy>
+                                                                                                </property>
+                                                                                                <property name="styleSheet">
+                                                                                                        <string notr="true">
                                                 QWidget#widget_SearchCourses {
                                                     background-color: white;
                                                     border-radius: 25px;
                                                 }
                                             </string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_search">
-             <item row="0" column="0">
-              <widget class="QLineEdit" name="lineEdit_CRN"/>
-             </item>
-             <item row="0" column="1">
-              <widget class="QPushButton" name="pushButton_search">
-               <property name="text">
-                <string>Search</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0" colspan="2">
-              <widget class="QTableView" name="tableView_results"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-          <widget class="QTableView" name="tableView_results">
-           <property name="geometry">
-            <rect>
-             <x>40</x>
-             <y>150</y>
-             <width>1051</width>
-             <height>641</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QLineEdit" name="lineEdit_CRN">
-           <property name="geometry">
-            <rect>
-             <x>40</x>
-             <y>80</y>
-             <width>113</width>
-             <height>26</height>
-            </rect>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CRN&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="pushButton_search">
-           <property name="geometry">
-            <rect>
-             <x>1000</x>
-             <y>80</y>
-             <width>86</width>
-             <height>26</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Search</string>
-           </property>
-          </widget>
-          <widget class="QComboBox" name="comboBox_term">
-           <property name="geometry">
-            <rect>
-             <x>40</x>
-             <y>30</y>
-             <width>141</width>
-             <height>26</height>
-            </rect>
-           </property>
-           <item>
-            <property name="text">
-             <string>Spring%202025</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Fall%202025</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Spring%202026</string>
-            </property>
-           </item>
-          </widget>
-          <widget class="QLineEdit" name="lineEdit_subject">
-           <property name="geometry">
-            <rect>
-             <x>180</x>
-             <y>80</y>
-             <width>113</width>
-             <height>26</height>
-            </rect>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Subject&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-          <widget class="QLineEdit" name="lineEdit_courseNum">
-           <property name="geometry">
-            <rect>
-             <x>320</x>
-             <y>80</y>
-             <width>113</width>
-             <height>26</height>
-            </rect>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Course Number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-          <widget class="QComboBox" name="comboBox_days">
-           <property name="geometry">
-            <rect>
-             <x>450</x>
-             <y>80</y>
-             <width>121</width>
-             <height>26</height>
-            </rect>
-           </property>
-           <item>
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>MW</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>TR</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>MWTRF</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>M</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>T</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>W</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>R</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>F</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>S</string>
-            </property>
-           </item>
-          </widget>
-         </widget>
-        </widget>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-  </layout>
- </widget>
- <resources/>
- <connections/>
+                                                                                                </property>
+                                                                                                <layout class="QGridLayout"
+                                                                                                        name="gridLayout_search">
+                                                                                                        <item row="0"
+                                                                                                              column="0">
+                                                                                                                <widget class="QLineEdit"
+                                                                                                                        name="lineEdit_CRN"/>
+                                                                                                        </item>
+                                                                                                        <item row="0"
+                                                                                                              column="1">
+                                                                                                                <widget class="QPushButton"
+                                                                                                                        name="pushButton_search">
+                                                                                                                        <property name="text">
+                                                                                                                                <string>Search</string>
+                                                                                                                        </property>
+                                                                                                                </widget>
+                                                                                                        </item>
+                                                                                                        <item row="1"
+                                                                                                              column="0"
+                                                                                                              colspan="2">
+                                                                                                                <widget class="QTableView"
+                                                                                                                        name="tableView_results"/>
+                                                                                                        </item>
+                                                                                                </layout>
+                                                                                        </widget>
+                                                                                </item>
+                                                                        </layout>
+                                                                        <widget class="QTableView"
+                                                                                name="tableView_results">
+                                                                                <property name="geometry">
+                                                                                        <rect>
+                                                                                                <x>40</x>
+                                                                                                <y>150</y>
+                                                                                                <width>1051</width>
+                                                                                                <height>641</height>
+                                                                                        </rect>
+                                                                                </property>
+                                                                        </widget>
+                                                                        <widget class="QLineEdit"
+                                                                                name="lineEdit_CRN">
+                                                                                <property name="geometry">
+                                                                                        <rect>
+                                                                                                <x>40</x>
+                                                                                                <y>80</y>
+                                                                                                <width>113</width>
+                                                                                                <height>26</height>
+                                                                                        </rect>
+                                                                                </property>
+                                                                                <property name="toolTip">
+                                                                                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CRN&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                                                                </property>
+                                                                        </widget>
+                                                                        <widget class="QPushButton"
+                                                                                name="pushButton_search">
+                                                                                <property name="geometry">
+                                                                                        <rect>
+                                                                                                <x>1000</x>
+                                                                                                <y>80</y>
+                                                                                                <width>86</width>
+                                                                                                <height>26</height>
+                                                                                        </rect>
+                                                                                </property>
+                                                                                <property name="text">
+                                                                                        <string>Search</string>
+                                                                                </property>
+                                                                        </widget>
+                                                                        <widget class="QComboBox"
+                                                                                name="comboBox_term">
+                                                                                <property name="geometry">
+                                                                                        <rect>
+                                                                                                <x>40</x>
+                                                                                                <y>30</y>
+                                                                                                <width>141</width>
+                                                                                                <height>26</height>
+                                                                                        </rect>
+                                                                                </property>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>Spring%202025</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>Fall%202025</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>Spring%202026</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                        </widget>
+                                                                        <widget class="QLineEdit"
+                                                                                name="lineEdit_subject">
+                                                                                <property name="geometry">
+                                                                                        <rect>
+                                                                                                <x>180</x>
+                                                                                                <y>80</y>
+                                                                                                <width>113</width>
+                                                                                                <height>26</height>
+                                                                                        </rect>
+                                                                                </property>
+                                                                                <property name="toolTip">
+                                                                                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Subject&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                                                                </property>
+                                                                        </widget>
+                                                                        <widget class="QLineEdit"
+                                                                                name="lineEdit_courseNum">
+                                                                                <property name="geometry">
+                                                                                        <rect>
+                                                                                                <x>320</x>
+                                                                                                <y>80</y>
+                                                                                                <width>113</width>
+                                                                                                <height>26</height>
+                                                                                        </rect>
+                                                                                </property>
+                                                                                <property name="toolTip">
+                                                                                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Course Number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                                                                </property>
+                                                                        </widget>
+                                                                        <widget class="QComboBox"
+                                                                                name="comboBox_days">
+                                                                                <property name="geometry">
+                                                                                        <rect>
+                                                                                                <x>450</x>
+                                                                                                <y>80</y>
+                                                                                                <width>121</width>
+                                                                                                <height>26</height>
+                                                                                        </rect>
+                                                                                </property>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string/>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>MW</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>TR</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>MWTRF</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>M</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>T</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>W</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>R</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>F</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                                <item>
+                                                                                        <property name="text">
+                                                                                                <string>S</string>
+                                                                                        </property>
+                                                                                </item>
+                                                                        </widget>
+                                                                </widget>
+                                                        </widget>
+                                                </item>
+                                        </layout>
+                                </widget>
+                        </item>
+                </layout>
+</widget>
+<resources/>
+<connections/>
 </ui>
