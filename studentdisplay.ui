@@ -1018,17 +1018,20 @@ border-radius: 25px;
            <property name="geometry">
             <rect>
              <x>40</x>
-             <y>90</y>
+             <y>80</y>
              <width>113</width>
              <height>26</height>
             </rect>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CRN&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
           <widget class="QPushButton" name="pushButton_search">
            <property name="geometry">
             <rect>
-             <x>990</x>
-             <y>90</y>
+             <x>1000</x>
+             <y>80</y>
              <width>86</width>
              <height>26</height>
             </rect>
@@ -1036,6 +1039,117 @@ border-radius: 25px;
            <property name="text">
             <string>Search</string>
            </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_term">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>30</y>
+             <width>141</width>
+             <height>26</height>
+            </rect>
+           </property>
+           <item>
+            <property name="text">
+             <string>Spring%202025</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Fall%202025</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Spring%202026</string>
+            </property>
+           </item>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_subject">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>80</y>
+             <width>113</width>
+             <height>26</height>
+            </rect>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Subject&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_courseNum">
+           <property name="geometry">
+            <rect>
+             <x>320</x>
+             <y>80</y>
+             <width>113</width>
+             <height>26</height>
+            </rect>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Course Number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_days">
+           <property name="geometry">
+            <rect>
+             <x>450</x>
+             <y>80</y>
+             <width>121</width>
+             <height>26</height>
+            </rect>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MW</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>TR</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MWTRF</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>M</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>T</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>W</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>R</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>F</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>S</string>
+            </property>
+           </item>
           </widget>
          </widget>
         </widget>

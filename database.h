@@ -1,34 +1,26 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-// #include <QObject>
-// #include <QNetworkAccessManager>
-// #include <QJsonArray>
-// #include "queryparams.h"
+#include <QString>
+#include <QJsonArray>
+#include <QNetworkAccessManager>
+#include "queryparams.h"
 
-// class Database : public QObject
-// {
-//     Q_OBJECT
+class Database
+{
+public:
+    static void init(const QString &baseUrl, const QString &apiKey);
 
-// public:
-//     explicit Database(QObject *parent = nullptr);
+    static QJsonArray fetch(const QString &table,
+                            const QueryParams &params);
 
-//     void setConfig(const QString &baseUrl, const QString &apiKey);
+private:
+    static QString m_baseUrl;
+    static QString m_apiKey;
+    static QNetworkAccessManager* m_manager;
 
-//     // Main fetch method
-//     void fetch(const QString &table, const QueryParams &params);
+    static QUrl buildUrl(const QString &table, const QueryParams &params);
+    static QString opToString(Operator op);
+};
 
-// signals:
-//     void fetchSucceeded(const QJsonArray &data);
-//     void fetchFailed(const QString &error);
-
-// private:
-//     QNetworkAccessManager *networkManager;
-//     QString m_baseUrl;
-//     QString m_apiKey;
-
-//     QString buildUrl(const QString &table, const QueryParams &params);
-//     QString opToString(Operator op);
-// };
-
-#endif // DATABASE_H
+#endif

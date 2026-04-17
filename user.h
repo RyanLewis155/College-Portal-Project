@@ -29,6 +29,7 @@
 #include <QString>
 #include <QVector>
 #include <QMap>
+#include <QStandardItemModel>
 
 class User : public QObject
 {
@@ -38,11 +39,23 @@ public:
     explicit User(QObject *parent = nullptr);
     ~User();
 
-    void searchCourses(const QString &crn);
+    // handler methods
+    void searchCourses(const QString &term,
+                        const QString &crn,
+                        const QString &subject,
+                        const QString &courseNum,
+                        const QString &days);
+
+    // data repo methods
+    QJsonArray getCourseData(const QString &term,
+                            const QString &crn,
+                            const QString &subject,
+                            const QString &courseNum,
+                            const QString &days);
 
 signals:
     // Search results: list of rows (column name -> value)
-    void searchResultsReady(const QVector<QMap<QString, QString>> &results);
+    void searchResultsReady(QStandardItemModel* model);
 };
 
 #endif // USER_H

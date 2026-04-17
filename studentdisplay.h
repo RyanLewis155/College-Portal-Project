@@ -4,7 +4,9 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QMap>
+#include <QStandardItemModel>
 #include "classscheduleitem.h"
+#include "user.h"
 
 namespace Ui {
 class StudentDisplay;
@@ -46,10 +48,11 @@ private slots:
 
     void on_pushButton_CSSC_clicked();
 
-    void handleSearchResults(const QVector<QMap<QString, QString>> &results);
+    void handleSearchResults(QStandardItemModel* model);
 
 private:
     Ui::StudentDisplay *ui;
+    User* u;
 };
 
 #endif // STUDENTDISPLAY_H
