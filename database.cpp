@@ -24,14 +24,13 @@ void Database::init(const QString &baseUrl, const QString &apiKey)
 }
 
 QJsonArray Database::getCourseData(const QString &term,
-                               const QString &crn,
-                               const QString &subject,
-                               const QString &courseNum,
-                               const QString &days)
+                                   const QStringList &crns,
+                                   const QString &subject,
+                                   const QString &courseNum,
+                                   const QString &days)
 {
     QueryParams params;
 
-    // TODO: figure out joins
     // SELECT clause (Supabase embedded joins)
     params.select({
         "CRN",
@@ -51,8 +50,18 @@ QJsonArray Database::getCourseData(const QString &term,
     if (!term.isEmpty())
         params.where("term", EQ, term);
 
-    if (!crn.isEmpty())
-        params.where("CRN", EQ, crn);
+    if (!crns.isEmpty() && !crns[0].isEmpty()) {
+        if (crns.size() == 1) {
+            params.where("CRN", EQ, crns[0]);
+        } else {
+            QStringList quoted;
+            for (const QString &crn : crns)
+                quoted << crn;
+
+            QString inClause = "(" + quoted.join(",") + ")";
+            params.where("CRN", IN, inClause);
+        }
+    }
 
     if (!subject.isEmpty())
         params.where("subject", EQ, subject);
@@ -151,9 +160,6 @@ QJsonObject Database::flattenObject(
                 result[field] = nested[field];
             }
         }
-
-        // Remove the original nested object
-        // result.remove(key);
     }
 
     return result;
@@ -188,6 +194,7 @@ QString Database::opToString(Operator op)
     case GTE: return "gte";
     case LTE: return "lte";
     case NEQ: return "neq";
+    case IN:  return "in";
     default:  return "eq";
     }
 }

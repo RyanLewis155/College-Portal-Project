@@ -38,7 +38,8 @@ void User::searchCourses(const QString &term,
                          const QString &courseNum,
                          const QString &days)
 {
-    QJsonArray results = Database::getCourseData(term, crn, subject, courseNum, days);
+    QStringList crns = {crn}; // Convert single CRN to list for API
+    QJsonArray results = Database::getCourseData(term, crns, subject, courseNum, days);
 
     qDebug() << "Received results:" << results.size();
 

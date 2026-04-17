@@ -11,11 +11,11 @@ class Database
 public:
     static void init(const QString &baseUrl, const QString &apiKey);
     // API methods
-    static QJsonArray getCourseData(const QString &term,
-                             const QString &crn,
-                             const QString &subject,
-                             const QString &courseNum,
-                             const QString &days);
+    static QJsonArray getCourseData(const QString &term = "",
+                                    const QStringList &crns = {},
+                                    const QString &subject = "",
+                                    const QString &courseNum = "",
+                                    const QString &days = "");
 
     // public helpers
     static QString jsonValueToString(const QJsonValue &v)
