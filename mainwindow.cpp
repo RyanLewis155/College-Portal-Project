@@ -53,7 +53,7 @@ void MainWindow::handleLoginSuccess()
     if(dashBoardWindow)
     {
         ui->stackedWidget->addWidget(dashBoardWindow);
-        dashBoardWindow->show();
+        // dashBoardWindow->show();
         ui->stackedWidget->setCurrentWidget(dashBoardWindow);
     }
 }

@@ -13,11 +13,17 @@ StudentDisplay::StudentDisplay(QWidget *parent)
 {
     ui->setupUi(this);
 
-    User* u = new User();
+    u = new User();
 
     // course search handlers
-    connect(ui->lineEdit_CRN, &QLineEdit::returnPressed, [=]() {
-        u->searchCourses(ui->lineEdit_CRN->text());
+    connect(ui->pushButton_search, &QPushButton::clicked, [=]() {
+        u->searchCourses(
+            ui->comboBox_term->currentText(),
+            ui->lineEdit_CRN->text(),
+            ui->lineEdit_subject->text(),
+            ui->lineEdit_courseNum->text(),
+            ui->comboBox_days->currentText()
+        );
     });
     connect(u, &User::searchResultsReady,
             this, &StudentDisplay::handleSearchResults);
@@ -57,38 +63,32 @@ StudentDisplay::~StudentDisplay()
     delete ui;
 }
 
-void StudentDisplay::handleSearchResults(const QVector<QMap<QString, QString>> &results)
+void StudentDisplay::handleSearchResults(QStandardItemModel* model)
 {
-    qDebug() << "Received results:" << results.size();
-
-    // Create model
-    QStandardItemModel *model = new QStandardItemModel(this);
-
-    if (results.isEmpty()) {
-        ui->tableView_results->setModel(model);
+    if (!model) {
+        qDebug() << "Received null model";
         return;
     }
 
-    // Extract headers from first row
-    QStringList headers = results[0].keys();
-    model->setColumnCount(headers.size());
-    model->setHorizontalHeaderLabels(headers);
+    qDebug() << "Received model with rows:" << model->rowCount();
 
-    // Fill rows
-    for (int i = 0; i < results.size(); ++i) {
-        const QMap<QString, QString> &row = results[i];
-
-        for (int j = 0; j < headers.size(); ++j) {
-            QString value = row.value(headers[j]);
-            QStandardItem *item = new QStandardItem(value);
-            model->setItem(i, j, item);
-        }
+    // -----------------------------
+    // Clean up previous model safely
+    // -----------------------------
+    QAbstractItemModel *oldModel = ui->tableView_results->model();
+    if (oldModel) {
+        oldModel->deleteLater();
     }
 
-    // Set model to table view
+    // -----------------------------
+    // Transfer ownership to the view
+    // -----------------------------
+    model->setParent(ui->tableView_results);
     ui->tableView_results->setModel(model);
 
-    // Optional: resize nicely
+    // -----------------------------
+    // UI polish
+    // -----------------------------
     ui->tableView_results->resizeColumnsToContents();
 }
 

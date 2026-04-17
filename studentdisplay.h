@@ -7,8 +7,9 @@
 #include <QVector>
 #include <QMap>
 #include <QGridLayout>
+#include <QStandardItemModel>
 #include "classscheduleitem.h"
-
+#include "user.h"
 
 namespace Ui {
 class StudentDisplay;
@@ -28,10 +29,11 @@ public:
 private slots:
 
     void handleSearchResults(const QVector<QMap<QString, QString>> &results);
+    void handleSearchResults(QStandardItemModel* model);
 
 private:
     Ui::StudentDisplay *ui;
-
+    User* u;
 };
 
 #endif // STUDENTDISPLAY_H
