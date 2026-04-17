@@ -6,6 +6,7 @@
 #include <QJsonDocument>
 #include <QEventLoop>
 #include <QDebug>
+#include <qjsonobject.h>
 
 // Static members
 QString Database::m_baseUrl = "";
@@ -22,6 +23,160 @@ void Database::init(const QString &baseUrl, const QString &apiKey)
     }
 }
 
+QJsonArray Database::getCourseData(const QString &term,
+                               const QString &crn,
+                               const QString &subject,
+                               const QString &courseNum,
+                               const QString &days)
+{
+    QueryParams params;
+
+    // TODO: figure out joins
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "CRN",
+        "startTime",
+        "endTime",
+        "days",
+        "section:sectionNum",
+        "subject",
+        "courseNum",
+        "room:Room(building, room)",
+        "Course(course:name)",
+        "User(instructor:name)"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!term.isEmpty())
+        params.where("term", EQ, term);
+
+    if (!crn.isEmpty())
+        params.where("CRN", EQ, crn);
+
+    if (!subject.isEmpty())
+        params.where("subject", EQ, subject);
+
+    if (!courseNum.isEmpty())
+        params.where("courseNum", EQ, courseNum);
+
+    if (!days.isEmpty() && days != "")
+        params.where("days", EQ, days);
+
+    QJsonArray raw = fetch("CourseSection", params);
+
+    // define flattening rules
+    QHash<QString, QStringList> rules;
+    rules["room"] = {"building", "room"};
+    rules["Course"] = {"course"};
+    rules["User"] = {"instructor"};
+
+    return flattenArray(raw, rules);
+}
+
+QJsonArray Database::fetch(const QString &table,
+                           const QueryParams &params)
+{
+    // get API url for desired query
+    QUrl url = buildUrl(table, params);
+
+    // build request
+    QNetworkRequest request(url);
+    request.setRawHeader("apikey", m_apiKey.toUtf8());
+    request.setRawHeader("Authorization", ("Bearer " + m_apiKey).toUtf8());
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QNetworkReply *reply = m_manager->get(request);
+
+    QEventLoop loop;
+
+    QJsonArray result;
+
+    QObject::connect(reply, &QNetworkReply::finished,
+                     &loop, &QEventLoop::quit);
+
+    loop.exec(); // blocks here until reply finishes
+
+    if (reply->error() != QNetworkReply::NoError) {
+        qWarning() << "Database error:" << reply->errorString();
+        reply->deleteLater();
+        return {};
+    }
+
+    QByteArray response = reply->readAll();
+    QJsonDocument doc = QJsonDocument::fromJson(response);
+
+    if (!doc.isArray()) {
+        qWarning() << "Invalid JSON response (expected array)";
+        reply->deleteLater();
+        return {};
+    }
+
+    result = doc.array();
+
+    reply->deleteLater();
+    return result;
+}
+
+QString jsonValueToString(const QJsonValue &v)
+{
+    if (v.isString()) return v.toString();
+    if (v.isDouble()) return QString::number(v.toDouble());
+    if (v.isBool())   return v.toBool() ? "true" : "false";
+    return "";
+}
+
+// flatten hierarchical JSON into simple key/value pairs
+QJsonObject Database::flattenObject(
+    const QJsonObject &obj,
+    const QHash<QString, QStringList> &flattenRules)
+{
+    QJsonObject result = obj;
+
+    for (auto it = flattenRules.begin(); it != flattenRules.end(); ++it)
+    {
+        QString key = it.key();
+
+        if (!result.contains(key) || !result[key].isObject())
+            continue;
+
+        QJsonObject nested = result[key].toObject();
+        QStringList fields = it.value();
+
+        // Promote fields to top-level
+        for (const QString &field : fields)
+        {
+            if (nested.contains(field))
+            {
+                result[field] = nested[field];
+            }
+        }
+
+        // Remove the original nested object
+        // result.remove(key);
+    }
+
+    return result;
+}
+
+// flatten array of JSON
+QJsonArray Database::flattenArray(
+    const QJsonArray &array,
+    const QHash<QString, QStringList> &flattenRules)
+{
+    QJsonArray result;
+
+    for (const QJsonValue &val : array)
+    {
+        if (!val.isObject())
+            continue;
+
+        result.append(flattenObject(val.toObject(), flattenRules));
+    }
+
+    return result;
+}
+
 // convert operator signals to usable strings
 QString Database::opToString(Operator op)
 {
@@ -36,7 +191,6 @@ QString Database::opToString(Operator op)
     default:  return "eq";
     }
 }
-
 
 // append query parameters to base URL
 QUrl Database::buildUrl(const QString &table, const QueryParams &params)
@@ -86,50 +240,4 @@ QUrl Database::buildUrl(const QString &table, const QueryParams &params)
 
     url.setQuery(query);
     return url;
-}
-
-
-QJsonArray Database::fetch(const QString &table,
-                           const QueryParams &params)
-{
-    // get API url for desired query
-    QUrl url = buildUrl(table, params);
-
-    // build request
-    QNetworkRequest request(url);
-    request.setRawHeader("apikey", m_apiKey.toUtf8());
-    request.setRawHeader("Authorization", ("Bearer " + m_apiKey).toUtf8());
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    QNetworkReply *reply = m_manager->get(request);
-
-    QEventLoop loop;
-
-    QJsonArray result;
-    QString errorString;
-
-    QObject::connect(reply, &QNetworkReply::finished,
-                     &loop, &QEventLoop::quit);
-
-    loop.exec(); // blocks here until reply finishes
-
-    if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << "Database error:" << reply->errorString();
-        reply->deleteLater();
-        return {};
-    }
-
-    QByteArray response = reply->readAll();
-    QJsonDocument doc = QJsonDocument::fromJson(response);
-
-    if (!doc.isArray()) {
-        qWarning() << "Invalid JSON response (expected array)";
-        reply->deleteLater();
-        return {};
-    }
-
-    result = doc.array();
-
-    reply->deleteLater();
-    return result;
 }
