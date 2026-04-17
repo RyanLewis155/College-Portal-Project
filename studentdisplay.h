@@ -27,8 +27,6 @@ public:
 
 
 private slots:
-
-    void handleSearchResults(const QVector<QMap<QString, QString>> &results);
     void handleSearchResults(QStandardItemModel* model);
 
 private:
