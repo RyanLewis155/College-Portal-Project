@@ -2,8 +2,13 @@
 #define STUDENTDISPLAY_H
 
 #include <QMainWindow>
+<<<<<<< HEAD
 #include <QGraphicsScene>
 #include <QGraphicsView>
+=======
+#include <QVector>
+#include <QMap>
+>>>>>>> c0144334e1c664c51a63687de216404671a9009a
 #include "classscheduleitem.h"
 
 
@@ -24,6 +29,35 @@ public:
 
 private slots:
 
+<<<<<<< HEAD
+=======
+    void on_pushButton_RegSC_clicked();
+
+    void on_pushButton_RegCS_clicked();
+
+    void on_pushButton_RegViewPlans_clicked();
+
+    void on_pushButton_SCCS_clicked();
+
+    void on_pushButton_SCReg_clicked();
+
+    void on_pushButton_SCViewPlans_clicked();
+
+    void on_pushButton_VPCS_clicked();
+
+    void on_pushButton_VPReg_clicked();
+
+    void on_pushButton_VPSC_clicked();
+
+    void on_pushButton_CSReg_clicked();
+
+    void on_pushButton_CSViewPlans_clicked();
+
+    void on_pushButton_CSSC_clicked();
+
+    void handleSearchResults(const QVector<QMap<QString, QString>> &results);
+
+>>>>>>> c0144334e1c664c51a63687de216404671a9009a
 private:
     Ui::StudentDisplay *ui;
 

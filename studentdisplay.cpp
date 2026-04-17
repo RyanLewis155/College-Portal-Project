@@ -1,5 +1,8 @@
 #include "studentdisplay.h"
 #include "ui_studentdisplay.h"
+#include <QDebug>
+#include <QStandardItemModel>
+#include "user.h"
 #include "studentregistrationform.h"
 #include "viewplanform.h"
 
@@ -10,6 +13,17 @@ StudentDisplay::StudentDisplay(QWidget *parent)
 {
     ui->setupUi(this);
 
+<<<<<<< HEAD
+=======
+    User* u = new User();
+
+    // course search handlers
+    connect(ui->lineEdit_CRN, &QLineEdit::returnPressed, [=]() {
+        u->searchCourses(ui->lineEdit_CRN->text());
+    });
+    connect(u, &User::searchResultsReady,
+            this, &StudentDisplay::handleSearchResults);
+>>>>>>> c0144334e1c664c51a63687de216404671a9009a
 
     QList<ClassScheduleItem*> classList;
     ClassScheduleItem* class1 = new ClassScheduleItem();
@@ -44,6 +58,41 @@ StudentDisplay::StudentDisplay(QWidget *parent)
 StudentDisplay::~StudentDisplay()
 {
     delete ui;
+}
+
+void StudentDisplay::handleSearchResults(const QVector<QMap<QString, QString>> &results)
+{
+    qDebug() << "Received results:" << results.size();
+
+    // Create model
+    QStandardItemModel *model = new QStandardItemModel(this);
+
+    if (results.isEmpty()) {
+        ui->tableView_results->setModel(model);
+        return;
+    }
+
+    // Extract headers from first row
+    QStringList headers = results[0].keys();
+    model->setColumnCount(headers.size());
+    model->setHorizontalHeaderLabels(headers);
+
+    // Fill rows
+    for (int i = 0; i < results.size(); ++i) {
+        const QMap<QString, QString> &row = results[i];
+
+        for (int j = 0; j < headers.size(); ++j) {
+            QString value = row.value(headers[j]);
+            QStandardItem *item = new QStandardItem(value);
+            model->setItem(i, j, item);
+        }
+    }
+
+    // Set model to table view
+    ui->tableView_results->setModel(model);
+
+    // Optional: resize nicely
+    ui->tableView_results->resizeColumnsToContents();
 }
 
 void StudentDisplay::PopulateClasses(QList<ClassScheduleItem*> classSchedule)

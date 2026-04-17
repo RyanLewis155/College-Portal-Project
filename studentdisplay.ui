@@ -136,7 +136,11 @@ QTabBar::tab:last {
          <enum>QTabWidget::TabShape::Rounded</enum>
         </property>
         <property name="currentIndex">
+<<<<<<< HEAD
          <number>0</number>
+=======
+         <number>3</number>
+>>>>>>> c0144334e1c664c51a63687de216404671a9009a
         </property>
         <property name="elideMode">
          <enum>Qt::TextElideMode::ElideMiddle</enum>
@@ -295,10 +299,48 @@ border-radius: 25px;
 background-color: white;
 border-radius: 25px;
 }</string>
+<<<<<<< HEAD
             </property>
            </widget>
           </item>
          </layout>
+=======
+          </property>
+          <widget class="QTableView" name="tableView_results">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>150</y>
+             <width>1051</width>
+             <height>641</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_CRN">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>90</y>
+             <width>113</width>
+             <height>26</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_search">
+           <property name="geometry">
+            <rect>
+             <x>990</x>
+             <y>90</y>
+             <width>86</width>
+             <height>26</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+         </widget>
+>>>>>>> c0144334e1c664c51a63687de216404671a9009a
         </widget>
        </widget>
       </item>
