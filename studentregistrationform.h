@@ -2,6 +2,7 @@
 #define STUDENTREGISTRATIONFORM_H
 
 #include <QWidget>
+#include <QStyleFactory>
 
 namespace Ui {
 class StudentRegistrationForm;

@@ -2,6 +2,10 @@
 #define STUDENTDISPLAY_H
 
 #include <QMainWindow>
+<<<<<<< HEAD
+#include <QGraphicsScene>
+#include <QGraphicsView>
+=======
 #include <QVector>
 #include <QMap>
 #include <QStandardItemModel>
@@ -22,8 +26,11 @@ public:
 
     void PopulateClasses(QList<ClassScheduleItem*> classSchedule);
 
+
 private slots:
 
+<<<<<<< HEAD
+=======
     void on_pushButton_RegSC_clicked();
 
     void on_pushButton_RegCS_clicked();
@@ -50,6 +57,7 @@ private slots:
 
     void handleSearchResults(QStandardItemModel* model);
 
+>>>>>>> c0144334e1c664c51a63687de216404671a9009a
 private:
     Ui::StudentDisplay *ui;
     User* u;

@@ -6,6 +6,7 @@
 #include "studentregistrationform.h"
 #include "viewplanform.h"
 
+
 StudentDisplay::StudentDisplay(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::StudentDisplay)
@@ -26,6 +27,7 @@ StudentDisplay::StudentDisplay(QWidget *parent)
     });
     connect(u, &User::searchResultsReady,
             this, &StudentDisplay::handleSearchResults);
+>>>>>>> c0144334e1c664c51a63687de216404671a9009a
 
     QList<ClassScheduleItem*> classList;
     ClassScheduleItem* class1 = new ClassScheduleItem();
@@ -54,8 +56,6 @@ StudentDisplay::StudentDisplay(QWidget *parent)
 
     registrationLayout->addWidget(new StudentRegistrationForm());
     viewPlanLayout->addWidget(new ViewPlanForm());
-
-
 
 }
 
@@ -103,86 +103,4 @@ void StudentDisplay::PopulateClasses(QList<ClassScheduleItem*> classSchedule)
     }
 }
 
-/////////////////From Course Registration///////////////////
-void StudentDisplay::on_pushButton_RegSC_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_SearchCourses);
-}
-
-
-void StudentDisplay::on_pushButton_RegCS_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ClassSchedule);
-}
-
-
-void StudentDisplay::on_pushButton_RegViewPlans_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ViewPlans);
-}
-////////////////////////////////////////////////////////////
-
-
-
-/////////////////From Search Courses///////////////////
-void StudentDisplay::on_pushButton_SCCS_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ClassSchedule);
-}
-
-
-void StudentDisplay::on_pushButton_SCReg_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Register);
-}
-
-
-void StudentDisplay::on_pushButton_SCViewPlans_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ViewPlans);
-}
-////////////////////////////////////////////////////////////
-
-
-
-/////////////////From View Plans///////////////////
-void StudentDisplay::on_pushButton_VPCS_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ClassSchedule);
-}
-
-
-void StudentDisplay::on_pushButton_VPReg_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Register);
-}
-
-
-void StudentDisplay::on_pushButton_VPSC_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_SearchCourses);
-}
-////////////////////////////////////////////////////////////
-
-
-
-
-/////////////////From Class Schedules///////////////////
-void StudentDisplay::on_pushButton_CSReg_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Register);
-}
-
-
-void StudentDisplay::on_pushButton_CSViewPlans_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ViewPlans);
-}
-
-
-void StudentDisplay::on_pushButton_CSSC_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_SearchCourses);
-}
-////////////////////////////////////////////////////////////
 
