@@ -58,19 +58,6 @@ void LoginWindow::on_pushButton_GoToLogin_clicked()
     ui->stackedWidget->setCurrentWidget(ui->page_Login);
 }
 
-
-void LoginWindow::on_pushButton_ForgotPassword_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_ForgotPassword);
-}
-
-
-void LoginWindow::on_pushButton_ForgotSubmit_clicked()
-{
-    ui->stackedWidget->setCurrentWidget(ui->page_Login);
-}
-
-
 void LoginWindow::on_pushButton_Login_clicked()
 {
     if(true)

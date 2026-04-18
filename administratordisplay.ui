@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdministratorDisplay</class>
+ <widget class="QWidget" name="AdministratorDisplay">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1189</width>
+    <height>890</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QFrame" name="frame_Header">
+     <property name="styleSheet">
+      <string notr="true">QFrame#frame_Header {
+	background-color: #CFC493;
+	border-bottom: 5px Solid #006747;
+}</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QFrame" name="frame_Logo">
+        <property name="minimumSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame#frame_Logo {
+	image: url(:/assets/usflogo.svg);
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Plain</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_WelcomeHeader">
+        <property name="styleSheet">
+         <string notr="true">QLabel#label_WelcomeHeader {
+	margin-left: 15px;
+	font: 28pt 'Inter-VariableFont_opsz,wght';
+	color: #006747;
+	font-weight: bold;
+}</string>
+        </property>
+        <property name="text">
+         <string>Welcome, Name Here</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_Header">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QWidget" name="CentralWidget" native="true">
+     <property name="styleSheet">
+      <string notr="true">QWidget#CentralWidget {
+       background-color: #CFC493;
+}</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTabWidget#tabWidget {
+	background-color: #CFC493;
+	border: none;
+}
+                            QTabWidget::tab-bar {
+                            left: 15px;
+							background-color: #CFC493;
+
+                            }
+
+                            QTabBar::tab {
+                            background-color: #EDEBD1;
+                            color: black;
+                            border-top-left-radius: 8px;
+                            border-top-right-radius: 8px;
+                            margin-right: 12px;
+                            padding: 15px;
+							font: 16pt 'Inter-VariableFont_opsz,wght';
+                            }
+
+                            QTabBar::tab:selected, QTabBar::tab:hover {
+                            background-color: #006747;
+                            color: white;
+                            }
+
+                            QTabBar::tab:selected {
+                            border-color: #9B9B9B;
+                            border-bottom-color: #006747; /* same as pane color */
+                            color: white;
+                            }
+
+                            QTabBar::tab:!selected {
+                            margin-top: 10px; /* make non-selected tabs look smaller */
+                            }
+
+                            QTabBar::tab:last {
+                            margin-right: 0px;
+                            }
+                        </string>
+        </property>
+        <property name="currentIndex">
+         <number>2</number>
+        </property>
+        <widget class="QWidget" name="tab_SearchCourses">
+         <property name="styleSheet">
+          <string notr="true">QWidget#tab_SearchCourses {
+		background-color: #EDEBD1;
+		border-radius: 15px;
+}
+                                
+                                
+QWidget#widget_SearchCourses {
+		background-color: white;
+		border-radius: 25px;
+}</string>
+         </property>
+         <attribute name="title">
+          <string>Course Search</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_SearchCourses" native="true">
+            <layout class="QGridLayout" name="gridLayout_4">
+             <property name="leftMargin">
+              <number>15</number>
+             </property>
+             <property name="topMargin">
+              <number>15</number>
+             </property>
+             <property name="rightMargin">
+              <number>15</number>
+             </property>
+             <property name="bottomMargin">
+              <number>15</number>
+             </property>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_ModifyCourses">
+         <property name="styleSheet">
+          <string notr="true">                                    QWidget#tab_ModifyCourses {
+                                        background-color: #EDEBD1;
+                                        border-radius: 15px;
+                                    }</string>
+         </property>
+         <attribute name="title">
+          <string>Modify Courses</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_ModifyCourses" native="true">
+            <property name="styleSheet">
+             <string notr="true">                                                QWidget#widget_ModifyCourses {
+                                                    background-color: white;
+                                                    border-radius: 25px;
+                                                }
+                                            </string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_6">
+             <property name="leftMargin">
+              <number>15</number>
+             </property>
+             <property name="topMargin">
+              <number>15</number>
+             </property>
+             <property name="rightMargin">
+              <number>15</number>
+             </property>
+             <property name="bottomMargin">
+              <number>15</number>
+             </property>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_ViewReports">
+         <property name="styleSheet">
+          <string notr="true">QWidget#tab_ViewReports {
+	background-color: #EDEBD1;
+	border-radius: 15px;
+}</string>
+         </property>
+         <attribute name="title">
+          <string>View Reports</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_ViewReports" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget#widget_ViewReports {
+	background-color: white;
+	border-radius: 25px;
+}</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_8"/>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

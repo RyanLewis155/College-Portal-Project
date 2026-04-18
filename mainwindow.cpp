@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "loginwindow.h"
 #include "studentdisplay.h"
+#include "professordisplay.h"
+#include "administratordisplay.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -28,22 +30,18 @@ MainWindow::~MainWindow()
 
 void MainWindow::handleLoginSuccess()
 {
-    int role = 0;
+    int role = 2;
 
     switch (role) {
         case 0:
             dashBoardWindow = new StudentDisplay();
             break;
         case 1:
-            //display = new ProfessorDisplay();
+            dashBoardWindow = new ProfessorDisplay();
             break;
 
         case 2:
-            //display = new AdminstratorDisplay();
-            break;
-
-        case 3:
-            //display = new BoardMemberDisplay();
+            dashBoardWindow = new AdministratorDisplay();
             break;
 
         default:

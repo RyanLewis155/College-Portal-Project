@@ -38,6 +38,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         queryparams.h
         database.h
         database.cpp
+        professordisplay.h professordisplay.cpp professordisplay.ui
+        administratordisplay.h administratordisplay.cpp administratordisplay.ui
+
 
 
 

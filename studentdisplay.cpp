@@ -12,6 +12,9 @@ StudentDisplay::StudentDisplay(QWidget *parent)
     , ui(new Ui::StudentDisplay)
 {
     ui->setupUi(this);
+    ui->comboBox_term->view()->setCursor(Qt::PointingHandCursor);
+    ui->comboBox_days->view()->setCursor(Qt::PointingHandCursor);
+    ui->tableView_results->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     u = new User();
 
@@ -28,6 +31,7 @@ StudentDisplay::StudentDisplay(QWidget *parent)
     connect(u, &User::searchResultsReady,
             this, &StudentDisplay::handleSearchResults);
 
+    ui->label_WelcomeHeader->setText("Welcome, ");
     QList<ClassScheduleItem*> classList;
     ClassScheduleItem* class1 = new ClassScheduleItem();
     ClassScheduleItem* class2 = new ClassScheduleItem();
@@ -98,8 +102,9 @@ void StudentDisplay::PopulateClasses(QList<ClassScheduleItem*> classSchedule)
 
     for(int i = 0; i < classSchedule.count(); ++i)
     {
-        gridLayout->addWidget(classSchedule[i], i/3, i % 3);
+        gridLayout->addWidget(classSchedule[i], i/3, i % 3, Qt::AlignTop | Qt::AlignLeft);
     }
+
 }
 
 

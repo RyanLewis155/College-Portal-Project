@@ -288,63 +288,6 @@ padding-left: 10px;</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
-             <widget class="QPushButton" name="pushButton_ForgotPassword">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>14</pointsize>
-               </font>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: transparent;
-color: #D9D9D9;
-border-radius: 8px;
-text-align: left;</string>
-              </property>
-              <property name="text">
-               <string>Forgot your Password? Click Here.</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QPushButton" name="pushButton_Registration">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>14</pointsize>
-               </font>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: transparent;
-color: #D9D9D9;
-border-radius: 8px;
-text-align: left;</string>
-              </property>
-              <property name="text">
-               <string>Dont have an account? Register Here.</string>
-              </property>
-             </widget>
-            </item>
             <item row="2" column="1">
              <widget class="QPushButton" name="pushButton_Login">
               <property name="sizePolicy">
@@ -372,6 +315,33 @@ border-radius: 8px;</string>
               </property>
               <property name="text">
                <string>Login</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QPushButton" name="pushButton_Registration">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: transparent;
+color: #D9D9D9;
+border-radius: 8px;
+text-align: left;</string>
+              </property>
+              <property name="text">
+               <string>Dont have an account? Register Here.</string>
               </property>
              </widget>
             </item>
