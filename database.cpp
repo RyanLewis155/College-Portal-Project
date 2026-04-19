@@ -23,8 +23,8 @@ void Database::init(const QString &baseUrl, const QString &apiKey)
     }
 }
 
-QJsonArray Database::getCourseData(const QString &term,
-                                   const QStringList &crns,
+QJsonArray Database::getCourseData(const QStringList &crns,
+                                   const QString &term,
                                    const QString &subject,
                                    const QString &courseNum,
                                    const QString &days)
@@ -81,6 +81,40 @@ QJsonArray Database::getCourseData(const QString &term,
     rules["User"] = {"instructor"};
 
     return flattenArray(raw, rules);
+}
+
+
+QJsonArray Database::getUserData(const QString &email,
+                                 const QString &name,
+                                 const QString &role,
+                                 const QString &userId)
+{
+    QueryParams params;
+
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "id",
+        "name",
+        "passwordHash",
+        "role",
+        "email"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!userId.isEmpty())
+        params.where("id", EQ, userId);
+
+    if (!name.isEmpty())
+        params.where("name", EQ, name);
+
+    if (!email.isEmpty())
+        params.where("email", EQ, email);
+
+    if (!role.isEmpty())
+        params.where("role", EQ, role);
+
+    return fetch("User", params);
 }
 
 QJsonArray Database::fetch(const QString &table,
