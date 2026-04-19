@@ -30,7 +30,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::handleLoginSuccess()
 {
-    int role = 2;
+    int role = 0;
 
     switch (role) {
         case 0:

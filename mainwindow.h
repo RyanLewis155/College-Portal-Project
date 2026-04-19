@@ -22,6 +22,8 @@ private:
 private slots:
     void handleLoginSuccess();
 
+    //void handleRegistrationRequest();
+
 private:
     Ui::MainWindow *ui;
 
