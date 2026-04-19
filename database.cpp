@@ -45,7 +45,7 @@ QJsonArray Database::getCourseData(const QStringList &crns,
         "section:sectionNum",
         "subject",
         "courseNum",
-        "room:Room(building, room)",
+        "room:Room(building, room, capacity)",
         "Course(course:name)",
         "User(instructor:name)"
     });
@@ -93,7 +93,7 @@ QJsonArray Database::getCourseData(const QStringList &crns,
 
     // define flattening rules
     QHash<QString, QStringList> rules;
-    rules["room"] = {"building", "room"};
+    rules["room"] = {"building", "room", "capacity"};
     rules["Course"] = {"course"};
     rules["User"] = {"instructor"};
 
@@ -133,6 +133,44 @@ QJsonArray Database::getUserData(const QString &email,
         params.where("role", EQ, role);
 
     return fetch("User", params);
+}
+
+QJsonArray Database::getRegistrations(const QString &userId,
+                                   const QStringList &crns,
+                                   const QString &status)
+{
+    QueryParams params;
+
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "studentID",
+        "CRN",
+        "status",
+        "timestamp"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!userId.isEmpty())
+        params.where("studentID", EQ, userId);
+
+    if (!crns.isEmpty() && !crns[0].isEmpty()) {
+        if (crns.size() == 1) {
+            params.where("CRN", EQ, crns[0]);
+        } else {
+            QStringList quoted;
+            for (const QString &crn : crns)
+                quoted << crn;
+
+            QString inClause = "(" + quoted.join(",") + ")";
+            params.where("CRN", IN, inClause);
+        }
+    }
+
+    if (!status.isEmpty())
+        params.where("status", EQ, status);
+
+    return fetch("Registration", params);
 }
 
 QJsonArray Database::fetch(const QString &table,
