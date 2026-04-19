@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QStandardItemModel>
+#include "user.h"
 
 namespace Ui {
 class AdministratorDisplay;
@@ -21,6 +22,7 @@ private slots:
 
 private:
     Ui::AdministratorDisplay *ui;
+    User* u;
 };
 
 #endif // ADMINISTRATORDISPLAY_H

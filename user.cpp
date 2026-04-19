@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QStandardItemModel>
 #include <QJsonObject>
+#include "coursesection.h"
 
 User::User(QObject *parent)
     : QObject(parent)
@@ -39,51 +40,50 @@ void User::searchCourses(const QString &term,
                          const QString &days)
 {
     QStringList crns = {crn}; // Convert single CRN to list for API
-    QJsonArray results = Database::getCourseData(crns, term, subject, courseNum, days);
+    QVector<CourseSection> results = Database::getCourseData(crns, term, subject, courseNum, days);
 
     qDebug() << "Received results:" << results.size();
 
     QStandardItemModel *model = new QStandardItemModel(this);
-
-    // ----------------------------------
-    // Define column order explicitly
-    // ----------------------------------
-    QStringList headers = {
-        "CRN",
-        "subject",
-        "courseNum",
-        "course",
-        "section",
-        "days",
-        "startTime",
-        "endTime",
-        "building",
-        "room",
-        "instructor"
-    };
-
-    model->setColumnCount(headers.size());
-    model->setHorizontalHeaderLabels(headers);
 
     if (results.isEmpty()) {
         emit searchResultsReady(model);
         return;
     }
 
-    // ----------------------------------
-    // Fill rows
-    // ----------------------------------
+    model->setRowCount(results.size());
+    model->setColumnCount(11);
+
+    model->setHorizontalHeaderLabels({
+        "CRN",
+        "Start Time",
+        "End Time",
+        "Days",
+        "Section",
+        "Subject",
+        "Course #",
+        "Building",
+        "Room",
+        "Course",
+        "Instructor"
+    });
+
+
     for (int i = 0; i < results.size(); ++i)
     {
-        QJsonObject row = results[i].toObject();
+        const CourseSection &cs = results[i];
 
-        for (int j = 0; j < headers.size(); ++j)
-        {
-            QString key = headers[j];
-            QString value = Database::jsonValueToString(row.value(key));
-
-            model->setItem(i, j, new QStandardItem(value));
-        }
+        model->setItem(i, 0, new QStandardItem(cs.crn));
+        model->setItem(i, 1, new QStandardItem(cs.startTime));
+        model->setItem(i, 2, new QStandardItem(cs.endTime));
+        model->setItem(i, 3, new QStandardItem(cs.days));
+        model->setItem(i, 4, new QStandardItem(QString::number(cs.sectionNum)));
+        model->setItem(i, 5, new QStandardItem(cs.subject));
+        model->setItem(i, 6, new QStandardItem(cs.courseNum));
+        model->setItem(i, 7, new QStandardItem(cs.building));
+        model->setItem(i, 8, new QStandardItem(cs.room));
+        model->setItem(i, 9, new QStandardItem(cs.coursename));
+        model->setItem(i,10, new QStandardItem(cs.instructorname));
     }
 
     emit searchResultsReady(model);
@@ -102,51 +102,52 @@ void User::searchCoursesEX(const QString &CRN,
                            )
 {
     QStringList crns = {CRN}; // Convert single CRN to list for API
-    QJsonArray results = Database::getCourseData(crns, Building, Professor, Days, Term, Course, SectionNum, Level, Subject, CourseNum);
+    QVector<CourseSection> results = Database::getCourseData(crns, Building, Professor, Days, Term, Course, SectionNum, Level, Subject, CourseNum);
 
     qDebug() << "Received results:" << results.size();
 
     QStandardItemModel *model = new QStandardItemModel(this);
 
-    // ----------------------------------
-    // Define column order explicitly
-    // ----------------------------------
-    QStringList headers = {
-        "CRN",
-        "startTime",
-        "endTime",
-        "days",
-        "section",
-        "subject",
-        "courseNum",
-        "building",
-        "room",
-        "course",
-        "instructor"
-    };
-
-    model->setColumnCount(headers.size());
-    model->setHorizontalHeaderLabels(headers);
 
     if (results.isEmpty()) {
         emit searchResultsReady(model);
+        qDebug() << "Results were empty";
         return;
     }
 
-    // ----------------------------------
-    // Fill rows
-    // ----------------------------------
+
+    model->setRowCount(results.size());
+    model->setColumnCount(11);
+
+    model->setHorizontalHeaderLabels({
+        "CRN",
+        "Start Time",
+        "End Time",
+        "Days",
+        "Section",
+        "Subject",
+        "Course #",
+        "Building",
+        "Room",
+        "Course",
+        "Instructor"
+    });
+
     for (int i = 0; i < results.size(); ++i)
     {
-        QJsonObject row = results[i].toObject();
+        const CourseSection &cs = results[i];
 
-        for (int j = 0; j < headers.size(); ++j)
-        {
-            QString key = headers[j];
-            QString value = Database::jsonValueToString(row.value(key));
-
-            model->setItem(i, j, new QStandardItem(value));
-        }
+        model->setItem(i, 0, new QStandardItem(cs.crn));
+        model->setItem(i, 1, new QStandardItem(cs.startTime));
+        model->setItem(i, 2, new QStandardItem(cs.endTime));
+        model->setItem(i, 3, new QStandardItem(cs.days));
+        model->setItem(i, 4, new QStandardItem(QString::number(cs.sectionNum)));
+        model->setItem(i, 5, new QStandardItem(cs.subject));
+        model->setItem(i, 6, new QStandardItem(cs.courseNum));
+        model->setItem(i, 7, new QStandardItem(cs.building));
+        model->setItem(i, 8, new QStandardItem(cs.room));
+        model->setItem(i, 9, new QStandardItem(cs.coursename));
+        model->setItem(i,10, new QStandardItem(cs.instructorname));
     }
 
     emit searchResultsReady(model);
