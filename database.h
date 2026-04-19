@@ -10,6 +10,7 @@
 #include <QJsonDocument>
 #include <QEventLoop>
 #include <QDebug>
+#include "coursesection.h"
 
 #include "queryparams.h"
 
@@ -18,17 +19,20 @@ class Database
 public:
     static void init(const QString &baseUrl, const QString &apiKey);
     // API methods
-    static QJsonArray getCourseData(const QStringList &crns = {},
-                                    const QString &room = "",
-                                    const QString &professor = "",
-                                    const QString &days = "",
-                                    const QString &term = "",
-                                    const QString &course = "",
-                                    const int &sectionNum = 0,
-                                    const QString &level = "",
-                                    const QString &subject = "",
-                                    const QString &courseNum = ""
-                                    );
+    static QVector<CourseSection> getCourseData(const QStringList &crns = {},
+                                                const QString &room = "",
+                                                const QString &professor = "",
+                                                const QString &days = "",
+                                                const QString &term = "",
+                                                const QString &course = "",
+                                                const int &sectionNum = 0,
+                                                const QString &level = "",
+                                                const QString &subject = "",
+                                                const QString &courseNum = ""
+                                                );
+
+
+
 
     static QJsonArray getUserData(const QString &email = "",
                                   const QString &name = "",

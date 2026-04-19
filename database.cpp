@@ -7,6 +7,7 @@
 #include <QEventLoop>
 #include <QDebug>
 #include <qjsonobject.h>
+#include "coursesection.h"
 
 // Static members
 QString Database::m_baseUrl = "";
@@ -23,7 +24,7 @@ void Database::init(const QString &baseUrl, const QString &apiKey)
     }
 }
 
-QJsonArray Database::getCourseData(const QStringList &crns,
+QVector<CourseSection> Database::getCourseData(const QStringList &crns,
                                    const QString &building,
                                    const QString &professor,
                                    const QString &days,
@@ -38,7 +39,7 @@ QJsonArray Database::getCourseData(const QStringList &crns,
 
     // SELECT clause (Supabase embedded joins)
     params.select({
-        "CRN",
+        "CRN",  
         "startTime",
         "endTime",
         "days",
@@ -91,13 +92,21 @@ QJsonArray Database::getCourseData(const QStringList &crns,
 
     QJsonArray raw = fetch("CourseSection", params);
 
-    // define flattening rules
-    QHash<QString, QStringList> rules;
-    rules["room"] = {"building", "room"};
-    rules["Course"] = {"course"};
-    rules["User"] = {"instructor"};
+    QVector<CourseSection> results;
+    results.reserve(raw.size());
 
-    return flattenArray(raw, rules);
+    for (int i = 0; i < raw.size(); ++i)
+    {
+        const QJsonValue &val = raw.at(i);
+
+        if (!val.isObject())
+            continue;
+
+        CourseSection cs = fromJson(val.toObject());
+        results.append(cs);
+    }
+
+    return results;
 }
 
 
@@ -134,6 +143,8 @@ QJsonArray Database::getUserData(const QString &email,
 
     return fetch("User", params);
 }
+
+
 
 QJsonArray Database::fetch(const QString &table,
                            const QueryParams &params)
@@ -178,6 +189,7 @@ QJsonArray Database::fetch(const QString &table,
     reply->deleteLater();
     return result;
 }
+
 
 QString jsonValueToString(const QJsonValue &v)
 {
@@ -247,6 +259,7 @@ QString Database::opToString(Operator op)
     case LTE: return "lte";
     case NEQ: return "neq";
     case IN:  return "in";
+    case ILIKE: return "ilike";
     default:  return "eq";
     }
 }
@@ -306,8 +319,6 @@ QJsonObject Database::insert(const QString &table,
 {
     // Build URL (same as fetch, but usually no filters)
     QUrl url = buildUrl(table, {});
-
-    qDebug() << "Url: " << url.toString();
 
     // Build request
     QNetworkRequest request(url);
