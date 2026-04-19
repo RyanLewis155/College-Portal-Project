@@ -46,13 +46,6 @@ public:
                         const QString &courseNum,
                         const QString &days);
 
-    // data repo methods
-    QJsonArray getCourseData(const QString &term,
-                            const QString &crn,
-                            const QString &subject,
-                            const QString &courseNum,
-                            const QString &days);
-
 signals:
     // Search results: list of rows (column name -> value)
     void searchResultsReady(QStandardItemModel* model);
