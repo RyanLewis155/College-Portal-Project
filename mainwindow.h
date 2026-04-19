@@ -20,7 +20,7 @@ public:
 private:
 
 private slots:
-    void handleLoginSuccess();
+    void handleLoginSuccess(UserInfo userInfo);
 
     //void handleRegistrationRequest();
 

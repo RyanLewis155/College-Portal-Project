@@ -1,7 +1,6 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
 #include <QGraphicsDropShadowEffect>
-#include "queryparams.h"
 #include <QCryptographicHash>
 #include "database.h"
 #include <QPasswordDigestor>
@@ -98,7 +97,7 @@ void LoginWindow::on_pushButton_Login_clicked()
 
     if(validEmail && validPassword)
     {
-
+        handleLoginReqest(ui->lineEdit_Email->text(), ui->lineEdit_Password->text());
     }
 }
 
@@ -121,6 +120,7 @@ void LoginWindow::on_pushButton_Register_clicked()
         ui->lineEdit_LastName->clear();
         ui->lineEdit_RegEmail->clear();
         ui->lineEdit_RegPassword->clear();
+        ui->stackedWidget->setCurrentWidget(ui->page_Login);
     } else {
         QMessageBox::warning(this, "Error", "Registration failed.");
     }
@@ -203,7 +203,35 @@ void LoginWindow::validatePasswordMatchField(const QString &text)
 
 void LoginWindow::handleLoginReqest(const QString &email, const QString &password)
 {
+    // get user data for email
+    QJsonArray userData = Database::getUserData(email);
+    // if empty, no user (fail)
+    if (userData.isEmpty())
+    {
+        QMessageBox::warning(this, "Login Failed", "No account found with that email.");
+        return;
+    }
+    // if multiple? todo, db is totally not deduped lol
 
+    // get hash from DB and compare
+    QJsonObject userObj = userData.at(0).toObject();
+    QString passHash = Database::jsonValueToString(userObj.value("passwordHash"));
+    QString enteredHash = QString(QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex());
+
+    if (passHash != enteredHash)
+    {
+        QMessageBox::warning(this, "Login Failed", "Incorrect password.");
+        return;
+    }
+
+    // if success, construct UserInfo object and emit with loginSuccessful() if valid
+    UserInfo loggedInUser;
+    loggedInUser.id = Database::jsonValueToString(userObj["id"]);
+    loggedInUser.email = email;
+    loggedInUser.role = Database::jsonValueToString(userObj["role"]);
+    loggedInUser.FullName = Database::jsonValueToString(userObj["name"]);
+
+    emit loginSuccessful(loggedInUser);
 }
 
 bool LoginWindow::canRegister()

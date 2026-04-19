@@ -18,6 +18,7 @@ struct ValidationState {
 };
 
 struct UserInfo {
+    QString id;
     QString email;
     QString password;
     QString FullName;
@@ -53,7 +54,7 @@ private slots:
     void handleLoginReqest(const QString &email, const QString &password);
 
 signals:
-    void loginSuccessful();
+    void loginSuccessful(UserInfo userInfo);
 
     void requestLogin(const QString &email, const QString &password);
 
