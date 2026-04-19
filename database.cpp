@@ -24,10 +24,15 @@ void Database::init(const QString &baseUrl, const QString &apiKey)
 }
 
 QJsonArray Database::getCourseData(const QStringList &crns,
+                                   const QString &building,
+                                   const QString &professor,
+                                   const QString &days,
                                    const QString &term,
+                                   const QString &course,
+                                   const int &sectionNum,
+                                   const QString &level,
                                    const QString &subject,
-                                   const QString &courseNum,
-                                   const QString &days)
+                                   const QString &courseNum)
 {
     QueryParams params;
 
@@ -46,10 +51,6 @@ QJsonArray Database::getCourseData(const QStringList &crns,
     });
 
     // WHERE clauses (only if provided)
-
-    if (!term.isEmpty())
-        params.where("term", EQ, term);
-
     if (!crns.isEmpty() && !crns[0].isEmpty()) {
         if (crns.size() == 1) {
             params.where("CRN", EQ, crns[0]);
@@ -62,6 +63,22 @@ QJsonArray Database::getCourseData(const QStringList &crns,
             params.where("CRN", IN, inClause);
         }
     }
+
+    if(!building.isEmpty())
+        params.where("Room.building", EQ, building);
+
+    if(!professor.isEmpty())
+        params.where("User.name", ILIKE, QString("%" + professor + "%"));
+
+    if(!course.isEmpty())
+        params.where("Course.name", ILIKE, QString("%" + course + "%"));
+
+
+    if (!term.isEmpty())
+        params.where("term", EQ, term);
+
+    if (sectionNum > 0)
+        params.where("sectionNum", EQ, QString::number(sectionNum));
 
     if (!subject.isEmpty())
         params.where("subject", EQ, subject);
@@ -117,6 +134,8 @@ QJsonArray Database::getUserData(const QString &email,
     return fetch("User", params);
 }
 
+
+
 QJsonArray Database::fetch(const QString &table,
                            const QueryParams &params)
 {
@@ -160,6 +179,7 @@ QJsonArray Database::fetch(const QString &table,
     reply->deleteLater();
     return result;
 }
+
 
 QString jsonValueToString(const QJsonValue &v)
 {
@@ -229,6 +249,7 @@ QString Database::opToString(Operator op)
     case LTE: return "lte";
     case NEQ: return "neq";
     case IN:  return "in";
+    case ILIKE: return "ilike";
     default:  return "eq";
     }
 }

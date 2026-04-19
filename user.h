@@ -46,6 +46,7 @@ public:
                         const QString &courseNum,
                         const QString &days);
 
+    void searchCoursesEX(const QString &CRN, const QString &Building, const QString &Professor, const QString &Days, const QString &Term, const QString &Course, const int &SectionNum, const QString &Level, const QString &Subject, const QString &CourseNum);
 signals:
     // Search results: list of rows (column name -> value)
     void searchResultsReady(QStandardItemModel* model);
