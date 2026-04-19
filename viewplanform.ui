@@ -83,6 +83,20 @@
      </layout>
     </widget>
    </item>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="pushButton_AddPlan">
+     <property name="text">
+      <string>+ Create New Plan</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLineEdit" name="lineEdit_NewPlanName">
+     <property name="placeholderText">
+      <string>NewPlan</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
