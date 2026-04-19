@@ -10,7 +10,7 @@ AdministratorDisplay::AdministratorDisplay(User* loggedIn, QWidget *parent)
     ui->tabWidget->tabBar()->setCursor(Qt::PointingHandCursor);
 
 
-    u = new User();
+    u = loggedIn;
 
     connect(ui->pushButton_search, &QPushButton::clicked, [=]() {
         u->searchCoursesEX(

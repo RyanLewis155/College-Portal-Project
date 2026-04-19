@@ -23,6 +23,8 @@ struct CourseSection
 
     QString coursename;
     QString instructorname;
+
+    QString level;
 };
 
 CourseSection fromJson(const QJsonObject &obj);

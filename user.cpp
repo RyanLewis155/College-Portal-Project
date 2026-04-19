@@ -156,69 +156,69 @@ void User::searchCoursesEX(const QString &CRN,
     emit searchResultsReady(model);
 }
 
-void User::searchCoursesEX(const QString &CRN,
-                           const QString &Building,
-                           const QString &Professor,
-                           const QString &Days,
-                           const QString &Term,
-                           const QString &Course,
-                           const int &SectionNum,
-                           const QString &Level,
-                           const QString &Subject,
-                           const QString &CourseNum
-                           )
-{
-    QStringList crns = {CRN}; // Convert single CRN to list for API
-    QJsonArray results = Database::getCourseData(crns, Building, Professor, Days, Term, Course, SectionNum, Level, Subject, CourseNum);
+// void User::searchCoursesEX(const QString &CRN,
+//                            const QString &Building,
+//                            const QString &Professor,
+//                            const QString &Days,
+//                            const QString &Term,
+//                            const QString &Course,
+//                            const int &SectionNum,
+//                            const QString &Level,
+//                            const QString &Subject,
+//                            const QString &CourseNum
+//                            )
+// {
+//     QStringList crns = {CRN}; // Convert single CRN to list for API
+//     QVector<CourseSection> results = Database::getCourseData(crns, Building, Professor, Days, Term, Course, SectionNum, Level, Subject, CourseNum);
 
-    qDebug() << "Received results:" << results.size();
+//     qDebug() << "Received results:" << results.size();
 
-    QStandardItemModel *model = new QStandardItemModel(this);
+//     QStandardItemModel *model = new QStandardItemModel(this);
 
-    // ----------------------------------
-    // Define column order explicitly
-    // ----------------------------------
-    QStringList headers = {
-        "CRN",
-        "startTime",
-        "endTime",
-        "days",
-        "section",
-        "subject",
-        "courseNum",
-        "building",
-        "room",
-        "course",
-        "instructor"
-    };
+//     // ----------------------------------
+//     // Define column order explicitly
+//     // ----------------------------------
+//     QStringList headers = {
+//         "CRN",
+//         "startTime",
+//         "endTime",
+//         "days",
+//         "section",
+//         "subject",
+//         "courseNum",
+//         "building",
+//         "room",
+//         "course",
+//         "instructor"
+//     };
 
-    model->setColumnCount(headers.size());
-    model->setHorizontalHeaderLabels(headers);
+//     model->setColumnCount(headers.size());
+//     model->setHorizontalHeaderLabels(headers);
 
-    if (results.isEmpty()) {
-        emit searchResultsReady(model);
-        return;
-    }
+//     if (results.isEmpty()) {
+//         emit searchResultsReady(model);
+//         return;
+//     }
 
-    // ----------------------------------
-    // Fill rows
-    // ----------------------------------
-    for (int i = 0; i < results.size(); ++i)
-    {
-        QJsonObject row = results[i].toObject();
+//     // ----------------------------------
+//     // Fill rows
+//     // ----------------------------------
+//     for (int i = 0; i < results.size(); ++i)
+//     {
+//         QJsonObject row = results[i].toObject();
 
-        for (int j = 0; j < headers.size(); ++j)
-        {
-            QString key = headers[j];
-            QString value = Database::jsonValueToString(row.value(key));
+//         for (int j = 0; j < headers.size(); ++j)
+//         {
+//             QString key = headers[j];
+//             QString value = Database::jsonValueToString(row.value(key));
 
-            model->setItem(i, j, new QStandardItem(value));
-        }
-    }
+//             model->setItem(i, j, new QStandardItem(value));
+//         }
+//     }
 
-    emit searchResultsReady(model);
+//     emit searchResultsReady(model);
 
-}
+// }
 
 void User::getConflictReport(const QString &term)
 {
@@ -264,7 +264,7 @@ QHash<QString, QStringList> User::validateCourses(const QString &term, const QSt
 {
     QHash<QString, QStringList> conflictReasons;
 
-    QJsonArray data;
+    QList<CourseSection> data;
     // if crns specified, get that data; otherwise get all courses for the term
     if (!crns.isEmpty()) {
         data = Database::getCourseData(crns);
@@ -316,20 +316,20 @@ QHash<QString, QStringList> User::validateCourses(const QString &term, const QSt
     // -------------------------
     // STEP 1: Normalize JSON → Course
     // -------------------------
-    for (const QJsonValue &val : data) {
-        QJsonObject obj = val.toObject();
+    for (auto val : data) {
+        // QJsonObject obj = val.toObject();
 
         Course c;
-        c.crn = Database::jsonValueToString(obj["CRN"]); /*obj["CRN"].toString();*/
-        c.days = parseDays(Database::jsonValueToString(obj["days"]));
-        c.start = parseTime(Database::jsonValueToString(obj["startTime"]));
-        c.end = parseTime(Database::jsonValueToString(obj["endTime"]));
-        c.building = Database::jsonValueToString(obj["building"]);
-        c.room = Database::jsonValueToString(obj["room"]);
-        c.instructor = Database::jsonValueToString(obj["instructor"]);
-        c.courseName = Database::jsonValueToString(obj["course"]);
-        c.sectionNum = Database::jsonValueToString(obj["section"]);
-        c.level = Database::jsonValueToString(obj["level"]);
+        c.crn = val.crn; //Database::jsonValueToString(obj["CRN"]);
+        c.days = parseDays(val.days); //Database::jsonValueToString(obj["days"]));
+        c.start = parseTime(val.startTime); //Database::jsonValueToString(obj["startTime"]));
+        c.end = parseTime(val.endTime); //Database::jsonValueToString(obj["endTime"]));
+        c.building = val.building; // Database::jsonValueToString(obj["building"]);
+        c.room = val.room; // Database::jsonValueToString(obj["room"]);
+        c.instructor = val.instructorname; // Database::jsonValueToString(obj["instructor"]);
+        c.courseName = val.coursename; // Database::jsonValueToString(obj["course"]);
+        c.sectionNum = QString::number(val.sectionNum); // Database::jsonValueToString(obj["section"]);
+        c.level = val.level; //Database::jsonValueToString(obj["level"]);
 
         courses.append(c);
     }
@@ -344,14 +344,14 @@ QHash<QString, QStringList> User::validateCourses(const QString &term, const QSt
     QSet<QString> invalidCRNs;
     for (int i = 0; i < courses.size(); ++i) {
         const Course &c = courses[i];
-        const QJsonObject obj = data[i].toObject();
+        const CourseSection obj = data[i];
 
         // Raw string fields
         struct FieldCheck { QString value; QString label; };
         const QList<FieldCheck> fields = {
-                                           { Database::jsonValueToString(obj["startTime"]), "assigned time"   },
-                                           { c.room,                                        "assigned room"        },
-                                           { c.instructor,                                  "assigned instructor"  }
+                                           { obj.startTime, "assigned time"   },
+                                           { c.room,        "assigned room"        },
+                                           { c.instructor,  "assigned instructor"  }
                                            };
         for (const FieldCheck &f : fields) {
             if (f.value.trimmed().isEmpty()) {
