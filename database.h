@@ -39,6 +39,10 @@ public:
                                   const QString &role = "",
                                   const QString &userId = "");
 
+    static QJsonArray getRegistrations(const QString &userId = "",
+                                       const QStringList &crns = {},
+                                       const QString &status = "Registered");
+
     // public helpers
     static QString jsonValueToString(const QJsonValue &v)
     {
