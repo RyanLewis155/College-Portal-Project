@@ -2,7 +2,7 @@
 #include "ui_administratordisplay.h"
 #include <qtabbar.h>
 
-AdministratorDisplay::AdministratorDisplay(QWidget *parent)
+AdministratorDisplay::AdministratorDisplay(User* loggedIn, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::AdministratorDisplay)
 {
@@ -29,6 +29,14 @@ AdministratorDisplay::AdministratorDisplay(QWidget *parent)
 
     connect(u, &User::searchResultsReady,
             this, &AdministratorDisplay::handleSearchResults);
+    u = loggedIn;
+
+    // conflict report handlers
+    connect(ui->pushButton_generate, &QPushButton::clicked, [=]() {
+        u->getConflictReport(ui->comboBox_term->currentText());
+    });
+    connect(u, &User::conflictReportReady,
+            this, &AdministratorDisplay::handleConflictReports);
 }
 
 AdministratorDisplay::~AdministratorDisplay()
@@ -37,6 +45,7 @@ AdministratorDisplay::~AdministratorDisplay()
 }
 
 void AdministratorDisplay::handleSearchResults(QStandardItemModel *model)
+void AdministratorDisplay::handleConflictReports(QStandardItemModel* model)
 {
     if (!model) {
         qDebug() << "Received null model";

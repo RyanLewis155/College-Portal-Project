@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QRegularExpression>
 #include <QLineEdit>
+#include "userinfo.h"
 
 namespace Ui {
 class LoginWindow;
@@ -15,14 +16,6 @@ struct ValidationState {
     bool passwordmatch = false;
     bool firstName = false;
     bool lastName = false;
-};
-
-struct UserInfo {
-    QString id;
-    QString email;
-    QString password;
-    QString FullName;
-    QString role;
 };
 
 class LoginWindow : public QMainWindow

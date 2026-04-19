@@ -41,6 +41,8 @@ LoginWindow::LoginWindow(QWidget *parent)
             this, &LoginWindow::validatePasswordField);
     connect(ui->lineEdit_RegRePassword, &QLineEdit::textChanged,
             this, &LoginWindow::validatePasswordMatchField);
+    connect(ui->lineEdit_Password, &QLineEdit::returnPressed,
+            this, &LoginWindow::on_pushButton_Login_clicked);
 
     QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
     shadow->setBlurRadius(10);

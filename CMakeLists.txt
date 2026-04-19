@@ -41,6 +41,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         professordisplay.h professordisplay.cpp professordisplay.ui
         administratordisplay.h administratordisplay.cpp administratordisplay.ui
         coursesection.h coursesection.cpp
+        userinfo.h
 
 
 

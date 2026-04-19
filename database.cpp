@@ -110,6 +110,7 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
 }
 
 
+
 QJsonArray Database::getUserData(const QString &email,
                                  const QString &name,
                                  const QString &role,

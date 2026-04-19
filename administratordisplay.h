@@ -14,7 +14,7 @@ class AdministratorDisplay : public QWidget
     Q_OBJECT
 
 public:
-    explicit AdministratorDisplay(QWidget *parent = nullptr);
+    explicit AdministratorDisplay(User* loggedIn, QWidget *parent = nullptr);
     ~AdministratorDisplay();
 
 private slots:
@@ -22,7 +22,11 @@ private slots:
 
 private:
     Ui::AdministratorDisplay *ui;
-    User* u;
+    User *u;
+
+private slots:
+    void handleConflictReports(QStandardItemModel* model);
+
 };
 
 #endif // ADMINISTRATORDISPLAY_H
