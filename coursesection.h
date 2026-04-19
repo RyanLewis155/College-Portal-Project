@@ -20,6 +20,7 @@ struct CourseSection
 
     QString building;
     QString room;
+    QString capacity;
 
     QString coursename;
     QString instructorname;

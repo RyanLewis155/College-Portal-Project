@@ -25,15 +25,15 @@ void Database::init(const QString &baseUrl, const QString &apiKey)
 }
 
 QVector<CourseSection> Database::getCourseData(const QStringList &crns,
-                                   const QString &building,
-                                   const QString &professor,
-                                   const QString &days,
-                                   const QString &term,
-                                   const QString &course,
-                                   const int &sectionNum,
-                                   const QString &level,
-                                   const QString &subject,
-                                   const QString &courseNum)
+                                               const QString &building,
+                                               const QString &professor,
+                                               const QString &days,
+                                               const QString &term,
+                                               const QString &course,
+                                               const int &sectionNum,
+                                               const QString &level,
+                                               const QString &subject,
+                                               const QString &courseNum)
 {
     QueryParams params;
 
@@ -46,9 +46,9 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
         "section:sectionNum",
         "subject",
         "courseNum",
-        "room:Room(building, room, capacity)",
-        "Course(course:name)",
-        "User(instructor:name)"
+        "room:Room!CourseSection_roomID_fkey(building,room,capacity)",
+        "Course!CourseSection_courseID_fkey(course:name)",
+        "User!CourseSection_profID_fkey(instructor:name)"
     });
 
     // WHERE clauses (only if provided)
@@ -92,11 +92,6 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
 
     QJsonArray raw = fetch("CourseSection", params);
 
-    // define flattening rules
-    QHash<QString, QStringList> rules;
-    rules["room"] = {"building", "room", "capacity"};
-    rules["Course"] = {"course"};
-    rules["User"] = {"instructor"};
     QVector<CourseSection> results;
     results.reserve(raw.size());
 

@@ -9,7 +9,6 @@ AdministratorDisplay::AdministratorDisplay(User* loggedIn, QWidget *parent)
     ui->setupUi(this);
     ui->tabWidget->tabBar()->setCursor(Qt::PointingHandCursor);
 
-
     u = loggedIn;
 
     connect(ui->pushButton_search, &QPushButton::clicked, [=]() {
@@ -29,7 +28,6 @@ AdministratorDisplay::AdministratorDisplay(User* loggedIn, QWidget *parent)
 
     connect(u, &User::searchResultsReady,
             this, &AdministratorDisplay::handleSearchResults);
-    u = loggedIn;
 
     // conflict report handlers
     connect(ui->pushButton_generate, &QPushButton::clicked, [=]() {
@@ -45,6 +43,36 @@ AdministratorDisplay::~AdministratorDisplay()
 }
 
 void AdministratorDisplay::handleSearchResults(QStandardItemModel *model)
+{
+    if (!model) {
+        qDebug() << "Received null model";
+        return;
+    }
+
+    qDebug() << "Received model with rows:" << model->rowCount();
+
+    // -----------------------------
+    // Clean up previous model safely
+    // -----------------------------
+    QAbstractItemModel *oldModel = ui->tableView_results->model();
+    if (oldModel) {
+        oldModel->deleteLater();
+    }
+
+    // -----------------------------
+    // Transfer ownership to the view
+    // -----------------------------
+    model->setParent(ui->tableView_results);
+    ui->tableView_results->setModel(model);
+
+    // -----------------------------
+    // UI polish
+    // -----------------------------
+    ui->tableView_results->resizeColumnsToContents();
+    ui->tableView_results->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableView_results->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+}
+
 void AdministratorDisplay::handleConflictReports(QStandardItemModel* model)
 {
     if (!model) {
@@ -53,6 +81,7 @@ void AdministratorDisplay::handleConflictReports(QStandardItemModel* model)
     }
 
     qDebug() << "Received model with rows:" << model->rowCount();
+
 
     // -----------------------------
     // Clean up previous model safely
