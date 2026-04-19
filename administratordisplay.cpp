@@ -9,6 +9,26 @@ AdministratorDisplay::AdministratorDisplay(User* loggedIn, QWidget *parent)
     ui->setupUi(this);
     ui->tabWidget->tabBar()->setCursor(Qt::PointingHandCursor);
 
+
+    u = new User();
+
+    connect(ui->pushButton_search, &QPushButton::clicked, [=]() {
+        u->searchCoursesEX(
+            ui->lineEdit_CRN->text(),
+            ui->lineEdit_Room->text(),
+            ui->lineEdit_Professor->text(),
+            ui->comboBox_days->currentText(),
+            ui->comboBox_term->currentText(),
+            ui->lineEdit_Course->text(),
+            ui->lineEdit_sectionNum->text().toInt(),
+            ui->comboBox_Level->currentText(),
+            ui->lineEdit_subject->text(),
+            ui->lineEdit_courseNum->text()
+            );
+    });
+
+    connect(u, &User::searchResultsReady,
+            this, &AdministratorDisplay::handleSearchResults);
     u = loggedIn;
 
     // conflict report handlers
@@ -24,6 +44,7 @@ AdministratorDisplay::~AdministratorDisplay()
     delete ui;
 }
 
+void AdministratorDisplay::handleSearchResults(QStandardItemModel *model)
 void AdministratorDisplay::handleConflictReports(QStandardItemModel* model)
 {
     if (!model) {
@@ -51,4 +72,6 @@ void AdministratorDisplay::handleConflictReports(QStandardItemModel* model)
     // UI polish
     // -----------------------------
     ui->tableView_results->resizeColumnsToContents();
+    ui->tableView_results->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableView_results->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
 }
