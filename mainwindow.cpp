@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "loginwindow.h"
 #include "studentdisplay.h"
+#include "professordisplay.h"
+#include "administratordisplay.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -35,15 +37,11 @@ void MainWindow::handleLoginSuccess()
             dashBoardWindow = new StudentDisplay();
             break;
         case 1:
-            //display = new ProfessorDisplay();
+            dashBoardWindow = new ProfessorDisplay();
             break;
 
         case 2:
-            //display = new AdminstratorDisplay();
-            break;
-
-        case 3:
-            //display = new BoardMemberDisplay();
+            dashBoardWindow = new AdministratorDisplay();
             break;
 
         default:
