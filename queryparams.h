@@ -12,7 +12,8 @@ enum Operator {
     GTE,
     LTE,
     NEQ,
-    IN
+    IN,
+    ILIKE
 };
 
 struct WhereClause {

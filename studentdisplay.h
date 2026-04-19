@@ -20,7 +20,7 @@ class StudentDisplay : public QWidget
     Q_OBJECT
 
 public:
-    explicit StudentDisplay(QWidget *parent = nullptr);
+    explicit StudentDisplay(User* u, QWidget *parent = nullptr);
     ~StudentDisplay();
 
     void PopulateClasses(QList<ClassScheduleItem*> classSchedule);
