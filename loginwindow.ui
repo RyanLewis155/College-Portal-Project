@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>639</height>
+    <height>665</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -975,7 +975,7 @@ text-align: left;</string>
                    </property>
                    <property name="minimumSize">
                     <size>
-                     <width>144</width>
+                     <width>162</width>
                      <height>0</height>
                     </size>
                    </property>

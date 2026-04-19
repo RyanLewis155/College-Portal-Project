@@ -7,7 +7,7 @@
 #include "viewplanform.h"
 
 
-StudentDisplay::StudentDisplay(QWidget *parent)
+StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::StudentDisplay)
 {
@@ -16,7 +16,7 @@ StudentDisplay::StudentDisplay(QWidget *parent)
     ui->comboBox_days->view()->setCursor(Qt::PointingHandCursor);
     ui->tableView_results->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-    u = new User();
+    u = loggedIn;
 
     // course search handlers
     connect(ui->pushButton_search, &QPushButton::clicked, [=]() {
@@ -31,7 +31,7 @@ StudentDisplay::StudentDisplay(QWidget *parent)
     connect(u, &User::searchResultsReady,
             this, &StudentDisplay::handleSearchResults);
 
-    ui->label_WelcomeHeader->setText("Welcome, ");
+    ui->label_WelcomeHeader->setText("Welcome, " + u->name);
     QList<ClassScheduleItem*> classList;
     ClassScheduleItem* class1 = new ClassScheduleItem();
     ClassScheduleItem* class2 = new ClassScheduleItem();

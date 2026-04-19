@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "loginwindow.h"
+#include "user.h"
 #include "studentdisplay.h"
 #include "professordisplay.h"
 #include "administratordisplay.h"
@@ -31,13 +32,14 @@ MainWindow::~MainWindow()
 void MainWindow::handleLoginSuccess(UserInfo userInfo)
 {
     QString role = userInfo.role;
+    User* loggedIn = new User(userInfo);
 
     if (role == "Student")
-        dashBoardWindow = new StudentDisplay();
+        dashBoardWindow = new StudentDisplay(loggedIn);
     else if (role == "Professor")
         dashBoardWindow = new ProfessorDisplay();
     else if (role == "Administrator")
-        dashBoardWindow = new AdministratorDisplay();
+        dashBoardWindow = new AdministratorDisplay(loggedIn);
 
     if(dashBoardWindow)
     {
