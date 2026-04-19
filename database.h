@@ -1,9 +1,16 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#include <QString>
 #include <QJsonArray>
+#include <QJsonObject>
 #include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrlQuery>
+#include <QJsonDocument>
+#include <QEventLoop>
+#include <QDebug>
+
 #include "queryparams.h"
 
 class Database
@@ -30,6 +37,9 @@ public:
         if (v.isBool())   return v.toBool() ? "true" : "false";
         return "";
     }
+
+    static QJsonObject insert(const QString &table,
+                              const QJsonObject &data);
 
 private:
     static QString m_baseUrl;

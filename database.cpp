@@ -282,3 +282,95 @@ QUrl Database::buildUrl(const QString &table, const QueryParams &params)
     url.setQuery(query);
     return url;
 }
+
+QJsonObject Database::insert(const QString &table,
+                             const QJsonObject &data)
+{
+    // Build URL (same as fetch, but usually no filters)
+    QUrl url = buildUrl(table, {});
+
+    qDebug() << "Url: " << url.toString();
+
+    // Build request
+    QNetworkRequest request(url);
+    request.setRawHeader("apikey", m_apiKey.toUtf8());
+    request.setRawHeader("Authorization", ("Bearer " + m_apiKey).toUtf8());
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+
+    QByteArray body = QJsonDocument(data).toJson();
+
+
+    // Send POST request
+    QNetworkReply *reply = m_manager->post(request, body);
+
+    QEventLoop loop;
+    QObject::connect(reply, &QNetworkReply::finished,
+                     &loop, &QEventLoop::quit);
+
+    loop.exec(); // block until finished
+
+    if (reply->error() != QNetworkReply::NoError) {
+        qWarning() << "Insert error:" << reply->errorString();
+        qWarning() << "HTTP status:" << reply->attribute(
+            QNetworkRequest::HttpStatusCodeAttribute
+            );
+        reply->deleteLater();
+        return {};
+    }
+
+    QByteArray response = reply->readAll();
+    QJsonDocument responseDoc = QJsonDocument::fromJson(response);
+    reply->deleteLater();
+
+    if (responseDoc.isObject())
+        return responseDoc.object();
+
+    return {};
+}
+
+
+QJsonArray Database::fetch(const QString &table,
+                           const QueryParams &params)
+{
+    // get API url for desired query
+    QUrl url = buildUrl(table, params);
+
+    // build request
+    QNetworkRequest request(url);
+    request.setRawHeader("apikey", m_apiKey.toUtf8());
+    request.setRawHeader("Authorization", ("Bearer " + m_apiKey).toUtf8());
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QNetworkReply *reply = m_manager->get(request);
+
+    QEventLoop loop;
+
+    QJsonArray result;
+    QString errorString;
+
+    QObject::connect(reply, &QNetworkReply::finished,
+                     &loop, &QEventLoop::quit);
+
+    loop.exec(); // blocks here until reply finishes
+
+    if (reply->error() != QNetworkReply::NoError) {
+        qWarning() << "Database error:" << reply->errorString();
+        reply->deleteLater();
+        return {};
+    }
+
+    QByteArray response = reply->readAll();
+    QJsonDocument doc = QJsonDocument::fromJson(response);
+
+    if (!doc.isArray()) {
+        qWarning() << "Invalid JSON response (expected array)";
+        reply->deleteLater();
+        return {};
+    }
+
+    result = doc.array();
+
+    reply->deleteLater();
+    return result;
+}

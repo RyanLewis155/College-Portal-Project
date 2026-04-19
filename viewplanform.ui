@@ -36,8 +36,8 @@
     <widget class="QFrame" name="frame_ViewPlanForm">
      <property name="styleSheet">
       <string notr="true">QFrame#frame_ViewPlanForm {
-	background-color: #006747;
-	border-radius: 25px;
+	background-color: #CFC493;
+	border-radius: 10px;
 }</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
