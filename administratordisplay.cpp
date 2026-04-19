@@ -45,6 +45,10 @@ AdministratorDisplay::~AdministratorDisplay()
 }
 
 void AdministratorDisplay::handleSearchResults(QStandardItemModel *model)
+{
+
+}
+
 void AdministratorDisplay::handleConflictReports(QStandardItemModel* model)
 {
     if (!model) {
