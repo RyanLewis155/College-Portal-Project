@@ -295,6 +295,7 @@ QJsonObject Database::insert(const QString &table,
     QNetworkRequest request(url);
     request.setRawHeader("apikey", m_apiKey.toUtf8());
     request.setRawHeader("Authorization", ("Bearer " + m_apiKey).toUtf8());
+    request.setRawHeader("Prefer", "return=representation");
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
 
@@ -323,54 +324,11 @@ QJsonObject Database::insert(const QString &table,
     QJsonDocument responseDoc = QJsonDocument::fromJson(response);
     reply->deleteLater();
 
-    if (responseDoc.isObject())
-        return responseDoc.object();
+    if (responseDoc.isArray()) {
+        QJsonArray arr = responseDoc.array();
+        if (!arr.isEmpty() && arr.first().isObject())
+            return arr.first().toObject();  // return first inserted row
+    }
 
     return {};
-}
-
-
-QJsonArray Database::fetch(const QString &table,
-                           const QueryParams &params)
-{
-    // get API url for desired query
-    QUrl url = buildUrl(table, params);
-
-    // build request
-    QNetworkRequest request(url);
-    request.setRawHeader("apikey", m_apiKey.toUtf8());
-    request.setRawHeader("Authorization", ("Bearer " + m_apiKey).toUtf8());
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    QNetworkReply *reply = m_manager->get(request);
-
-    QEventLoop loop;
-
-    QJsonArray result;
-    QString errorString;
-
-    QObject::connect(reply, &QNetworkReply::finished,
-                     &loop, &QEventLoop::quit);
-
-    loop.exec(); // blocks here until reply finishes
-
-    if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << "Database error:" << reply->errorString();
-        reply->deleteLater();
-        return {};
-    }
-
-    QByteArray response = reply->readAll();
-    QJsonDocument doc = QJsonDocument::fromJson(response);
-
-    if (!doc.isArray()) {
-        qWarning() << "Invalid JSON response (expected array)";
-        reply->deleteLater();
-        return {};
-    }
-
-    result = doc.array();
-
-    reply->deleteLater();
-    return result;
 }
