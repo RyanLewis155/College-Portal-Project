@@ -17,13 +17,11 @@ User::~User()
 {
 }
 
-// ===== Public Methods Implementation =====
-
 void User::searchCourses(const QString &term,
-                         const QString &crn,
-                         const QString &subject,
-                         const QString &courseNum,
-                         const QString &days)
+                        const QString &crn,
+                        const QString &subject,
+                        const QString &courseNum,
+                        const QString &days)
 {
     QStringList crns = {crn}; // Convert single CRN to list for API
     QVector<CourseSection> results = Database::getCourseData(crns, "", "", days, term, "", 0, "", subject, courseNum);

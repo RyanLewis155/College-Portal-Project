@@ -5,8 +5,10 @@
 #include "user.h"
 #include "studentregistrationform.h"
 #include "viewplanform.h"
+
 #include <QMessageBox>
 
+#include "database.h"
 
 StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
     : QWidget(parent)
@@ -33,26 +35,9 @@ StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
             this, &StudentDisplay::handleSearchResults);
 
     ui->label_WelcomeHeader->setText("Welcome, " + u->name);
-    QList<ClassScheduleItem*> classList;
-    ClassScheduleItem* class1 = new ClassScheduleItem();
-    ClassScheduleItem* class2 = new ClassScheduleItem();
-    ClassScheduleItem* class3 = new ClassScheduleItem();
-    ClassScheduleItem* class4 = new ClassScheduleItem();
-    ClassScheduleItem* class5 = new ClassScheduleItem();
+    //deleted the hardcoded class that we had for testing
 
-    class1->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-    class2->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-    class3->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-    class4->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-    class5->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-
-    classList.append(class1);
-    classList.append(class2);
-    classList.append(class3);
-    classList.append(class4);
-    classList.append(class5);
-
-    PopulateClasses(classList);
+    loadRegisteredClasses();
 
     QGridLayout *registrationLayout = qobject_cast<QGridLayout*>(ui->widget_Register->layout());
     QGridLayout *viewPlanLayout = qobject_cast<QGridLayout*>(ui->widget_ViewPlans->layout());
@@ -65,6 +50,73 @@ StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
 StudentDisplay::~StudentDisplay()
 {
     delete ui;
+}
+QString StudentDisplay::buildCourseCode(const CourseSection& cs)
+{
+    return cs.subject + " " + cs.courseNum;
+}
+QString StudentDisplay::buildMeetingText(const CourseSection& cs)
+{
+    QString roomText;
+
+    if (!cs.building.isEmpty() && !cs.room.isEmpty())
+        roomText = cs.building + " " + cs.room;
+    else if (!cs.room.isEmpty())
+        roomText = cs.room;
+    else
+        roomText = "Room TBA";
+
+    return cs.days + " " + cs.startTime + "-" + cs.endTime + " | " + roomText;
+}
+
+void StudentDisplay::loadRegisteredClasses()
+{
+    QList<ClassScheduleItem*> classList;
+
+    QString studentId = u->id;
+
+    QJsonArray registrations = Database::getRegistrations(studentId);
+
+    if (registrations.isEmpty()) {
+        qDebug() << "No registrations found for student:" << studentId;
+        PopulateClasses(classList);
+        return;
+    }
+
+    QStringList crns;
+    for (const QJsonValue& val : registrations)
+    {
+        if (!val.isObject())
+            continue;
+
+        QJsonObject obj = val.toObject();
+        QString crn = obj.value("CRN").toString();
+
+        if (!crn.isEmpty())
+            crns.append(crn);
+    }
+
+    if (crns.isEmpty()) {
+        qDebug() << "Registrations returned, but no CRNs were found.";
+        PopulateClasses(classList);
+        return;
+    }
+
+    QVector<CourseSection> sections = Database::getCourseData(crns);
+
+    for (const CourseSection& cs : sections)
+    {
+        ClassScheduleItem* item = new ClassScheduleItem();
+
+        QString courseCode = buildCourseCode(cs);
+        QString courseName = cs.coursename.isEmpty() ? "Unnamed Course" : cs.coursename;
+        QString meetText = buildMeetingText(cs);
+
+        item->setFields(courseCode, courseName, meetText);
+        classList.append(item);
+    }
+
+    PopulateClasses(classList);
 }
 
 void StudentDisplay::handleSearchResults(QStandardItemModel* model)
@@ -99,7 +151,8 @@ void StudentDisplay::handleSearchResults(QStandardItemModel* model)
 void StudentDisplay::PopulateClasses(QList<ClassScheduleItem*> classSchedule)
 {
     QGridLayout* gridLayout = qobject_cast<QGridLayout*>(ui->widget_ClassSchedule->layout());
-
+    if (!gridLayout)
+        return;
     for(int i = 0; i < classSchedule.count(); ++i)
     {
         gridLayout->addWidget(classSchedule[i], i/3, i % 3, Qt::AlignTop | Qt::AlignLeft);

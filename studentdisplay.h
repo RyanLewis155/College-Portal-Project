@@ -9,6 +9,7 @@
 #include <QGridLayout>
 #include <QStandardItemModel>
 #include "classscheduleitem.h"
+#include "coursesection.h"
 #include "user.h"
 
 namespace Ui {
@@ -32,6 +33,10 @@ private slots:
 private:
     Ui::StudentDisplay *ui;
     User* u;
+
+    void loadRegisteredClasses();
+    QString buildCourseCode(const CourseSection& cs);
+    QString buildMeetingText(const CourseSection& cs);
 };
 
 #endif // STUDENTDISPLAY_H
