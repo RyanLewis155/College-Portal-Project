@@ -129,7 +129,7 @@
          <enum>QTabWidget::TabShape::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <property name="elideMode">
          <enum>Qt::TextElideMode::ElideMiddle</enum>
@@ -375,6 +375,12 @@
                <property name="frameShadow">
                 <enum>QFrame::Shadow::Plain</enum>
                </property>
+               <property name="horizontalScrollBarPolicy">
+                <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+               </property>
+               <property name="autoScrollMargin">
+                <number>17</number>
+               </property>
                <property name="editTriggers">
                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
                </property>
@@ -385,13 +391,19 @@
                 <bool>false</bool>
                </property>
                <property name="alternatingRowColors">
-                <bool>true</bool>
+                <bool>false</bool>
+               </property>
+               <property name="horizontalScrollMode">
+                <enum>QAbstractItemView::ScrollMode::ScrollPerItem</enum>
                </property>
                <attribute name="horizontalHeaderCascadingSectionResizes">
                 <bool>true</bool>
                </attribute>
                <attribute name="horizontalHeaderStretchLastSection">
                 <bool>false</bool>
+               </attribute>
+               <attribute name="verticalHeaderVisible">
+                <bool>true</bool>
                </attribute>
               </widget>
              </item>

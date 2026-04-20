@@ -82,25 +82,24 @@ void AdministratorDisplay::handleConflictReports(QStandardItemModel* model)
 
     qDebug() << "Received model with rows:" << model->rowCount();
 
-
     // -----------------------------
     // Clean up previous model safely
     // -----------------------------
-    QAbstractItemModel *oldModel = ui->tableView_results->model();
-    if (oldModel) {
+    QAbstractItemModel *oldModel = ui->tableView_results1->model();
+    if (oldModel && oldModel != model) {
         oldModel->deleteLater();
     }
 
     // -----------------------------
     // Transfer ownership to the view
     // -----------------------------
-    model->setParent(ui->tableView_results);
-    ui->tableView_results->setModel(model);
+    model->setParent(ui->tableView_results1);
+    ui->tableView_results1->setModel(model);
 
     // -----------------------------
     // UI polish
     // -----------------------------
-    ui->tableView_results->resizeColumnsToContents();
-    ui->tableView_results->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableView_results->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+    ui->tableView_results1->resizeColumnsToContents();
+    ui->tableView_results1->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableView_results1->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
 }

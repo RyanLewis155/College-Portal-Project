@@ -1,9 +1,11 @@
 #include "coursesection.h"
+#include "database.h"
 
 
 static QString getString(const QJsonObject &object, const QString &key)
 {
-    return object.value(key).toString();
+    // return object.value(key).toString();
+    return Database::jsonValueToString(object.value(key));
 }
 
 static int getInt(const QJsonObject &object, const QString &key)
@@ -29,22 +31,29 @@ CourseSection fromJson(const QJsonObject &obj)
 
     cs.level    = getString(obj, "level");
 
-    if (obj.contains("room") && obj["room"].isObject()) {
-        QJsonObject r = obj["room"].toObject();
-        cs.building = r.value("building").toString();
-        cs.room = QString::number(r.value("room").toInt());
-        cs.capacity = QString::number(r.value("capacity").toInt());
-    }
+    cs.building    = getString(obj, "building");
+    cs.room        = getString(obj, "room");
+    cs.capacity    = getString(obj, "capacity");
 
-    if(obj.contains("Course") && obj["Course"].isObject()) {
-        QJsonObject c = obj["Course"].toObject();
-        cs.coursename = c.value("course").toString();
-    }
+    cs.coursename    = getString(obj, "course");
+    cs.instructorname = getString(obj, "instructor");
 
-    if (obj.contains("User") && obj["User"].isObject()) {
-        QJsonObject u = obj["User"].toObject();
-        cs.instructorname = u.value("instructor").toString();
-    }
+    // if (obj.contains("room") && obj["room"].isObject()) {
+    //     QJsonObject r = obj["room"].toObject();
+    //     cs.building = r.value("building").toString();
+    //     cs.room = QString::number(r.value("room").toInt());
+    //     cs.capacity = QString::number(r.value("capacity").toInt());
+    // }
+
+    // if(obj.contains("Course") && obj["Course"].isObject()) {
+    //     QJsonObject c = obj["Course"].toObject();
+    //     cs.coursename = c.value("course").toString();
+    // }
+
+    // if (obj.contains("User") && obj["User"].isObject()) {
+    //     QJsonObject u = obj["User"].toObject();
+    //     cs.instructorname = u.value("instructor").toString();
+    // }
 
     return cs;
 }
