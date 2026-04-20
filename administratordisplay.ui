@@ -157,7 +157,7 @@
                         </string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="tab_SearchCourses">
          <property name="styleSheet">
@@ -1473,7 +1473,7 @@ QPushButton#pushButton_search:hover {
           <string>View Reports</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_7">
-          <item row="0" column="0">
+          <item row="0" column="1">
            <widget class="QWidget" name="widget_ViewReports" native="true">
             <property name="styleSheet">
              <string notr="true">QWidget#widget_ViewReports {
@@ -1481,7 +1481,7 @@ QPushButton#pushButton_search:hover {
 	border-radius: 25px;
 }</string>
             </property>
-            <layout class="QGridLayout" name="gridLayout_8">
+            <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0">
              <item row="0" column="0">
               <widget class="QComboBox" name="comboBox_term">
                <item>
@@ -1508,8 +1508,15 @@ QPushButton#pushButton_search:hover {
                </property>
               </widget>
              </item>
-             <item row="1" column="0" colspan="2">
-              <widget class="QTableView" name="tableView_results"/>
+             <item row="2" column="0" colspan="2">
+              <widget class="QTableView" name="tableView_results">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
