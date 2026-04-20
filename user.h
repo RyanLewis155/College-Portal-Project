@@ -39,12 +39,16 @@ public:
                                const QString &Subject,
                                const QString &CourseNum
                          );
+
     void getConflictReport(const QString &term);
+
+    void handleRegistration(const QString &term, const QStringList &crns);
 
 signals:
     // Search results: list of rows (column name -> value)
     void searchResultsReady(QStandardItemModel* model);
     void conflictReportReady(QStandardItemModel* model);
+    void registrationComplete(const QString &message);
 
 private:
     // helpers for checking course conflicts

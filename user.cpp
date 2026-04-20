@@ -19,23 +19,6 @@ User::~User()
 
 // ===== Public Methods Implementation =====
 
-// void User::searchCourses(const QString &crn)
-// {
-//     qDebug() << "Searching courses for CRN:" << crn;
-
-//     // TODO: Replace with real DB/API call
-//     QVector<QMap<QString, QString>> results;
-
-//     QMap<QString, QString> row;
-//     row["CRN"] = crn;
-//     row["CourseName"] = "Example Course";
-//     row["Instructor"] = "Dr. Smith";
-
-//     results.append(row);
-
-//     emit searchResultsReady(results);
-// }
-
 void User::searchCourses(const QString &term,
                          const QString &crn,
                          const QString &subject,
@@ -195,6 +178,85 @@ void User::getConflictReport(const QString &term)
     // STEP 4: Emit result
     // -------------------------
     emit conflictReportReady(model);
+}
+
+void User::handleRegistration(const QString &term, const QStringList &crns)
+{
+    // check for duplicate registration first
+    QJsonArray existing = Database::getRegistrations(this->id, crns, "");
+    if (!existing.isEmpty())
+    {
+        emit registrationComplete("Error - already registered for one or more courses submitted");
+        return;
+    }
+
+    // Step 1: Fetch course data and validate CRNs
+    QVector<CourseSection> courseData = Database::getCourseData(crns, "", "", "", term);
+    if (courseData.length() != crns.length())
+    {
+        emit registrationComplete("Error: Invalid CRNs for selected term");
+        return;
+    }
+
+    // Step 2: Check for scheduling conflicts (including existing registrations)
+    QJsonArray existingRegs = Database::getRegistrations(this->id);
+    QStringList allCrns = crns;
+    for (const QJsonValue &reg : existingRegs)
+        allCrns.append(reg.toObject().value("CRN").toString());
+    for (QString c : crns)
+        allCrns.append(c);
+
+    QHash<QString, QStringList> validation = validateCourses(term, allCrns);
+    for (const QStringList &flags : validation)
+    {
+        if (flags.contains("scheduleConflict"))
+        {
+            emit registrationComplete("Scheduling conflict between two or more courses; "
+                                      "please double check time and day of all selections, as well as existing registrations.");
+            return;
+        }
+    }
+
+    // Step 3: Build registration records
+    QHash<QString, int> enrollCounts = Database::getNumRegistered(crns);
+    QJsonArray newReg;
+    QStringList messageLines;
+
+    for (const CourseSection &c : courseData)
+    {
+        QString status;
+        if (enrollCounts[c.crn] + 1 > c.capacity.toInt())
+        {
+            status = "Waitlisted";
+            messageLines.append("Course (" + c.crn + ") full; waitlisted");
+        }
+        else
+        {
+            status = "Registered";
+            messageLines.append("Course (" + c.crn + ") successfully registered");
+        }
+
+        QJsonObject record;
+        record["studentID"]     = this->id;
+        record["CRN"]    = c.crn;
+        record["status"] = status;
+        newReg.append(record);
+    }
+
+    // Step 4: Insert into database
+    for (const QJsonValue &entry : newReg)
+    {
+        qDebug() << entry;
+        QJsonObject insertResult = Database::insert("Registration", entry.toObject());
+        if (insertResult.isEmpty())
+        {
+            emit registrationComplete("Database error, try again later");
+            return;
+        }
+    }
+
+    // Step 5: Emit status message
+    emit registrationComplete(messageLines.join("\n"));
 }
 
 QHash<QString, QStringList> User::validateCourses(const QString &term, const QStringList &crns)

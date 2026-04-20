@@ -47,6 +47,8 @@ public:
 
     static QJsonArray getPlanItems(const QString &planID = "");
 
+    static QHash<QString, int> getNumRegistered(const QStringList &crns);
+
     // public helpers
     static QString jsonValueToString(const QJsonValue &v)
     {
