@@ -97,7 +97,7 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
     flattenRules["User"] = {"instructor"};
 
     raw = flattenArray(raw, flattenRules);
-    qDebug() << raw;
+
     QVector<CourseSection> results;
     results.reserve(raw.size());
 
@@ -240,7 +240,6 @@ QHash<QString, int> Database::getNumRegistered(const QStringList &crns)
         params.where("CRN", IN, "(" + crns.join(",") + ")");
 
     QJsonArray rows = fetch("Registration", params);
-    qDebug() << rows;
 
     // build map from results
     QHash<QString, int> result;
@@ -259,29 +258,6 @@ QHash<QString, int> Database::getNumRegistered(const QStringList &crns)
 
     return result;
 }
-
-// QHash<QString, int> Database::getNumRegistered(const QStringList &crns)
-// {
-//     QueryParams params;
-
-//     params.select({"crn:CRN", "studentID"});
-//     params.where("status", EQ, "Registered");
-
-//     if (!crns.isEmpty())
-//         params.where("CRN", IN, "(" + crns.join(",") + ")");
-
-//     QJsonArray rows = fetch("Registration", params);
-//     qDebug() << rows;
-
-//     // Count per CRN client-side
-//     QHash<QString, int> result;
-//     for (const QJsonValue &row : rows) {
-//         QString crn = row.toObject().value("crn").toString();
-//         if (!crn.isEmpty())
-//             result[crn]++;
-//     }
-//     return result;
-// }
 
 QJsonArray Database::fetch(const QString &table,
                            const QueryParams &params)
@@ -361,7 +337,7 @@ QJsonObject Database::flattenObject(
             }
         }
 
-        result.remove(key);
+        // result.remove(key);
     }
 
     return result;
