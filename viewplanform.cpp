@@ -22,8 +22,11 @@ void ViewPlanForm::on_pushButton_AddPlan_clicked()
     {
         newPlanName = "newPlan";
     }
-    int studentId;
+    QString studentId = u->id;
 
+    planInfo["planName"] = newPlanName;
+    planInfo["studentID"] = studentId.toLongLong();
 
+    QJsonObject result = Database::insert("Plan", planInfo);
 }
 
