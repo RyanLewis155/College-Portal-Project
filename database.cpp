@@ -46,8 +46,8 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
         "section:sectionNum",
         "subject",
         "courseNum",
-        "room:Room!CourseSection_roomID_fkey(building,room,capacity)",
-        "Course!CourseSection_courseID_fkey(course:name)",
+        "Room(capacity,building,room)",
+        "Course(course:name)",
         "User!CourseSection_profID_fkey(instructor:name)"
     });
 
@@ -74,7 +74,6 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
     if(!course.isEmpty())
         params.where("Course.name", ILIKE, QString("%" + course + "%"));
 
-
     if (!term.isEmpty())
         params.where("term", EQ, term);
 
@@ -92,6 +91,12 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
 
     QJsonArray raw = fetch("CourseSection", params);
 
+    QHash<QString, QStringList> flattenRules;
+    flattenRules["Room"] = {"building", "capacity", "room"};
+    flattenRules["Course"] = {"course"};
+    flattenRules["User"] = {"instructor"};
+
+    raw = flattenArray(raw, flattenRules);
     QVector<CourseSection> results;
     results.reserve(raw.size());
 
@@ -260,6 +265,8 @@ QJsonObject Database::flattenObject(
                 result[field] = nested[field];
             }
         }
+
+        result.remove(key);
     }
 
     return result;
