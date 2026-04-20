@@ -490,3 +490,47 @@ QHash<QString, QStringList> User::validateCourses(const QString &term, const QSt
     return conflictReasons;
 }
 
+void User::getFullWaitlistReport(const QString &term)
+{
+    QJsonArray waitlisted = Database::getRegistrations("", {}, "Waitlisted");
+
+    QMap<QString, int> waitlistCounts;
+
+    for (int i = 0; i < waitlisted.size(); ++i)
+    {
+        QJsonObject obj = waitlisted.at(i).toObject();
+        QString crn = obj.value("CRN").toString();
+
+        if (!crn.isEmpty())
+            waitlistCounts[crn]++;
+    }
+
+    QStringList crns = waitlistCounts.keys();
+    QVector<CourseSection> sections = Database::getCourseData(crns, "", "", "", term);
+
+    QStandardItemModel *model = new QStandardItemModel(this);
+    model->setHorizontalHeaderLabels({
+        "CRN", "Course", "Section", "Waitlist Count", "Waitlist Capacity"
+    });
+
+    //5 is the hard coded waitlist limit
+    int listLim = 5;
+    for (int i = 0; i < sections.size(); ++i)
+    {
+        const CourseSection &cs = sections.at(i);
+        int countcap = waitlistCounts.value(cs.crn,0);
+        if (countcap >= listLim)
+        {
+            QList<QStandardItem*> row;
+            row.append(new QStandardItem(cs.crn));
+            row.append(new QStandardItem(cs.coursename));
+            row.append(new QStandardItem(QString::number(cs.sectionNum)));
+            row.append(new QStandardItem(QString::number(countcap)));
+            row.append(new QStandardItem(QString::number(listLim)));
+            model->appendRow(row);
+        }
+    }
+
+    emit fullWaitlistReportReady(model);
+}
+

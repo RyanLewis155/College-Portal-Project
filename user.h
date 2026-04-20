@@ -41,10 +41,10 @@ public:
                          );
 
     void getConflictReport(const QString &term);
-
     void handleRegistration(const QString &term, const QStringList &crns);
-
+    void getFullWaitlistReport(const QString &term);
 signals:
+    void fullWaitlistReportReady(QStandardItemModel* model);
     // Search results: list of rows (column name -> value)
     void searchResultsReady(QStandardItemModel* model);
     void conflictReportReady(QStandardItemModel* model);

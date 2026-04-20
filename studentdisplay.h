@@ -37,6 +37,9 @@ private:
     void loadRegisteredClasses();
     QString buildCourseCode(const CourseSection& cs);
     QString buildMeetingText(const CourseSection& cs);
+
+    void setupGroupedSchedule();
+    int getScheduleColumn(const QString& days);
 };
 
 #endif // STUDENTDISPLAY_H

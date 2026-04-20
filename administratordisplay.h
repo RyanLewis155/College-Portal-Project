@@ -19,13 +19,12 @@ public:
 
 private slots:
     void handleSearchResults(QStandardItemModel* model);
+    void handleConflictReports(QStandardItemModel* model);
 
 private:
     Ui::AdministratorDisplay *ui;
     User *u;
-
-private slots:
-    void handleConflictReports(QStandardItemModel* model);
+    void saveConflictReportToTxt(QStandardItemModel* model);
 
 };
 
