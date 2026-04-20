@@ -8,8 +8,12 @@ AdministratorDisplay::AdministratorDisplay(User* loggedIn, QWidget *parent)
 {
     ui->setupUi(this);
     ui->tabWidget->tabBar()->setCursor(Qt::PointingHandCursor);
-
     u = loggedIn;
+
+    if(!u->name.isNull())
+    {
+        ui->label_WelcomeHeader->setText(QString("Welcome, " + u->name));
+    }
 
     connect(ui->pushButton_search, &QPushButton::clicked, [=]() {
         u->searchCoursesEX(
@@ -26,8 +30,15 @@ AdministratorDisplay::AdministratorDisplay(User* loggedIn, QWidget *parent)
             );
     });
 
+    connect(ui->pushButton_getCourse, &QPushButton::clicked, [=]() {
+        u->getCourseByCRN(ui->lineEdit_getCourse);
+    })
     connect(u, &User::searchResultsReady,
             this, &AdministratorDisplay::handleSearchResults);
+
+
+    connect(u, &User::CRNResultReady,
+            this, &AdministratorDisplay::handleCRNResults);
 
     // conflict report handlers
     connect(ui->pushButton_generate, &QPushButton::clicked, [=]() {

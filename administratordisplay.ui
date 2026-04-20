@@ -157,7 +157,7 @@
                         </string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_SearchCourses">
          <property name="styleSheet">
@@ -1457,6 +1457,182 @@ QPushButton#pushButton_search:hover {
              <property name="bottomMargin">
               <number>15</number>
              </property>
+             <item row="1" column="0">
+              <widget class="QWidget" name="widget" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QPushButton" name="pushButton_SubmitChanges">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton#pushButton_SubmitChanges {
+	font: 10pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: #CFC493;
+	margin: 4px;
+	padding: 2px;
+}
+
+QPushButton#pushButton_SubmitChanges:focus {
+	border-radius: 8px;
+	border: 1px solid #006747;
+}
+
+QPushButton#pushButton_SubmitChanges:hover {
+	background-color: #006747;
+	border-radius: 8px;
+	margin: 0px;
+	padding: 6px;
+}</string>
+               </property>
+               <property name="text">
+                <string>Submit Changes</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" colspan="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <property name="sizeConstraint">
+                <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+               </property>
+               <property name="leftMargin">
+                <number>15</number>
+               </property>
+               <property name="topMargin">
+                <number>15</number>
+               </property>
+               <property name="rightMargin">
+                <number>15</number>
+               </property>
+               <property name="bottomMargin">
+                <number>15</number>
+               </property>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                 <property name="sizeConstraint">
+                  <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                 </property>
+                 <item alignment="Qt::AlignmentFlag::AlignTop">
+                  <widget class="QLabel" name="label_getCourse">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel#label_getCourse {
+	color: black;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: white;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>CRN:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignmentFlag::AlignTop">
+                  <widget class="QLineEdit" name="lineEdit_getCourse">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>100</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit#lineEdit_getCourse {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 6px;
+	padding-right: 3px;
+	border: none;
+	border-bottom: 1px solid #cccccc;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background: #CFC493;
+}
+
+QLineEdit#lineEdit_getCourse:focus {
+	border-bottom: 3px solid #006747;
+}</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item alignment="Qt::AlignmentFlag::AlignVCenter">
+                <widget class="QPushButton" name="pushButton_getCourse">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton#pushButton_getCourse {
+	font: 10pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: #CFC493;
+	margin: 4px;
+	padding: 2px;
+}
+
+QPushButton#pushButton_getCourse:focus {
+	border-radius: 8px;
+	border: 1px solid #006747;
+}
+
+QPushButton#pushButton_getCourse:hover {
+	background-color: #006747;
+	border-radius: 8px;
+	margin: 0px;
+	padding: 6px;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Search CRN</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
             </layout>
            </widget>
           </item>
