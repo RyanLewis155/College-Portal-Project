@@ -8,6 +8,11 @@
 #include "user.h"
 #include "plan.h"
 
+struct PlanItem {
+    QString planID;
+    QString crn;
+};
+
 namespace Ui {
 class ViewPlanForm;
 }
@@ -21,14 +26,16 @@ public:
     ~ViewPlanForm();
 
     QString enterNewPlan(const QString &studentID, const QString &planName);
+    QJsonObject enterPlanItem(const QString &planID, const QString &crn);
 
 private slots:
     void on_pushButton_AddPlan_clicked();
 
+    void on_pushButton_AddPlanItem_clicked();
+
 private:
     Ui::ViewPlanForm *ui;
     User* u;
-    QList<Plan*> plans;
 };
 
 #endif // VIEWPLANFORM_H

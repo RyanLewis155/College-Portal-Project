@@ -15,8 +15,6 @@ ViewPlanForm::ViewPlanForm(User* loggedIn, QWidget *parent)
         QJsonObject resultObj = result.toObject();
         QString tempId = QString::number(resultObj["id"].toInteger());
         QString tempPlanName = resultObj["planName"].toString();
-        Plan *newPlan = new Plan(tempId, tempPlanName);
-        plans.append(newPlan);
 
         QListWidgetItem *newItem = new QListWidgetItem(tempPlanName);
         newItem->setData(Qt::UserRole, tempId);
@@ -40,12 +38,17 @@ void ViewPlanForm::on_pushButton_AddPlan_clicked()
 
     QString newPlanId = enterNewPlan(studentId, newPlanName);
 
-    Plan *newPlan = new Plan(newPlanId, newPlanName);
-    plans.append(newPlan);
-
-    QListWidgetItem *newItem = new QListWidgetItem(newPlanName);
-    newItem->setData(Qt::UserRole, newPlanId);
-    ui->listWidget_PlanList->addItem(newItem);
+    if (!newPlanId.isEmpty())
+    {
+        QMessageBox::information(this, "Success", "Plan: " + newPlanName + " created successfully!");
+        QListWidgetItem *newItem = new QListWidgetItem(newPlanName);
+        newItem->setData(Qt::UserRole, newPlanId);
+        ui->listWidget_PlanList->addItem(newItem);
+    }
+    else
+    {
+        QMessageBox::warning(this, "Error", "Failed to create plan. Please try again.");
+    }
 }
 
 QString ViewPlanForm::enterNewPlan(const QString &studentID, const QString &planName)
@@ -56,3 +59,35 @@ QString ViewPlanForm::enterNewPlan(const QString &studentID, const QString &plan
     QJsonObject result = Database::insert("Plan", planInfo);
     return QString::number(result["id"].toInteger());
 }
+
+//returns the inserted row
+QJsonObject ViewPlanForm::enterPlanItem(const QString &planID, const QString &crn)
+{
+    QJsonObject planItemInfo;
+    planItemInfo["planID"] = planID.toLongLong();
+    planItemInfo["CRN"] = crn.toLongLong();
+    return Database::insert("PlanItem", planItemInfo);
+}
+void ViewPlanForm::on_pushButton_AddPlanItem_clicked()
+{
+    //if no plan selected
+    if (ui->listWidget_PlanList->currentRow() == -1)
+    {
+        QMessageBox::warning(this, "No Plan Selected", "Please select a plan first.");
+        return;
+    }
+
+    QString crn = ui->lineEdit_CourseToAdd->text();
+
+    if(crn.isEmpty())
+    {
+        QMessageBox::warning(this, "No CRN Entered", "Please enter a CRN first.");
+        return;
+    }
+
+    QListWidgetItem *item = ui->listWidget_PlanList->currentItem();
+    QString planID = item->data(Qt::UserRole).toString();
+    QJsonObject result = enterPlanItem(planID, crn);
+    return;
+}
+
