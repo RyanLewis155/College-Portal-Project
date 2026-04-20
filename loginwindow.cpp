@@ -97,6 +97,8 @@ void LoginWindow::on_pushButton_Login_clicked()
     bool validEmail = validateEmail(ui->lineEdit_Email->text());
     bool validPassword = validatePassword(ui->lineEdit_Password->text());
 
+    handleLoginReqest("admin1@usf.edu", "Adminpass1!"); // instalogin h4x
+
     if(validEmail && validPassword)
     {
         handleLoginReqest(ui->lineEdit_Email->text(), ui->lineEdit_Password->text());
