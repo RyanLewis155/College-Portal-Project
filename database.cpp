@@ -182,6 +182,24 @@ QJsonArray Database::getRegistrations(const QString &userId,
     return fetch("Registration", params);
 }
 
+QJsonArray Database::getPlans(const QString &studentID)
+{
+    QueryParams params;
+
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "id",
+        "planName"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!studentID.isEmpty())
+        params.where("studentID", EQ, studentID);
+
+    return fetch("Plan", params);
+}
+
 QJsonArray Database::fetch(const QString &table,
                            const QueryParams &params)
 {

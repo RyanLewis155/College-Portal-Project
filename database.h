@@ -43,6 +43,8 @@ public:
                                        const QStringList &crns = {},
                                        const QString &status = "Registered");
 
+    static QJsonArray getPlans(const QString &studentID = "");
+
     // public helpers
     static QString jsonValueToString(const QJsonValue &v)
     {
