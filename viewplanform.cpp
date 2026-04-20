@@ -8,7 +8,16 @@ ViewPlanForm::ViewPlanForm(User* loggedIn, QWidget *parent)
     ui->setupUi(this);
     u = loggedIn;
 
+    QJsonArray results = Database::getPlans(u->id);
 
+    for (QJsonValueRef result : results)
+    {
+        QJsonObject resultObj = result.toObject();
+        QString tempId = QString::number(resultObj["id"].toInteger());
+        QString tempPlanName = resultObj["planName"].toString();
+        Plan *newPlan = new Plan(tempId, tempPlanName);
+        plans.append(newPlan);
+    }
 }
 
 ViewPlanForm::~ViewPlanForm()

@@ -11,7 +11,7 @@ public:
     QString id;
     QString planName;
 
-    explicit Plan(QObject *parent = nullptr);
+    explicit Plan(QString id, QString planName, QObject *parent = nullptr);
 
 signals:
 };
