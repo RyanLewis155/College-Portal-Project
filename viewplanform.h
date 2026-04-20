@@ -19,6 +19,8 @@ public:
     explicit ViewPlanForm(User* loggedIn, QWidget *parent = nullptr);
     ~ViewPlanForm();
 
+    QString enterNewPlan(const QString &studentID, const QString &planName);
+
 private slots:
     void on_pushButton_AddPlan_clicked();
 
