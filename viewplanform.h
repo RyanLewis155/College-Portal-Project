@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QJsonObject>
 #include "database.h"
+#include "user.h"
 
 namespace Ui {
 class ViewPlanForm;
@@ -15,7 +16,7 @@ class ViewPlanForm : public QWidget
     Q_OBJECT
 
 public:
-    explicit ViewPlanForm(QWidget *parent = nullptr);
+    explicit ViewPlanForm(User* loggedIn, QWidget *parent = nullptr);
     ~ViewPlanForm();
 
 private slots:
@@ -23,6 +24,7 @@ private slots:
 
 private:
     Ui::ViewPlanForm *ui;
+    User* u;
 };
 
 #endif // VIEWPLANFORM_H
