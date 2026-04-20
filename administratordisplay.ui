@@ -1482,7 +1482,6 @@ QPushButton#pushButton_search:hover {
 }</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0">
-            <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0">
              <item row="0" column="0">
               <widget class="QComboBox" name="comboBox_term">
                <item>

@@ -39,7 +39,7 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
 
     // SELECT clause (Supabase embedded joins)
     params.select({
-        "CRN",  
+        "CRN",
         "startTime",
         "endTime",
         "days",
@@ -48,8 +48,6 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
         "courseNum",
         "room:Room!CourseSection_roomID_fkey(building,room,capacity)",
         "Course!CourseSection_courseID_fkey(course:name)",
-        "Room(capacity,building,room)",
-        "Course(course:name)",
         "User!CourseSection_profID_fkey(instructor:name)"
     });
 
