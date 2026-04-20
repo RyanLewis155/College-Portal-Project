@@ -46,6 +46,8 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
         "section:sectionNum",
         "subject",
         "courseNum",
+        "room:Room!CourseSection_roomID_fkey(building,room,capacity)",
+        "Course!CourseSection_courseID_fkey(course:name)",
         "Room(capacity,building,room)",
         "Course(course:name)",
         "User!CourseSection_profID_fkey(instructor:name)"
@@ -185,6 +187,42 @@ QJsonArray Database::getRegistrations(const QString &userId,
         params.where("status", EQ, status);
 
     return fetch("Registration", params);
+}
+
+QJsonArray Database::getPlans(const QString &studentID)
+{
+    QueryParams params;
+
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "id",
+        "planName"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!studentID.isEmpty())
+        params.where("studentID", EQ, studentID);
+
+    return fetch("Plan", params);
+}
+
+QJsonArray Database::getPlanItems(const QString &planID)
+{
+    QueryParams params;
+
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "planID",
+        "CRN"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!planID.isEmpty())
+        params.where("planID", EQ, planID);
+
+    return fetch("PlanItem", params);
 }
 
 QJsonArray Database::fetch(const QString &table,

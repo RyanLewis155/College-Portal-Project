@@ -58,7 +58,7 @@ StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
 
 
     registrationLayout->addWidget(new StudentRegistrationForm());
-    viewPlanLayout->addWidget(new ViewPlanForm());
+    viewPlanLayout->addWidget(new ViewPlanForm(loggedIn));
 
 }
 
