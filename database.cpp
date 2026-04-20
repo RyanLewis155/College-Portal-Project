@@ -223,12 +223,70 @@ QJsonArray Database::getPlanItems(const QString &planID)
     return fetch("PlanItem", params);
 }
 
+QHash<QString, int> Database::getNumRegistered(const QStringList &crns)
+{
+    QueryParams params;
+
+    // SELECT crn, count(studentID) — using PostgREST aggregate syntax
+    params.select({"crn:CRN"});
+    params.count("studentID");  // appends "count:studentID.count()" to select
+
+    // WHERE status = 'Registered'
+    params.where("status", EQ, "Registered");
+
+    // WHERE crn IN (...)  — format: (val1,val2,val3)
+    if (!crns.isEmpty())
+        params.where("CRN", IN, "(" + crns.join(",") + ")");
+
+    QJsonArray rows = fetch("Registration", params);
+    qDebug() << rows;
+
+    // build map from results
+    QHash<QString, int> result;
+    for (const QJsonValue &row : rows) {
+        QJsonObject obj = row.toObject();
+        QString crn   = jsonValueToString(obj["crn"]);
+        int     count = jsonValueToString(obj["count"]).toInt();
+        if (!crn.isEmpty())
+            result.insert(crn, count);
+    }
+    // Ensure every requested CRN has an entry
+    for (const QString &crn : crns) {
+        if (!result.contains(crn))
+            result.insert(crn, 0);
+    }
+
+    return result;
+}
+
+// QHash<QString, int> Database::getNumRegistered(const QStringList &crns)
+// {
+//     QueryParams params;
+
+//     params.select({"crn:CRN", "studentID"});
+//     params.where("status", EQ, "Registered");
+
+//     if (!crns.isEmpty())
+//         params.where("CRN", IN, "(" + crns.join(",") + ")");
+
+//     QJsonArray rows = fetch("Registration", params);
+//     qDebug() << rows;
+
+//     // Count per CRN client-side
+//     QHash<QString, int> result;
+//     for (const QJsonValue &row : rows) {
+//         QString crn = row.toObject().value("crn").toString();
+//         if (!crn.isEmpty())
+//             result[crn]++;
+//     }
+//     return result;
+// }
+
 QJsonArray Database::fetch(const QString &table,
                            const QueryParams &params)
 {
     // get API url for desired query
     QUrl url = buildUrl(table, params);
-
     // build request
     QNetworkRequest request(url);
     request.setRawHeader("apikey", m_apiKey.toUtf8());
@@ -352,17 +410,26 @@ QUrl Database::buildUrl(const QString &table, const QueryParams &params)
     // -------------------------
     // SELECT
     // -------------------------
-    if (!params.selectColumns.isEmpty())
-    {
-        query.addQueryItem(
-            "select",
-            params.selectColumns.join(",")
-            );
-    }
+
+    QStringList cols = params.selectColumns;
+    if (!params.countColumn.isEmpty())
+        cols.append("count:" + params.countColumn + ".count()");
+
+    if (!cols.isEmpty())
+        query.addQueryItem("select", cols.join(","));
     else
-    {
         query.addQueryItem("select", "*");
-    }
+    // if (!params.selectColumns.isEmpty())
+    // {
+    //     query.addQueryItem(
+    //         "select",
+    //         params.selectColumns.join(",")
+    //         );
+    // }
+    // else
+    // {
+    //     query.addQueryItem("select", "*");
+    // }
 
     // -------------------------
     // WHERE CLAUSES
