@@ -6,6 +6,7 @@
 #include <QJsonObject>
 #include "database.h"
 #include "user.h"
+#include "coursesection.h"
 #include "plan.h"
 
 struct PlanItem {

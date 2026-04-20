@@ -87,7 +87,28 @@ void ViewPlanForm::on_pushButton_AddPlanItem_clicked()
 
     QListWidgetItem *item = ui->listWidget_PlanList->currentItem();
     QString planID = item->data(Qt::UserRole).toString();
-    QJsonObject result = enterPlanItem(planID, crn);
+
+    //getting relevant course info
+    QStringList crns = {crn};
+    QVector<CourseSection> crnResults = Database::getCourseData(crns);
+
+    //check if crn is valid
+    if (!crnResults.isEmpty())
+    {
+        QJsonObject planItemResult = enterPlanItem(planID, crn);
+        if (!planItemResult.isEmpty())
+        {
+            QMessageBox::information(this, "Success", "Course added successfully!");
+        }
+        else
+        {
+            QMessageBox::warning(this, "Error", "Failed to add course. Please try again.");
+        }
+    }
+    else
+    {
+        QMessageBox::warning(this, "Invalid CRN", "The CRN you entered does not exist.");
+        return;
+    }
     return;
 }
-
