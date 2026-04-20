@@ -78,15 +78,26 @@ void ViewPlanForm::on_pushButton_AddPlanItem_clicked()
     }
 
     QString crn = ui->lineEdit_CourseToAdd->text();
+    QListWidgetItem *item = ui->listWidget_PlanList->currentItem();
+    QString planID = item->data(Qt::UserRole).toString();
 
+    //check if user entered a crn
     if(crn.isEmpty())
     {
         QMessageBox::warning(this, "No CRN Entered", "Please enter a CRN first.");
         return;
     }
 
-    QListWidgetItem *item = ui->listWidget_PlanList->currentItem();
-    QString planID = item->data(Qt::UserRole).toString();
+    //check if the crn has already been entered in the plan
+    QJsonArray existingItems = Database::getPlanItems(planID);
+    for (const QJsonValueRef existingItem : existingItems)
+    {
+        QJsonObject itemObj = existingItem.toObject();
+        if (QString::number(itemObj["CRN"].toInteger()) == crn) {
+            QMessageBox::warning(this, "Duplicate CRN", "This course is already in your plan.");
+            return;
+        }
+    }
 
     //getting relevant course info
     QStringList crns = {crn};
@@ -99,6 +110,7 @@ void ViewPlanForm::on_pushButton_AddPlanItem_clicked()
         if (!planItemResult.isEmpty())
         {
             QMessageBox::information(this, "Success", "Course added successfully!");
+            loadPlanItems(planID);
         }
         else
         {
