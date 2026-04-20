@@ -200,6 +200,24 @@ QJsonArray Database::getPlans(const QString &studentID)
     return fetch("Plan", params);
 }
 
+QJsonArray Database::getPlanItems(const QString &planID)
+{
+    QueryParams params;
+
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "planID",
+        "CRN"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!planID.isEmpty())
+        params.where("planID", EQ, planID);
+
+    return fetch("PlanItem", params);
+}
+
 QJsonArray Database::fetch(const QString &table,
                            const QueryParams &params)
 {

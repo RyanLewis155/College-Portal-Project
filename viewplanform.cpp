@@ -112,3 +112,56 @@ void ViewPlanForm::on_pushButton_AddPlanItem_clicked()
     }
     return;
 }
+void ViewPlanForm::on_listWidget_PlanList_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
+{
+    if (current == nullptr) return;
+    QString planID = current->data(Qt::UserRole).toString();
+    loadPlanItems(planID);
+}
+
+void ViewPlanForm::loadPlanItems(const QString &planID)
+{
+    ui->tableWidget_PlanClasses->clearContents();
+    ui->tableWidget_PlanClasses->setRowCount(0);
+
+    QJsonArray results = Database::getPlanItems(planID);
+    QStringList crns;
+
+    //put crns in a list
+    for (QJsonValueRef result : results)
+    {
+        QJsonObject resultObj = result.toObject();
+        QString tempCRN = QString::number(resultObj["CRN"].toInteger());
+        crns.append(tempCRN);
+    }
+
+    if (crns.isEmpty())
+    {
+        return;
+    }
+
+    //get course data for all crns
+    QVector<CourseSection> courses = Database::getCourseData(crns);
+    ui->tableWidget_PlanClasses->setColumnCount(11);
+    ui->tableWidget_PlanClasses->setHorizontalHeaderLabels({
+        "CRN", "Start Time", "End Time", "Days", "Section",
+        "Subject", "Course #", "Building", "Room", "Course", "Instructor"
+    });
+
+    for (const CourseSection &cs : courses) {
+        int row = ui->tableWidget_PlanClasses->rowCount();
+        ui->tableWidget_PlanClasses->insertRow(row);
+        ui->tableWidget_PlanClasses->setItem(row, 0,  new QTableWidgetItem(cs.crn));
+        ui->tableWidget_PlanClasses->setItem(row, 1,  new QTableWidgetItem(cs.startTime));
+        ui->tableWidget_PlanClasses->setItem(row, 2,  new QTableWidgetItem(cs.endTime));
+        ui->tableWidget_PlanClasses->setItem(row, 3,  new QTableWidgetItem(cs.days));
+        ui->tableWidget_PlanClasses->setItem(row, 4,  new QTableWidgetItem(QString::number(cs.sectionNum)));
+        ui->tableWidget_PlanClasses->setItem(row, 5,  new QTableWidgetItem(cs.subject));
+        ui->tableWidget_PlanClasses->setItem(row, 6,  new QTableWidgetItem(cs.courseNum));
+        ui->tableWidget_PlanClasses->setItem(row, 7,  new QTableWidgetItem(cs.building));
+        ui->tableWidget_PlanClasses->setItem(row, 8,  new QTableWidgetItem(cs.room));
+        ui->tableWidget_PlanClasses->setItem(row, 9,  new QTableWidgetItem(cs.coursename));
+        ui->tableWidget_PlanClasses->setItem(row, 10, new QTableWidgetItem(cs.instructorname));
+    }
+}
+
