@@ -92,11 +92,12 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
     QJsonArray raw = fetch("CourseSection", params);
 
     QHash<QString, QStringList> flattenRules;
-    flattenRules["Room"] = {"building", "capacity", "room"};
+    flattenRules["room"] = {"building", "capacity", "room"};
     flattenRules["Course"] = {"course"};
     flattenRules["User"] = {"instructor"};
 
     raw = flattenArray(raw, flattenRules);
+    qDebug() << raw;
     QVector<CourseSection> results;
     results.reserve(raw.size());
 

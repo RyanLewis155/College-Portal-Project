@@ -225,6 +225,8 @@ void User::handleRegistration(const QString &term, const QStringList &crns)
     for (const CourseSection &c : courseData)
     {
         QString status;
+        qDebug() << "Capacity: " << c.capacity;
+        qDebug() << "Enrolled: " << enrollCounts[c.crn];
         if (enrollCounts[c.crn] + 1 > c.capacity.toInt())
         {
             status = "Waitlisted";
