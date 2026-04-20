@@ -42,6 +42,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         administratordisplay.h administratordisplay.cpp administratordisplay.ui
         coursesection.h coursesection.cpp
         userinfo.h
+        plan.h plan.cpp
 
 
 

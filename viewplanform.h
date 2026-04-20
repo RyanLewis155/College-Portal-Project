@@ -6,6 +6,7 @@
 #include <QJsonObject>
 #include "database.h"
 #include "user.h"
+#include "plan.h"
 
 namespace Ui {
 class ViewPlanForm;
@@ -27,6 +28,7 @@ private slots:
 private:
     Ui::ViewPlanForm *ui;
     User* u;
+    QList<Plan*> plans;
 };
 
 #endif // VIEWPLANFORM_H

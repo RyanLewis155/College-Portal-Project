@@ -7,6 +7,8 @@ ViewPlanForm::ViewPlanForm(User* loggedIn, QWidget *parent)
 {
     ui->setupUi(this);
     u = loggedIn;
+
+
 }
 
 ViewPlanForm::~ViewPlanForm()
