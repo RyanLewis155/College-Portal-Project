@@ -27,10 +27,13 @@ CourseSection fromJson(const QJsonObject &obj)
     cs.courseNum = getString(obj, "courseNum");
     cs.term      = getString(obj, "term");
 
+    cs.level    = getString(obj, "level");
+
     if (obj.contains("room") && obj["room"].isObject()) {
         QJsonObject r = obj["room"].toObject();
         cs.building = r.value("building").toString();
         cs.room = QString::number(r.value("room").toInt());
+        cs.capacity = QString::number(r.value("capacity").toInt());
     }
 
     if(obj.contains("Course") && obj["Course"].isObject()) {

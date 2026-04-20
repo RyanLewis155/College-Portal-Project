@@ -28,7 +28,17 @@ public:
                         const QString &courseNum,
                         const QString &days);
 
-    void searchCoursesEX(const QString &CRN, const QString &Building, const QString &Professor, const QString &Days, const QString &Term, const QString &Course, const int &SectionNum, const QString &Level, const QString &Subject, const QString &CourseNum);
+    void searchCoursesEX(const QString &CRN,
+                               const QString &Building,
+                               const QString &Professor,
+                               const QString &Days,
+                               const QString &Term,
+                               const QString &Course,
+                               const int &SectionNum,
+                               const QString &Level,
+                               const QString &Subject,
+                               const QString &CourseNum
+                         );
     void getConflictReport(const QString &term);
 
 signals:

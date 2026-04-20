@@ -25,15 +25,15 @@ void Database::init(const QString &baseUrl, const QString &apiKey)
 }
 
 QVector<CourseSection> Database::getCourseData(const QStringList &crns,
-                                   const QString &building,
-                                   const QString &professor,
-                                   const QString &days,
-                                   const QString &term,
-                                   const QString &course,
-                                   const int &sectionNum,
-                                   const QString &level,
-                                   const QString &subject,
-                                   const QString &courseNum)
+                                               const QString &building,
+                                               const QString &professor,
+                                               const QString &days,
+                                               const QString &term,
+                                               const QString &course,
+                                               const int &sectionNum,
+                                               const QString &level,
+                                               const QString &subject,
+                                               const QString &courseNum)
 {
     QueryParams params;
 
@@ -46,9 +46,9 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
         "section:sectionNum",
         "subject",
         "courseNum",
-        "room:Room(building, room)",
-        "Course(course:name)",
-        "User(instructor:name)"
+        "room:Room!CourseSection_roomID_fkey(building,room,capacity)",
+        "Course!CourseSection_courseID_fkey(course:name)",
+        "User!CourseSection_profID_fkey(instructor:name)"
     });
 
     // WHERE clauses (only if provided)
@@ -144,7 +144,43 @@ QJsonArray Database::getUserData(const QString &email,
     return fetch("User", params);
 }
 
+QJsonArray Database::getRegistrations(const QString &userId,
+                                   const QStringList &crns,
+                                   const QString &status)
+{
+    QueryParams params;
 
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "studentID",
+        "CRN",
+        "status",
+        "timestamp"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!userId.isEmpty())
+        params.where("studentID", EQ, userId);
+
+    if (!crns.isEmpty() && !crns[0].isEmpty()) {
+        if (crns.size() == 1) {
+            params.where("CRN", EQ, crns[0]);
+        } else {
+            QStringList quoted;
+            for (const QString &crn : crns)
+                quoted << crn;
+
+            QString inClause = "(" + quoted.join(",") + ")";
+            params.where("CRN", IN, inClause);
+        }
+    }
+
+    if (!status.isEmpty())
+        params.where("status", EQ, status);
+
+    return fetch("Registration", params);
+}
 
 QJsonArray Database::fetch(const QString &table,
                            const QueryParams &params)
