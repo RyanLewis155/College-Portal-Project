@@ -17,6 +17,10 @@ ViewPlanForm::ViewPlanForm(User* loggedIn, QWidget *parent)
         QString tempPlanName = resultObj["planName"].toString();
         Plan *newPlan = new Plan(tempId, tempPlanName);
         plans.append(newPlan);
+
+        QListWidgetItem *newItem = new QListWidgetItem(tempPlanName);
+        newItem->setData(Qt::UserRole, tempId);
+        ui->listWidget_PlanList->addItem(newItem);
     }
 }
 
@@ -35,6 +39,13 @@ void ViewPlanForm::on_pushButton_AddPlan_clicked()
     QString studentId = u->id;
 
     QString newPlanId = enterNewPlan(studentId, newPlanName);
+
+    Plan *newPlan = new Plan(newPlanId, newPlanName);
+    plans.append(newPlan);
+
+    QListWidgetItem *newItem = new QListWidgetItem(newPlanName);
+    newItem->setData(Qt::UserRole, newPlanId);
+    ui->listWidget_PlanList->addItem(newItem);
 }
 
 QString ViewPlanForm::enterNewPlan(const QString &studentID, const QString &planName)

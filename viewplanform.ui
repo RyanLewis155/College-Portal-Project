@@ -64,18 +64,26 @@
           <height>16777215</height>
          </size>
         </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">QListWidget#listWidget_PlanList {
 	background-color: white;
+	color: black;
 }</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QTableWidget" name="tableWidget_PlanClasses">
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">QTableWidget#tableWidget_PlanClasses {
 	background-color: white;
+	color: black;
 }</string>
         </property>
        </widget>
@@ -92,8 +100,13 @@
    </item>
    <item row="1" column="0">
     <widget class="QLineEdit" name="lineEdit_NewPlanName">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    color: black;
+}</string>
+     </property>
      <property name="placeholderText">
-      <string>NewPlan</string>
+      <string>Enter New Plan Name Here</string>
      </property>
     </widget>
    </item>
