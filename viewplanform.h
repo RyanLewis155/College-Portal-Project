@@ -4,10 +4,7 @@
 #include <QWidget>
 #include <QMessageBox>
 #include <QJsonObject>
-#include "database.h"
 #include "user.h"
-#include "coursesection.h"
-#include "plan.h"
 #include <QListWidget>
 
 struct PlanItem {

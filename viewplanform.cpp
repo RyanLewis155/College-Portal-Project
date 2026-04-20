@@ -1,5 +1,7 @@
 #include "viewplanform.h"
 #include "ui_viewplanform.h"
+#include "coursesection.h"
+#include "database.h"
 
 ViewPlanForm::ViewPlanForm(User* loggedIn, QWidget *parent)
     : QWidget(parent)
