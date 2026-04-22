@@ -120,17 +120,17 @@
         </property>
         <item>
          <property name="text">
-          <string>Summer 2026</string>
+          <string>Spring 2025</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Fall 2026</string>
+          <string>Fall 2025</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Spring 2027</string>
+          <string>Spring 2026</string>
          </property>
         </item>
        </widget>

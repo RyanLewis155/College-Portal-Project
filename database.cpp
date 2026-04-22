@@ -61,15 +61,15 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
 
     // SELECT clause (Supabase embedded joins)
     params.select({
-        "CRN",  
+        "CRN",
         "startTime",
         "endTime",
         "days",
         "section:sectionNum",
         "subject",
         "courseNum",
-        "Room(capacity,building,room)",
-        "Course(course:name)",
+        "room:Room!CourseSection_roomID_fkey(building,room,capacity)",
+        "Course!CourseSection_courseID_fkey(course:name)",
         "User!CourseSection_profID_fkey(instructor:name)"
     });
 
@@ -114,11 +114,12 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
     QJsonArray raw = fetch("CourseSection", params);
 
     QHash<QString, QStringList> flattenRules;
-    flattenRules["Room"] = {"building", "capacity", "room"};
+    flattenRules["room"] = {"building", "capacity", "room"};
     flattenRules["Course"] = {"course"};
     flattenRules["User"] = {"instructor"};
 
     raw = flattenArray(raw, flattenRules);
+
     QVector<CourseSection> results;
     results.reserve(raw.size());
 
@@ -275,12 +276,82 @@ QJsonArray Database::getRegistrations(const QString &userId,
     return fetch("Registration", params);
 }
 
+QJsonArray Database::getPlans(const QString &studentID)
+{
+    QueryParams params;
+
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "id",
+        "planName"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!studentID.isEmpty())
+        params.where("studentID", EQ, studentID);
+
+    return fetch("Plan", params);
+}
+
+QJsonArray Database::getPlanItems(const QString &planID)
+{
+    QueryParams params;
+
+    // SELECT clause (Supabase embedded joins)
+    params.select({
+        "planID",
+        "CRN"
+    });
+
+    // WHERE clauses (only if provided)
+
+    if (!planID.isEmpty())
+        params.where("planID", EQ, planID);
+
+    return fetch("PlanItem", params);
+}
+
+QHash<QString, int> Database::getNumRegistered(const QStringList &crns)
+{
+    QueryParams params;
+
+    // SELECT crn, count(studentID) — using PostgREST aggregate syntax
+    params.select({"crn:CRN"});
+    params.count("studentID");  // appends "count:studentID.count()" to select
+
+    // WHERE status = 'Registered'
+    params.where("status", EQ, "Registered");
+
+    // WHERE crn IN (...)  — format: (val1,val2,val3)
+    if (!crns.isEmpty())
+        params.where("CRN", IN, "(" + crns.join(",") + ")");
+
+    QJsonArray rows = fetch("Registration", params);
+
+    // build map from results
+    QHash<QString, int> result;
+    for (const QJsonValue &row : rows) {
+        QJsonObject obj = row.toObject();
+        QString crn   = jsonValueToString(obj["crn"]);
+        int     count = jsonValueToString(obj["count"]).toInt();
+        if (!crn.isEmpty())
+            result.insert(crn, count);
+    }
+    // Ensure every requested CRN has an entry
+    for (const QString &crn : crns) {
+        if (!result.contains(crn))
+            result.insert(crn, 0);
+    }
+
+    return result;
+}
+
 QJsonArray Database::fetch(const QString &table,
                            const QueryParams &params)
 {
     // get API url for desired query
     QUrl url = buildUrl(table, params);
-
     // build request
     QNetworkRequest request(url);
     request.setRawHeader("apikey", m_apiKey.toUtf8());
@@ -354,7 +425,7 @@ QJsonObject Database::flattenObject(
             }
         }
 
-        result.remove(key);
+        // result.remove(key);
     }
 
     return result;
@@ -404,17 +475,26 @@ QUrl Database::buildUrl(const QString &table, const QueryParams &params)
     // -------------------------
     // SELECT
     // -------------------------
-    if (!params.selectColumns.isEmpty())
-    {
-        query.addQueryItem(
-            "select",
-            params.selectColumns.join(",")
-            );
-    }
+
+    QStringList cols = params.selectColumns;
+    if (!params.countColumn.isEmpty())
+        cols.append("count:" + params.countColumn + ".count()");
+
+    if (!cols.isEmpty())
+        query.addQueryItem("select", cols.join(","));
     else
-    {
         query.addQueryItem("select", "*");
-    }
+    // if (!params.selectColumns.isEmpty())
+    // {
+    //     query.addQueryItem(
+    //         "select",
+    //         params.selectColumns.join(",")
+    //         );
+    // }
+    // else
+    // {
+    //     query.addQueryItem("select", "*");
+    // }
 
     // -------------------------
     // WHERE CLAUSES

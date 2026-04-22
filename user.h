@@ -42,6 +42,7 @@ public:
                                const QString &Subject,
                                const QString &CourseNum
                          );
+
     void getConflictReport(const QString &term);
 
     QList<UserInfo> getProfessors();
@@ -50,12 +51,14 @@ public:
     void searchForSingleCourse(const QString &CRN);
     QList<Course> getCourses();
     QList<Room> getRooms();
+    void handleRegistration(const QString &term, const QStringList &crns);
 
 signals:
     // Search results: list of rows (column name -> value)
     void searchResultsReady(QStandardItemModel* model);
     void conflictReportReady(QStandardItemModel* model);
     void searchForCourseReady(CourseSection cs);
+    void registrationComplete(const QString &message);
 
 private:
     // helpers for checking course conflicts

@@ -5,6 +5,7 @@
 #include "user.h"
 #include "studentregistrationform.h"
 #include "viewplanform.h"
+#include <QMessageBox>
 
 
 StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
@@ -54,9 +55,8 @@ StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
     QGridLayout *viewPlanLayout = qobject_cast<QGridLayout*>(ui->widget_ViewPlans->layout());
 
 
-    registrationLayout->addWidget(new StudentRegistrationForm());
-    viewPlanLayout->addWidget(new ViewPlanForm());
-
+    registrationLayout->addWidget(new StudentRegistrationForm(u));
+    viewPlanLayout->addWidget(new ViewPlanForm(loggedIn));
 }
 
 StudentDisplay::~StudentDisplay()
@@ -103,5 +103,4 @@ void StudentDisplay::PopulateClasses(QList<ClassScheduleItem*> classSchedule)
     }
 
 }
-
 
