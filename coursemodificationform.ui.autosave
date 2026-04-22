@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CourseModificationForm</class>
+ <widget class="QWidget" name="CourseModificationForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>981</width>
+    <height>562</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #EDEBD1;
+</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QFrame" name="frame">
+     <property name="styleSheet">
+      <string notr="true">background-color: white;
+border-radius: 15px;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <widget class="QFrame" name="frame_Course">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>30</y>
+        <width>136</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame#frame_Course
+{
+	background-color: #006747;
+	border-radius: 25px;
+	padding: 5px;
+}
+
+QLabel#label_Course
+{
+	background-color: transparent;
+	color: white;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+}
+
+QLabel#label_CourseOutput
+{
+	background-color: transparent;
+	color: white;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="label_Course">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Course</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="label_CourseOutput">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>CourseName</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QFrame" name="frame_Course_2">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>240</y>
+        <width>136</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame#frame_Course
+{
+	background-color: #006747;
+	border-radius: 25px;
+	padding: 5px;
+}
+
+QLabel#label_Course
+{
+	background-color: transparent;
+	color: white;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+}
+
+QLabel#label_CourseOutput
+{
+	background-color: transparent;
+	color: white;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="label_Course_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Course</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="label_CourseOutput_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>CourseName</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QFrame" name="frame_CRN">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>25</y>
+        <width>136</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame#frame_CRN 
+{
+	background-color: #006747;
+	border-radius: 25px;
+	padding: 5px;
+}
+
+QLabel#label_CRN 
+{
+	background-color: transparent;
+	color: white;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+}
+
+QLabel#label_CRNOutput
+{
+	background-color: transparent;
+	color: white;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="label_CRN">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>CRN</string>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QLabel" name="label_CRNOutput">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Number</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

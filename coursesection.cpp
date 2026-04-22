@@ -57,3 +57,24 @@ CourseSection fromJson(const QJsonObject &obj)
 
     return cs;
 }
+QJsonObject toJson(const CourseSection &cs)
+{
+    QJsonObject obj;
+    obj["CRN"] = cs.crn;
+    obj["roomID"] = cs.buildingID;
+    obj["profID"] = cs.professorID;
+    obj["startTime"] = cs.startTime;
+    obj["endTime"] = cs.endTime;
+    obj["days"] = cs.days;
+    obj["term"] = cs.term;
+    obj["courseID"] = cs.courseID;
+    obj["sectionNum"] = cs.sectionNum;
+    if(!cs.level.isEmpty())
+    {
+        obj["level"] = cs.level;
+    }
+    obj["subject"] = cs.subject;
+    obj["courseNum"] = cs.courseNum;
+
+    return obj;
+}

@@ -24,6 +24,28 @@ void Database::init(const QString &baseUrl, const QString &apiKey)
     }
 }
 
+
+CourseSection Database::getSingleCourseData(const QString &crn)
+{
+    QueryParams params;
+    params.select({"CRN"});
+
+    params.where("CRN", EQ, crn);
+
+    QJsonArray raw = fetch("CourseSection", params);
+
+    QHash<QString, QStringList> flattenRules;
+    flattenRules["Room"] = {"building", "capacity", "room"};
+    flattenRules["Course"] = {"course"};
+    flattenRules["User"] = {"instructor"};
+
+    const QJsonValue &val = raw.at(0);
+    CourseSection result = fromJson(val.toObject());
+
+
+    return result;
+}
+
 QVector<CourseSection> Database::getCourseData(const QStringList &crns,
                                                const QString &building,
                                                const QString &professor,
@@ -114,6 +136,72 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
 
     return results;
 }
+
+QJsonArray Database::getRoomData(const QString &roomID, const QString &building, const int &room, const int &capacity)
+{
+    QueryParams params;
+
+    params.select({
+        "id",
+        "building",
+        "room",
+        "capacity"
+    });
+
+    if (!roomID.isEmpty())
+    {
+        params.where("id", EQ, roomID);
+    }
+
+    if(!building.isEmpty())
+    {
+        params.where("building", EQ, building);
+    }
+
+    if(room > 0)
+    {
+        params.where("room", EQ, QString::number(room));
+    }
+
+    if(capacity > 0)
+    {
+        params.where("capacity", EQ, QString::number(capacity));
+    }
+
+    return fetch("Room", params);
+}
+
+QJsonArray Database::getCourseNameData(const int &CourseID,
+                                       const QString &Description,
+                                       const QString &CourseName)
+{
+    QueryParams params;
+
+    params.select({
+        "id",
+        "description",
+        "name"
+    });
+
+    if (!(CourseID < 0))
+    {
+        params.where("id", EQ, QString::number(CourseID));
+    }
+
+    if(!Description.isEmpty())
+    {
+        params.where("description", EQ, Description);
+    }
+
+    if(!CourseName.isEmpty())
+    {
+        params.where("name", EQ, CourseName);
+    }
+
+
+    return fetch("Course", params);
+}
+
 
 
 
@@ -481,6 +569,54 @@ QJsonObject Database::insert(const QString &table,
         if (!arr.isEmpty() && arr.first().isObject())
             return arr.first().toObject();  // return first inserted row
     }
+
+    return {};
+}
+
+QJsonObject Database::upsertCourseSection(const QString &table,
+                                          const QJsonObject &data)
+{
+    QUrl url = buildUrl(table, {});
+    QUrlQuery query(url);
+    query.addQueryItem("on_conflict", "CRN");
+    query.addQueryItem("select", "*");
+
+    url.setQuery(query);
+
+    QNetworkRequest request(url);
+
+    request.setRawHeader("apikey", m_apiKey.toUtf8());
+    request.setRawHeader("Authorization", ("Bearer " + m_apiKey).toUtf8());
+
+    // IMPORTANT: UPSERT behavior
+    request.setRawHeader("Prefer",
+                         "resolution=merge-duplicates,return=representation");
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QByteArray body = QJsonDocument(data).toJson();
+
+    QNetworkReply *reply = m_manager->post(request, body);
+
+    QEventLoop loop;
+    QObject::connect(reply, &QNetworkReply::finished,
+                     &loop, &QEventLoop::quit);
+
+    loop.exec();
+
+    if (reply->error() != QNetworkReply::NoError) {
+        qWarning() << "Upsert error:" << reply->errorString();
+        reply->deleteLater();
+        return {};
+    }
+
+    QByteArray response = reply->readAll();
+    reply->deleteLater();
+
+    QJsonDocument doc = QJsonDocument::fromJson(response);
+
+    if (doc.isArray() && !doc.array().isEmpty())
+        return doc.array().first().toObject();
 
     return {};
 }

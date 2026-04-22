@@ -4,6 +4,8 @@
 #include <QStandardItemModel>
 #include <QJsonObject>
 #include "coursesection.h"
+#include "course.h"
+#include "room.h"
 
 User::User(UserInfo u, QObject *parent)
     : QObject(parent)
@@ -18,6 +20,19 @@ User::~User()
 }
 
 // ===== Public Methods Implementation =====
+
+void User::searchForSingleCourse(const QString &CRN)
+{
+    QStringList crns = {CRN}; // Convert single CRN to list for API
+    QVector<CourseSection> results = Database::getCourseData(crns);
+
+    qDebug() << "Received results:" << results.size();
+
+    const CourseSection &cs = results[0];
+
+
+    emit searchForCourseReady(cs);
+}
 
 void User::searchCourses(const QString &term,
                          const QString &crn,
@@ -178,6 +193,69 @@ void User::getConflictReport(const QString &term)
     // STEP 4: Emit result
     // -------------------------
     emit conflictReportReady(model);
+}
+
+QList<Room> User::getRooms()
+{
+    QJsonArray data = Database::getRoomData();
+    QList<Room> results;
+
+    for(int i = 0; i < data.size(); ++i)
+    {
+        QJsonObject roomObj = data.at(i).toObject();
+
+        Room room;
+        room.roomID = Database::jsonValueToString(roomObj["id"]);
+        room.building = Database::jsonValueToString(roomObj["building"]);
+        room.room = Database::jsonValueToString(roomObj["room"]).toInt();
+        room.capacity = Database::jsonValueToString(roomObj["capacity"]).toInt();
+
+        results.append(room);
+    }
+
+    return results;
+}
+
+QList<Course> User::getCourses()
+{
+    QJsonArray data = Database::getCourseNameData();
+
+    QList<Course> results;
+
+    for (int i = 0; i < data.size(); ++i)
+    {
+        QJsonObject courseObj = data.at(i).toObject();
+
+        Course course;
+        course.courseID = Database::jsonValueToString(courseObj["id"]);
+        course.name = Database::jsonValueToString(courseObj["name"]);
+
+        results.append(course);
+    }
+
+    return results;
+}
+
+QList<UserInfo> User::getProfessors()
+{
+    QJsonArray data = Database::getUserData("", "", "Professor", "");
+
+    QList<UserInfo> results;
+
+    for (int i = 0; i < data.size(); ++i)
+    {
+        QJsonObject userObj = data.at(i).toObject();
+
+        UserInfo professor;
+        professor.id = Database::jsonValueToString(userObj["id"]);
+        professor.email = Database::jsonValueToString(userObj["email"]);
+        professor.role = Database::jsonValueToString(userObj["role"]);
+        professor.FullName = Database::jsonValueToString(userObj["name"]);
+
+        results.append(professor);
+    }
+
+    return results;
 }
 
 void User::handleRegistration(const QString &term, const QStringList &crns)
@@ -377,7 +455,7 @@ QHash<QString, QStringList> User::validateCourses(const QString &term, const QSt
 
     for (const Course &c : courses) {
         if (invalidCRNs.contains(c.crn)) continue;
-        for (QChar d : c.days) {
+        for (const QChar &d : c.days) {
             QString roomKey = c.building + "|" + c.room + "|" + d;
             QString profKey = c.instructor + "|" + d;
 
