@@ -4,3 +4,4 @@
 .qtcreator/CMakeLists.txt.user
 .qtcreator/CMakeLists.txt.user.d8f0353
 /build
+/out
