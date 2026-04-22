@@ -37,7 +37,7 @@ void MainWindow::handleLoginSuccess(UserInfo userInfo)
     if (role == "Student")
         dashBoardWindow = new StudentDisplay(loggedIn);
     else if (role == "Professor")
-        dashBoardWindow = new ProfessorDisplay();
+        dashBoardWindow = new ProfessorDisplay(loggedIn);
     else if (role == "Administrator")
         dashBoardWindow = new AdministratorDisplay(loggedIn);
 
