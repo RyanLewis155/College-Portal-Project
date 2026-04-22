@@ -157,7 +157,7 @@
                         </string>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="tab_SearchCourses">
          <property name="styleSheet">
@@ -1457,50 +1457,6 @@ QPushButton#pushButton_search:hover {
              <property name="bottomMargin">
               <number>15</number>
              </property>
-             <item row="1" column="0">
-              <widget class="QWidget" name="widget" native="true">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="pushButton_SubmitChanges">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>55</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton#pushButton_SubmitChanges {
-	font: 10pt 'Inter-VariableFont_opsz,wght';
-	font-weight: bold;
-	background-color: #CFC493;
-	margin: 4px;
-	padding: 2px;
-}
-
-QPushButton#pushButton_SubmitChanges:focus {
-	border-radius: 8px;
-	border: 1px solid #006747;
-}
-
-QPushButton#pushButton_SubmitChanges:hover {
-	background-color: #006747;
-	border-radius: 8px;
-	margin: 0px;
-	padding: 6px;
-}</string>
-               </property>
-               <property name="text">
-                <string>Submit Changes</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="0" colspan="2">
               <layout class="QHBoxLayout" name="horizontalLayout_2">
                <property name="sizeConstraint">
@@ -1633,6 +1589,999 @@ QPushButton#pushButton_getCourse:hover {
                </item>
               </layout>
              </item>
+             <item row="1" column="0">
+              <widget class="QWidget" name="widget_CourseInfo" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_10">
+                <item row="0" column="0">
+                 <widget class="QWidget" name="widget" native="true">
+                  <property name="styleSheet">
+                   <string notr="true">background-color:white;</string>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_9">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="CourseInfo">
+                     <property name="sizeConstraint">
+                      <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+                     </property>
+                     <property name="leftMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>15</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="label_courseInfo">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel#label_courseInfo {
+    padding: 1px 5px 1px 8px;
+    min-width: 1em;
+	font: 16pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}
+
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Course Info:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QFormLayout" name="formLayout_Section1">
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+                       </property>
+                       <property name="labelAlignment">
+                        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                       </property>
+                       <property name="formAlignment">
+                        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+                       </property>
+                       <property name="leftMargin">
+                        <number>10</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>10</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>10</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>10</number>
+                       </property>
+                       <item row="0" column="1">
+                        <widget class="QLabel" name="label_modifyCRN">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel#label_modifyCRN{
+	color: black;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: white;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_modifyCRNLabel">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel#label_modifyCRNLabel {
+	color: black;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: white;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>CRN: </string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLineEdit" name="lineEdit_section">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit#lineEdit_section {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 6px;
+	padding-right: 3px;
+	border: none;
+	border-bottom: 1px solid #cccccc;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background: #CFC493;
+}</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLineEdit" name="lineEdit_courseNumber">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit#lineEdit_courseNumber{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 6px;
+	padding-right: 3px;
+	border: none;
+	border-bottom: 1px solid #cccccc;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background: #CFC493;
+}</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="1">
+                        <widget class="QLineEdit" name="lineEdit_modifySubject">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit#lineEdit_modifySubject {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 6px;
+	padding-right: 3px;
+	border: none;
+	border-bottom: 1px solid #cccccc;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background: #CFC493;
+}</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="1">
+                        <widget class="QComboBox" name="comboBox_modifyCourse">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QComboBox#comboBox_modifyCourse {
+    padding: 1px 18px 1px 8px;
+    min-width: 1em;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+	background-color: #CFC493;
+	selection-background-color: #006747;
+    selection-color: white;
+}
+
+
+QComboBox#comboBox_modifyCourse QAbstractItemView::item:selected {
+    border-left: 3px solid #006747;
+}
+</string>
+                         </property>
+                         <property name="sizeAdjustPolicy">
+                          <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_modifySection">
+                         <property name="styleSheet">
+                          <string notr="true">QLabel#label_modifySection {
+	color: black;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: white;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Section:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_modifyCourseNumber">
+                         <property name="styleSheet">
+                          <string notr="true">QLabel#label_modifyCourseNumber {
+	color: black;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: white;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Course Number:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="0">
+                        <widget class="QLabel" name="label_modifySubject">
+                         <property name="styleSheet">
+                          <string notr="true">QLabel#label_modifySubject {
+	color: black;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: white;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Subject:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="0">
+                        <widget class="QLabel" name="label_modifyCourse">
+                         <property name="styleSheet">
+                          <string notr="true">QLabel#label_modifyCourse {
+	color: black;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: white;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Course:</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="2">
+                    <layout class="QVBoxLayout" name="Instructor">
+                     <property name="topMargin">
+                      <number>25</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="label_Instructor">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel#label_Instructor {
+    padding: 1px 5px 1px 8px;
+    min-width: 1em;
+	font: 16pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Instructor:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item alignment="Qt::AlignmentFlag::AlignTop">
+                      <widget class="QComboBox" name="comboBox_instructor">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox#comboBox_instructor {
+    padding: 1px 18px 1px 8px;
+    min-width: 1em;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+	background-color: #CFC493;
+	selection-background-color: #006747;
+    selection-color: white;
+}
+
+
+QComboBox#comboBox_instructor QAbstractItemView::item:selected {
+    border-left: 3px solid #006747;
+}</string>
+                       </property>
+                       <property name="sizeAdjustPolicy">
+                        <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+                       </property>
+                       <property name="frame">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="3" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+                    <widget class="QPushButton" name="pushButton_Save">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>225</width>
+                       <height>55</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton#pushButton_Save {
+	font: 10pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: #CFC493;
+	margin: 4px;
+	padding: 2px;
+}
+
+QPushButton#pushButton_Save:focus {
+	border-radius: 8px;
+	border: 1px solid #006747;
+}
+
+QPushButton#pushButton_Save:hover {
+	background-color: #006747;
+	border-radius: 8px;
+	margin: 0px;
+	padding: 6px;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Save</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <layout class="QVBoxLayout" name="Schedule">
+                     <property name="leftMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>15</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="label_Schedule">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel#label_Schedule {
+    padding: 1px 5px 1px 8px;
+    min-width: 1em;
+	font: 16pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}
+
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Schedule:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_5">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+                       </property>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_4">
+                         <property name="sizeConstraint">
+                          <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+                         </property>
+                         <item>
+                          <layout class="QVBoxLayout" name="verticalLayout_4">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>5</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>5</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>5</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>20</number>
+                           </property>
+                           <item>
+                            <spacer name="verticalSpacer">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Vertical</enum>
+                             </property>
+                             <property name="sizeType">
+                              <enum>QSizePolicy::Policy::Fixed</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>20</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_startTime">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel#label_startTime {
+    padding: 1px 5px 1px 8px;
+    min-width: 1em;
+	font: 14pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}
+
+</string>
+                             </property>
+                             <property name="text">
+                              <string>Start Time</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QTimeEdit" name="timeEdit_startTime">
+                             <property name="styleSheet">
+                              <string notr="true">color: black;</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QVBoxLayout" name="verticalLayout_3">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>5</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>5</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>5</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>20</number>
+                           </property>
+                           <item>
+                            <spacer name="verticalSpacer_2">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Vertical</enum>
+                             </property>
+                             <property name="sizeType">
+                              <enum>QSizePolicy::Policy::Fixed</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>20</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_endTime">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel#label_endTime {
+    padding: 1px 5px 1px 8px;
+    min-width: 1em;
+	font: 14pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}
+</string>
+                             </property>
+                             <property name="text">
+                              <string>End Time</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QTimeEdit" name="timeEdit_endTime">
+                             <property name="styleSheet">
+                              <string notr="true">color: black;</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_3">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="sizeConstraint">
+                          <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+                         </property>
+                         <property name="leftMargin">
+                          <number>10</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>10</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>10</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>10</number>
+                         </property>
+                         <item>
+                          <widget class="QCheckBox" name="checkBox_monday">
+                           <property name="styleSheet">
+                            <string notr="true">QCheckBox#checkBox_monday {
+    padding: 1px 2px 1px 1px;
+    min-width: 1em;
+	font: 14pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}
+
+</string>
+                           </property>
+                           <property name="text">
+                            <string>M</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="checkBox_tuesday">
+                           <property name="styleSheet">
+                            <string notr="true">QCheckBox#checkBox_tuesday {
+    padding: 1px 2px 1px 1px;
+    min-width: 1em;
+	font: 14pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>T</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="checkBox_wednesday">
+                           <property name="styleSheet">
+                            <string notr="true">QCheckBox#checkBox_wednesday {
+    padding: 1px 2px 1px 1px;
+    min-width: 1em;
+	font: 14pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>W</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="checkBox_thursday">
+                           <property name="styleSheet">
+                            <string notr="true">QCheckBox#checkBox_thursday {
+    padding: 1px 2px 1px 1px;
+    min-width: 1em;
+	font: 14pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>TR</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QCheckBox" name="checkBox_friday">
+                           <property name="styleSheet">
+                            <string notr="true">QCheckBox#checkBox_friday {
+    padding: 1px 2px 1px 1px;
+    min-width: 1em;
+	font: 14pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>F</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="0">
+                    <layout class="QVBoxLayout" name="Location">
+                     <property name="leftMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>15</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="label_Location">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel#label_Location {
+    padding: 1px 5px 1px 8px;
+    min-width: 1em;
+	font: 16pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Location</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_5">
+                       <property name="spacing">
+                        <number>5</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                       </property>
+                       <property name="leftMargin">
+                        <number>10</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>10</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>10</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>10</number>
+                       </property>
+                       <item>
+                        <layout class="QVBoxLayout" name="verticalLayout_7">
+                         <item>
+                          <spacer name="verticalSpacer_3">
+                           <property name="orientation">
+                            <enum>Qt::Orientation::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_building">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QLabel#label_building {
+    padding: 1px 5px 1px 8px;
+    min-width: 1em;
+	font: 14pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}
+</string>
+                           </property>
+                           <property name="text">
+                            <string>Building:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="comboBox_building">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QComboBox#comboBox_building {
+    padding: 1px 18px 1px 8px;
+    min-width: 1em;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+	background-color: #CFC493;
+	selection-background-color: #006747;
+    selection-color: white;
+}
+
+
+QComboBox#comboBox_building QAbstractItemView::item:selected {
+    border-left: 3px solid #006747;
+}</string>
+                           </property>
+                           <property name="sizeAdjustPolicy">
+                            <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <spacer name="verticalSpacer_4">
+                           <property name="orientation">
+                            <enum>Qt::Orientation::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <layout class="QVBoxLayout" name="verticalLayout_8">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>5</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>5</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>5</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>5</number>
+                         </property>
+                         <item>
+                          <spacer name="verticalSpacer_5">
+                           <property name="orientation">
+                            <enum>Qt::Orientation::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_room">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QLabel#label_room {
+    padding: 1px 5px 1px 8px;
+    min-width: 1em;
+	font: 14pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+}
+</string>
+                           </property>
+                           <property name="text">
+                            <string>Room:</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLineEdit" name="lineEdit_room">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>150</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QLineEdit#lineEdit_room {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 6px;
+	padding-right: 3px;
+	border: none;
+	border-bottom: 1px solid #cccccc;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background: #CFC493;
+}</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <spacer name="verticalSpacer_6">
+                           <property name="orientation">
+                            <enum>Qt::Orientation::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer">
+                         <property name="orientation">
+                          <enum>Qt::Orientation::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="3" column="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+                    <widget class="QPushButton" name="pushButton_Cancel">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>225</width>
+                       <height>55</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton#pushButton_Cancel {
+	font: 10pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: #CFC493;
+	margin: 4px;
+	padding: 2px;
+}
+
+QPushButton#pushButton_Cancel:focus {
+	border-radius: 8px;
+	border: 1px solid #006747;
+}
+
+QPushButton#pushButton_Cancel:hover {
+	background-color: #006747;
+	border-radius: 8px;
+	margin: 0px;
+	padding: 6px;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Cancel</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="3">
+                    <spacer name="horizontalSpacer_2">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
             </layout>
            </widget>
           </item>
@@ -1655,43 +2604,125 @@ QPushButton#pushButton_getCourse:hover {
              <string notr="true">QWidget#widget_ViewReports {
 	background-color: white;
 	border-radius: 25px;
+	padding: 25px;
 }</string>
             </property>
-            <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0">
+            <layout class="QGridLayout" name="gridLayout_11">
              <item row="0" column="0">
-              <widget class="QComboBox" name="comboBox_term">
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
                <item>
-                <property name="text">
-                 <string>Spring 2025</string>
-                </property>
+                <widget class="QComboBox" name="comboBox_term">
+                 <property name="minimumSize">
+                  <size>
+                   <width>43</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>155</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QComboBox#comboBox_term {
+    padding: 1px 18px 1px 8px;
+    min-width: 1em;
+	font: 12pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	color: black;
+	background-color: #CFC493;
+	selection-background-color: #006747;
+    selection-color: white;
+}</string>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>Spring 2025</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Fall 2025</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Spring 2026</string>
+                  </property>
+                 </item>
+                </widget>
                </item>
                <item>
-                <property name="text">
-                 <string>Fall 2025</string>
-                </property>
+                <widget class="QPushButton" name="pushButton_generate">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>155</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton#pushButton_generate {
+	font: 10pt 'Inter-VariableFont_opsz,wght';
+	font-weight: bold;
+	background-color: #CFC493;
+	margin: 4px;
+	padding: 2px;
+}
+
+QPushButton#pushButton_generate:focus {
+	border-radius: 8px;
+	border: 1px solid #006747;
+}
+
+QPushButton#pushButton_generate:hover {
+	background-color: #006747;
+	border-radius: 8px;
+	margin: 0px;
+	padding: 6px;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Generate</string>
+                 </property>
+                </widget>
                </item>
-               <item>
-                <property name="text">
-                 <string>Spring 2026</string>
-                </property>
-               </item>
-              </widget>
+              </layout>
              </item>
-             <item row="0" column="1">
-              <widget class="QPushButton" name="pushButton_generate">
-               <property name="text">
-                <string>Generate</string>
+             <item row="1" column="0">
+              <widget class="QFrame" name="frame_resultsTable">
+               <property name="styleSheet">
+                <string notr="true">background-color: #CFC493;
+border-radius: 15px;</string>
                </property>
-              </widget>
-             </item>
-             <item row="2" column="0" colspan="2">
-              <widget class="QTableView" name="tableView_results">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
                </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_8">
+                <item row="0" column="0">
+                 <widget class="QTableView" name="tableView_results">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: white;
+color: black;</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>

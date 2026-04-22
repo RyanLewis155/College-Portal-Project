@@ -37,19 +37,16 @@ StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
     ClassScheduleItem* class2 = new ClassScheduleItem();
     ClassScheduleItem* class3 = new ClassScheduleItem();
     ClassScheduleItem* class4 = new ClassScheduleItem();
-    ClassScheduleItem* class5 = new ClassScheduleItem();
 
     class1->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-    class2->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-    class3->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-    class4->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-    class5->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
+    class2->setFields(QString("CDA 4205L"), QString("Computer Architecture Lab"), QString("F 12:00pm-01:45pm"));
+    class3->setFields(QString("CEN 4020"), QString("Software Engineering"), QString("MW 3:30pm-4:45pm"));
+    class4->setFields(QString("CIS 4250"), QString("Ethics"), QString("MW 05:00pm-06:15pm"));
 
     classList.append(class1);
     classList.append(class2);
     classList.append(class3);
     classList.append(class4);
-    classList.append(class5);
 
     PopulateClasses(classList);
 

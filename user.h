@@ -7,6 +7,9 @@
 #include <QMap>
 #include <QStandardItemModel>
 #include "userinfo.h"
+#include "coursesection.h"
+#include "course.h"
+#include "room.h"
 
 class User : public QObject
 {
@@ -41,10 +44,18 @@ public:
                          );
     void getConflictReport(const QString &term);
 
+    QList<UserInfo> getProfessors();
+    
+
+    void searchForSingleCourse(const QString &CRN);
+    QList<Course> getCourses();
+    QList<Room> getRooms();
+
 signals:
     // Search results: list of rows (column name -> value)
     void searchResultsReady(QStandardItemModel* model);
     void conflictReportReady(QStandardItemModel* model);
+    void searchForCourseReady(CourseSection cs);
 
 private:
     // helpers for checking course conflicts

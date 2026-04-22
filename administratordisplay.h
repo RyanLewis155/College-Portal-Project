@@ -17,16 +17,18 @@ public:
     explicit AdministratorDisplay(User* loggedIn, QWidget *parent = nullptr);
     ~AdministratorDisplay();
 
-private slots:
-    void handleSearchResults(QStandardItemModel* model);
-
 private:
     Ui::AdministratorDisplay *ui;
     User *u;
 
+    void clearModificationUI();
 private slots:
     void handleConflictReports(QStandardItemModel* model);
+    void handleSearchResults(QStandardItemModel* model);
+    void handleSingleCourseSearch(CourseSection cs);
 
+    void on_pushButton_Save_clicked();
+    void on_pushButton_Cancel_clicked();
 };
 
 #endif // ADMINISTRATORDISPLAY_H

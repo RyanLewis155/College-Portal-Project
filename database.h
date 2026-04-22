@@ -31,8 +31,16 @@ public:
                                                 const QString &courseNum = ""
                                                 );
 
+    static QJsonArray getCourseNameData(const int &CourseID = -1,
+                                        const QString &Description = "",
+                                        const QString &CourseName = ""
+                                        );
 
-
+    static QJsonArray getRoomData(const QString &roomID = "",
+                                  const QString &building = "",
+                                  const int &room = 0,
+                                  const int &capacity = 0
+                                  );
 
     static QJsonArray getUserData(const QString &email = "",
                                   const QString &name = "",
@@ -55,6 +63,9 @@ public:
     static QJsonObject insert(const QString &table,
                               const QJsonObject &data);
 
+    static CourseSection getSingleCourseData(const QString &crn);
+
+    static QJsonObject upsertCourseSection(const QString &table, const QJsonObject &data);
 private:
     static QString m_baseUrl;
     static QString m_apiKey;
