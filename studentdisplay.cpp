@@ -5,8 +5,10 @@
 #include "user.h"
 #include "studentregistrationform.h"
 #include "viewplanform.h"
+
 #include <QMessageBox>
 
+#include "database.h"
 
 StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
     : QWidget(parent)
@@ -33,23 +35,9 @@ StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
             this, &StudentDisplay::handleSearchResults);
 
     ui->label_WelcomeHeader->setText("Welcome, " + u->name);
-    QList<ClassScheduleItem*> classList;
-    ClassScheduleItem* class1 = new ClassScheduleItem();
-    ClassScheduleItem* class2 = new ClassScheduleItem();
-    ClassScheduleItem* class3 = new ClassScheduleItem();
-    ClassScheduleItem* class4 = new ClassScheduleItem();
+    //deleted the hardcoded class that we had for testing
 
-    class1->setFields(QString("CDA 4205"), QString("Computer Architecture"), QString("MW 10:45am-12:00pm"));
-    class2->setFields(QString("CDA 4205L"), QString("Computer Architecture Lab"), QString("F 12:00pm-01:45pm"));
-    class3->setFields(QString("CEN 4020"), QString("Software Engineering"), QString("MW 3:30pm-4:45pm"));
-    class4->setFields(QString("CIS 4250"), QString("Ethics"), QString("MW 05:00pm-06:15pm"));
-
-    classList.append(class1);
-    classList.append(class2);
-    classList.append(class3);
-    classList.append(class4);
-
-    PopulateClasses(classList);
+    loadRegisteredClasses();
 
     QGridLayout *registrationLayout = qobject_cast<QGridLayout*>(ui->widget_Register->layout());
     QGridLayout *viewPlanLayout = qobject_cast<QGridLayout*>(ui->widget_ViewPlans->layout());
@@ -57,11 +45,116 @@ StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
 
     registrationLayout->addWidget(new StudentRegistrationForm(u));
     viewPlanLayout->addWidget(new ViewPlanForm(loggedIn));
+    //viewPlanLayout->addWidget(new ViewPlanForm());
+
 }
 
 StudentDisplay::~StudentDisplay()
 {
     delete ui;
+}
+QString StudentDisplay::buildCourseCode(const CourseSection& cs)
+{
+    return cs.subject + " " + cs.courseNum;
+}
+QString StudentDisplay::buildMeetingText(const CourseSection& cs)
+{
+    QString roomText;
+
+    if (!cs.building.isEmpty() && !cs.room.isEmpty())
+        roomText = cs.building + " " + cs.room;
+    else if (!cs.room.isEmpty())
+        roomText = cs.room;
+    else
+        roomText = "Room TBA";
+
+    return cs.days + " " + cs.startTime + "-" + cs.endTime + " | " + roomText;
+}
+
+void StudentDisplay::loadRegisteredClasses()
+{
+    setupGroupedSchedule();
+
+    QGridLayout* gridLayout = qobject_cast<QGridLayout*>(ui->widget_ClassSchedule->layout());
+    if (!gridLayout)
+        return;
+
+    QList<ClassScheduleItem*> mwClasses;
+    QList<ClassScheduleItem*> trClasses;
+    QList<ClassScheduleItem*> fridayClasses;
+
+    QString studentId = u->id;
+    QJsonArray registrations = Database::getRegistrations(studentId);
+
+    qDebug() << "Student ID:" << studentId;
+    qDebug() << "Registration count:" << registrations.size();
+
+    if (registrations.isEmpty()) {
+        qDebug() << "No registrations found for student:" << studentId;
+        return;
+    }
+
+    QStringList crns;
+    for (int i = 0; i < registrations.size(); ++i)
+    {
+        QJsonValue val = registrations.at(i);
+
+        if (!val.isObject())
+            continue;
+
+        QJsonObject obj = val.toObject();
+        QJsonValue crnValue = obj.value("CRN");
+
+        QString crn;
+        if (crnValue.isString())
+            crn = crnValue.toString();
+        else if (crnValue.isDouble())
+            crn = QString::number(crnValue.toInt());
+
+        qDebug() << "Registration object:" << obj;
+        qDebug() << "CRN read:" << crn;
+
+        if (!crn.isEmpty())
+            crns.append(crn);
+    }
+
+    if (crns.isEmpty()) {
+        qDebug() << "Registrations returned, but no CRNs were found.";
+        return;
+    }
+
+    QVector<CourseSection> sections = Database::getCourseData(crns);
+
+    for (int i = 0; i < sections.size(); ++i)
+    {
+        const CourseSection& cs = sections.at(i);
+
+        ClassScheduleItem* item = new ClassScheduleItem();
+
+        QString courseCode = buildCourseCode(cs);
+        QString courseName = cs.coursename.isEmpty() ? "Unnamed Course" : cs.coursename;
+        QString meetText = buildMeetingText(cs);
+
+        item->setFields(courseCode, courseName, meetText);
+
+        int column = getScheduleColumn(cs.days);
+
+        if (column == 0)
+            mwClasses.append(item);
+        else if (column == 1)
+            trClasses.append(item);
+        else if (column == 2)
+            fridayClasses.append(item);
+    }
+
+    for (int i = 0; i < mwClasses.size(); ++i)
+        gridLayout->addWidget(mwClasses[i], i + 1, 0);
+
+    for (int i = 0; i < trClasses.size(); ++i)
+        gridLayout->addWidget(trClasses[i], i + 1, 1);
+
+    for (int i = 0; i < fridayClasses.size(); ++i)
+        gridLayout->addWidget(fridayClasses[i], i + 1, 2);
 }
 
 void StudentDisplay::handleSearchResults(QStandardItemModel* model)
@@ -96,11 +189,66 @@ void StudentDisplay::handleSearchResults(QStandardItemModel* model)
 void StudentDisplay::PopulateClasses(QList<ClassScheduleItem*> classSchedule)
 {
     QGridLayout* gridLayout = qobject_cast<QGridLayout*>(ui->widget_ClassSchedule->layout());
+    if (!gridLayout)
+        return;
 
-    for(int i = 0; i < classSchedule.count(); ++i)
+    while (QLayoutItem* item = gridLayout->takeAt(0))
     {
-        gridLayout->addWidget(classSchedule[i], i/3, i % 3, Qt::AlignTop | Qt::AlignLeft);
+        if (item->widget())
+            item->widget()->deleteLater();
+        delete item;
     }
 
+    for (int i = 0; i < classSchedule.count(); ++i)
+    {
+        gridLayout->addWidget(classSchedule[i], i / 3, i % 3, Qt::AlignTop | Qt::AlignLeft);
+    }
+}
+void StudentDisplay::setupGroupedSchedule()
+{
+    QGridLayout* gridLayout = qobject_cast<QGridLayout*>(ui->widget_ClassSchedule->layout());
+
+    if (!gridLayout) {
+        gridLayout = new QGridLayout(ui->widget_ClassSchedule);
+        ui->widget_ClassSchedule->setLayout(gridLayout);
+    }
+
+    while (QLayoutItem* item = gridLayout->takeAt(0))
+    {
+        if (item->widget())
+            item->widget()->deleteLater();
+        delete item;
+    }
+
+    gridLayout->setSpacing(8);
+
+    QLabel* mwHeader = new QLabel("Monday / Wednesday");
+    QLabel* trHeader = new QLabel("Tuesday / Thursday");
+    QLabel* fHeader = new QLabel("Friday");
+
+    mwHeader->setAlignment(Qt::AlignCenter);
+    trHeader->setAlignment(Qt::AlignCenter);
+    fHeader->setAlignment(Qt::AlignCenter);
+
+    mwHeader->setStyleSheet("font-weight: bold; padding: 6px; border: 1px solid lightgray;");
+    trHeader->setStyleSheet("font-weight: bold; padding: 6px; border: 1px solid lightgray;");
+    fHeader->setStyleSheet("font-weight: bold; padding: 6px; border: 1px solid lightgray;");
+
+    gridLayout->addWidget(mwHeader, 0, 0);
+    gridLayout->addWidget(trHeader, 0, 1);
+    gridLayout->addWidget(fHeader, 0, 2);
+}
+int StudentDisplay::getScheduleColumn(const QString& days)
+{
+    if (days.contains('M') || days.contains('W'))
+        return 0;
+
+    if (days.contains('T') || days.contains('R'))
+        return 1;
+
+    if (days.contains('F'))
+        return 2;
+
+    return -1;
 }
 

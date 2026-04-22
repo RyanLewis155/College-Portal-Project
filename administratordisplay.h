@@ -20,13 +20,13 @@ public:
 private:
     Ui::AdministratorDisplay *ui;
     User *u;
+    void saveConflictReportToTxt(QStandardItemModel* model);
 
     void clearModificationUI();
 private slots:
     void handleConflictReports(QStandardItemModel* model);
     void handleSearchResults(QStandardItemModel* model);
     void handleSingleCourseSearch(CourseSection cs);
-
     void on_pushButton_Save_clicked();
     void on_pushButton_Cancel_clicked();
 };
