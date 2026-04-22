@@ -14,14 +14,13 @@ class StudentRegistrationForm : public QWidget
 {
     Q_OBJECT
 
-/*public:
-    explicit StudentRegistrationForm(User* u, QWidget *parent = nullptr);
-    ~StudentRegistrationForm();*/
+public:
+    explicit StudentRegistrationForm(User* loggedIn, QWidget *parent = nullptr);
+    ~StudentRegistrationForm();
 
 private slots:
     void handleRegistrationComplete(const QString &message);
-    explicit StudentRegistrationForm(User* loggedIn, QWidget *parent = nullptr);
-    ~StudentRegistrationForm();
+
 
 private slots:
     void handleSearchResults(QStandardItemModel* model);

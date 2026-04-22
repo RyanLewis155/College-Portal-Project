@@ -148,7 +148,6 @@
         </property>
        </widget>
       </item>
-<<<<<<< HEAD
       <item>
        <widget class="QComboBox" name="comboBox_RegSemester">
         <property name="sizePolicy">
@@ -205,8 +204,6 @@
         </item>
        </widget>
       </item>
-=======
->>>>>>> 5662e43 (add schedule UI, waitlist checks, and registration updates)
      </layout>
     </widget>
    </item>

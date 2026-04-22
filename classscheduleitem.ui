@@ -89,6 +89,11 @@ border-radius: 25px;</string>
         <property name="tabletTracking">
          <bool>true</bool>
         </property>
+        <property name="styleSheet">
+         <string notr="true">font: 16pt 'Inter-VariableFont_opsz,wght';
+font-weight: Bold;
+color: black;</string>
+        </property>
         <property name="text">
          <string>TextLabel</string>
         </property>
@@ -96,6 +101,10 @@ border-radius: 25px;</string>
       </item>
       <item>
        <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">font: 16pt 'Inter-VariableFont_opsz,wght';
+color: #006747;</string>
+        </property>
         <property name="text">
          <string>TextLabel</string>
         </property>
@@ -103,6 +112,10 @@ border-radius: 25px;</string>
       </item>
       <item>
        <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">font: 16pt 'Inter-VariableFont_opsz,wght';
+color: black;</string>
+        </property>
         <property name="text">
          <string>TextLabel</string>
         </property>
