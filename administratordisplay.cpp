@@ -60,6 +60,8 @@ AdministratorDisplay::AdministratorDisplay(User* loggedIn, QWidget *parent)
 
     connect(u, &User::searchForCourseReady,
             this, &AdministratorDisplay::handleSingleCourseSearch);
+    connect(u, &User::searchResultsReady,
+            this, &AdministratorDisplay::handleSearchResults);
 
     // conflict report handlers
     connect(ui->pushButton_generate, &QPushButton::clicked, [=]() {
