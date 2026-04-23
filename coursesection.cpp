@@ -37,6 +37,7 @@ CourseSection fromJson(const QJsonObject &obj)
 
     cs.coursename    = getString(obj, "course");
     cs.instructorname = getString(obj, "instructor");
+    cs.level         = getString(obj, "level");
 
     // if (obj.contains("room") && obj["room"].isObject()) {
     //     QJsonObject r = obj["room"].toObject();

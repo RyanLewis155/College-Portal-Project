@@ -18,17 +18,17 @@ StudentRegistrationForm::StudentRegistrationForm(User* loggedIn, QWidget *parent
     u = loggedIn;
 
     // registration handlers
-    connect(ui->pushButton_CRNRegister, &QPushButton::clicked, [=]() {
-        QStringList crns = {ui->textEdit_course1->toPlainText(), ui->textEdit_course2->toPlainText(),
-                            ui->textEdit_course3->toPlainText()};
-        QStringList crnsEntered;
-        for (const QString &crn : crns) {
-            if (!crn.trimmed().isEmpty()) {
-                crnsEntered.append(crn.trimmed());
-            }
-        }
-        u->handleRegistration(ui->comboBox_RegSemester->currentText(), crnsEntered);
-    });
+    // connect(ui->pushButton_CRNRegister, &QPushButton::clicked, [=]() {
+    //     QStringList crns = {ui->textEdit_course1->toPlainText(), ui->textEdit_course2->toPlainText(),
+    //                         ui->textEdit_course3->toPlainText()};
+    //     QStringList crnsEntered;
+    //     for (const QString &crn : crns) {
+    //         if (!crn.trimmed().isEmpty()) {
+    //             crnsEntered.append(crn.trimmed());
+    //         }
+    //     }
+    //     u->handleRegistration(ui->comboBox_RegSemester->currentText(), crnsEntered);
+    // });
     connect(u, &User::registrationComplete,
             this, &StudentRegistrationForm::handleRegistrationComplete);
 
@@ -94,14 +94,16 @@ void StudentRegistrationForm::onRegisterClicked()
     int row = index.row();
     QString crn = ui->tableView_results->model()->index(row, 0).data().toString();
 
-    QJsonObject data;
-    data["studentID"] = u->id;
-    data["CRN"] = crn;
-    data["status"] = "Registered";
+    u->handleRegistration(ui->comboBox_RegSemester->currentText(), {crn});
 
-    Database::insert("Registration", data);
+    // QJsonObject data;
+    // data["studentID"] = u->id;
+    // data["CRN"] = crn;
+    // data["status"] = "Registered";
 
-    QMessageBox::information(this, "Register", "Course registration submitted.");
+    // Database::insert("Registration", data);
+
+    // QMessageBox::information(this, "Register", "Course registration submitted.");
 }
 
 void StudentRegistrationForm::onWaitlistClicked()
@@ -115,12 +117,14 @@ void StudentRegistrationForm::onWaitlistClicked()
     int row = index.row();
     QString crn = ui->tableView_results->model()->index(row, 0).data().toString();
 
-    QJsonObject data;
-    data["studentID"] = u->id;
-    data["CRN"] = crn;
-    data["status"] = "Waitlisted";
+    u->handleRegistration(ui->comboBox_RegSemester->currentText(), {crn});
 
-    Database::insert("Registration", data);
+    // QJsonObject data;
+    // data["studentID"] = u->id;
+    // data["CRN"] = crn;
+    // data["status"] = "Waitlisted";
 
-    QMessageBox::information(this, "Waitlist", "Student added to waitlist.");
+    // Database::insert("Registration", data);
+
+    // QMessageBox::information(this, "Waitlist", "Student added to waitlist.");
 }

@@ -264,6 +264,7 @@ void User::handleRegistration(const QString &term, const QStringList &crns)
     QJsonArray existing = Database::getRegistrations(this->id, crns, "");
     if (!existing.isEmpty())
     {
+        qDebug() << existing;
         emit registrationComplete("Error - already registered for one or more courses submitted");
         return;
     }
@@ -280,10 +281,12 @@ void User::handleRegistration(const QString &term, const QStringList &crns)
     QJsonArray existingRegs = Database::getRegistrations(this->id);
     QStringList allCrns = crns;
     for (const QJsonValue &reg : existingRegs)
-        allCrns.append(reg.toObject().value("CRN").toString());
+        allCrns.append(Database::jsonValueToString(reg.toObject().value("CRN")));
     for (QString c : crns)
-        allCrns.append(c);
+        if (!allCrns.contains(c))
+            allCrns.append(c);
 
+    qDebug() << allCrns;
     QHash<QString, QStringList> validation = validateCourses(term, allCrns);
     for (const QStringList &flags : validation)
     {
@@ -362,6 +365,7 @@ QHash<QString, QStringList> User::validateCourses(const QString &term, const QSt
         QString courseName;
         QString sectionNum;
         QString level;
+        QString capacity;
     };
 
     QVector<Course> courses;
@@ -409,6 +413,8 @@ QHash<QString, QStringList> User::validateCourses(const QString &term, const QSt
         c.courseName = val.coursename; // Database::jsonValueToString(obj["course"]);
         c.sectionNum = QString::number(val.sectionNum); // Database::jsonValueToString(obj["section"]);
         c.level = val.level; //Database::jsonValueToString(obj["level"]);
+        c.capacity = val.capacity;
+        c.level = val.level;
 
         courses.append(c);
     }
@@ -438,6 +444,21 @@ QHash<QString, QStringList> User::validateCourses(const QString &term, const QSt
                 invalidCRNs.insert(c.crn);
             }
         }
+    }
+
+    QStringList allCRNs;
+    for (const Course &c : courses)
+        allCRNs.append(c.crn);
+
+    QHash<QString, int> enrollmentCounts = Database::getNumRegistered(allCRNs);
+
+    for (const Course &c : courses) {
+        bool capacityOk  = false;
+        int  cap         = c.capacity.toInt(&capacityOk);
+        int  enrolled    = enrollmentCounts.value(c.crn, 0);
+        qDebug() << c.crn << cap << enrolled;
+        if (capacityOk && cap > 0 && enrolled >= cap)
+            addReason(c.crn, "Course full (extra sections may be desirable)");
     }
 
     // -------------------------

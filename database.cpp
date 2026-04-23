@@ -68,6 +68,7 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
         "section:sectionNum",
         "subject",
         "courseNum",
+        "level",
         "room:Room!CourseSection_roomID_fkey(building,room,capacity)",
         "Course!CourseSection_courseID_fkey(course:name)",
         "User!CourseSection_profID_fkey(instructor:name)"

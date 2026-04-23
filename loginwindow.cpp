@@ -100,6 +100,8 @@ void LoginWindow::on_pushButton_Login_clicked()
     if(validEmail && validPassword)
     {
         handleLoginReqest(ui->lineEdit_Email->text(), ui->lineEdit_Password->text());
+    } else {
+        QMessageBox::warning(this, "Error", "Invalid email or password.");
     }
 }
 
