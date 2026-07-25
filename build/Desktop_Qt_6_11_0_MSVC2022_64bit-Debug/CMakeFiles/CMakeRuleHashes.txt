@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+744613adfd406e66ce1891ee413ae184 CMakeFiles/Project2_autogen
+a534b5bdaa2ef11c5cab1cac4e45d9ac Project2_autogen/EWIEGA46WW/qrc_resources.cpp
+7adb299f27b7476f05d8cfe4706dfffd Project2_autogen/timestamp

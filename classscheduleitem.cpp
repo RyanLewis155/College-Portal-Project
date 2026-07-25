@@ -15,7 +15,7 @@ ClassScheduleItem::~ClassScheduleItem()
 
 void ClassScheduleItem::setFields(QString CourseAbvAndNum, QString CourseName, QString MeetLocTime)
 {
-    ui->label_CourseAndNumber->setText(CourseAbvAndNum);
-    ui->label_CourseName->setText(CourseName);
-    ui->label_TimeAndLoc->setText(MeetLocTime);
+    ui->label->setText(CourseAbvAndNum);
+    ui->label_2->setText(CourseName);
+    ui->label_3->setText(MeetLocTime);
 }

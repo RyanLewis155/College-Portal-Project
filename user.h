@@ -1,27 +1,3 @@
-// #ifndef USER_H
-// #define USER_H
-
-// #include <QObject>
-
-// class User : public QObject
-// {
-//     Q_OBJECT
-// public:
-//     explicit User(QObject *parent = nullptr);
-// explicit User(const QString& UserID, const QString& Email, const QString& FirstName, const QString& LastName, QObject *parent = nullptr) :
-//                 UserID(UserID), Email(Email), FirstName(FirstName), LastName(LastName) {};
-// private:
-//     QString UserID;
-//     QString Email;
-//     QString FirstName;
-//     QString LastName;
-
-// signals:
-//     void attemptRegistration();
-// };
-
-// #endif // USER_H
-
 #ifndef USER_H
 #define USER_H
 
@@ -30,13 +6,22 @@
 #include <QVector>
 #include <QMap>
 #include <QStandardItemModel>
+#include "userinfo.h"
+#include "coursesection.h"
+#include "course.h"
+#include "room.h"
 
 class User : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit User(QObject *parent = nullptr);
+    // attributes
+    QString id;
+    QString role;
+    QString name;
+
+    explicit User(UserInfo u, QObject *parent = nullptr);
     ~User();
 
     // handler methods
@@ -46,16 +31,40 @@ public:
                         const QString &courseNum,
                         const QString &days);
 
-    // data repo methods
-    QJsonArray getCourseData(const QString &term,
-                            const QString &crn,
-                            const QString &subject,
-                            const QString &courseNum,
-                            const QString &days);
+    void searchCoursesEX(const QString &CRN,
+                               const QString &Building,
+                               const QString &Professor,
+                               const QString &Days,
+                               const QString &Term,
+                               const QString &Course,
+                               const int &SectionNum,
+                               const QString &Level,
+                               const QString &Subject,
+                               const QString &CourseNum
+                         );
 
+    void getConflictReport(const QString &term);
+
+    QList<UserInfo> getProfessors();
+    
+
+    void searchForSingleCourse(const QString &CRN);
+    QList<Course> getCourses();
+    QList<Room> getRooms();
+    void handleRegistration(const QString &term, const QStringList &crns);
+    void getFullWaitlistReport(const QString &term);
 signals:
+    void fullWaitlistReportReady(QStandardItemModel* model);
     // Search results: list of rows (column name -> value)
     void searchResultsReady(QStandardItemModel* model);
+    void conflictReportReady(QStandardItemModel* model);
+    void searchForCourseReady(CourseSection cs);
+    void registrationComplete(const QString &message);
+
+private:
+    // helpers for checking course conflicts
+    QHash<QString, QStringList> validateCourses(const QString &term, const QStringList &crns = {});
+
 };
 
 #endif // USER_H

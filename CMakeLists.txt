@@ -28,9 +28,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         studentdisplay.h studentdisplay.cpp studentdisplay.ui
         resources.qrc
         classscheduleitem.h classscheduleitem.cpp classscheduleitem.ui
-        course.h course.cpp
+        course.h
         section.h section.cpp
-        room.h room.cpp
+        room.h
         schedule.h schedule.cpp
         user.h user.cpp
         studentregistrationform.h studentregistrationform.cpp studentregistrationform.ui
@@ -40,6 +40,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         database.cpp
         professordisplay.h professordisplay.cpp professordisplay.ui
         administratordisplay.h administratordisplay.cpp administratordisplay.ui
+        coursesection.h coursesection.cpp
+        userinfo.h
+
 
 
 

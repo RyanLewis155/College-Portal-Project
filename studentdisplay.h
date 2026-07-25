@@ -9,6 +9,7 @@
 #include <QGridLayout>
 #include <QStandardItemModel>
 #include "classscheduleitem.h"
+#include "coursesection.h"
 #include "user.h"
 
 namespace Ui {
@@ -20,7 +21,7 @@ class StudentDisplay : public QWidget
     Q_OBJECT
 
 public:
-    explicit StudentDisplay(QWidget *parent = nullptr);
+    explicit StudentDisplay(User* u, QWidget *parent = nullptr);
     ~StudentDisplay();
 
     void PopulateClasses(QList<ClassScheduleItem*> classSchedule);
@@ -32,6 +33,13 @@ private slots:
 private:
     Ui::StudentDisplay *ui;
     User* u;
+
+    void loadRegisteredClasses();
+    QString buildCourseCode(const CourseSection& cs);
+    QString buildMeetingText(const CourseSection& cs);
+
+    void setupGroupedSchedule();
+    int getScheduleColumn(const QString& days);
 };
 
 #endif // STUDENTDISPLAY_H

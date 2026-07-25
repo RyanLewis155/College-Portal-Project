@@ -20,20 +20,14 @@
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="leftMargin">
-    <number>25</number>
-   </property>
-   <property name="topMargin">
-    <number>25</number>
-   </property>
-   <property name="rightMargin">
-    <number>25</number>
-   </property>
-   <property name="bottomMargin">
-    <number>25</number>
-   </property>
-   <item row="0" column="0">
+   <item row="0" column="0" colspan="2">
     <widget class="QFrame" name="frame_ViewPlanForm">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
+     </property>
      <property name="styleSheet">
       <string notr="true">QFrame#frame_ViewPlanForm {
 	background-color: #CFC493;
@@ -64,23 +58,87 @@
           <height>16777215</height>
          </size>
         </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">QListWidget#listWidget_PlanList {
 	background-color: white;
+	color: black;
 }</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QTableWidget" name="tableWidget_PlanClasses">
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">QTableWidget#tableWidget_PlanClasses {
 	background-color: white;
+	color: black;
 }</string>
         </property>
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLineEdit" name="lineEdit_NewPlanName">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    color: black;
+}</string>
+     </property>
+     <property name="placeholderText">
+      <string>Enter Plan Name Here</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="lineEdit_CourseToAdd">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    color: black;
+}</string>
+     </property>
+     <property name="placeholderText">
+      <string>Enter CRN Here</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="pushButton_AddPlan">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>+ Create New Plan</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="pushButton_AddPlanItem">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Add Course</string>
+     </property>
     </widget>
    </item>
   </layout>

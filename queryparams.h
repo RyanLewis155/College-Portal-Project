@@ -11,7 +11,9 @@ enum Operator {
     LT,
     GTE,
     LTE,
-    NEQ
+    NEQ,
+    IN,
+    ILIKE
 };
 
 struct WhereClause {
@@ -26,6 +28,7 @@ public:
     QList<WhereClause> whereClauses;
     QString orderByColumn;
     bool orderDescending = false;
+    QString countColumn;
 
     void select(const QStringList &cols) {
         selectColumns = cols;
@@ -39,6 +42,8 @@ public:
         orderByColumn = col;
         orderDescending = desc;
     }
+
+    void count(const QString &col) { countColumn = col; }
 };
 
 #endif

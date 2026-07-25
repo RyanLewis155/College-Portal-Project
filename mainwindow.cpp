@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "loginwindow.h"
+#include "user.h"
 #include "studentdisplay.h"
 #include "professordisplay.h"
 #include "administratordisplay.h"
@@ -28,25 +29,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::handleLoginSuccess()
+void MainWindow::handleLoginSuccess(UserInfo userInfo)
 {
-    int role = 0;
+    QString role = userInfo.role;
+    User* loggedIn = new User(userInfo);
 
-    switch (role) {
-        case 0:
-            dashBoardWindow = new StudentDisplay();
-            break;
-        case 1:
-            dashBoardWindow = new ProfessorDisplay();
-            break;
-
-        case 2:
-            dashBoardWindow = new AdministratorDisplay();
-            break;
-
-        default:
-            break;
-    }
+    if (role == "Student")
+        dashBoardWindow = new StudentDisplay(loggedIn);
+    else if (role == "Professor")
+        dashBoardWindow = new ProfessorDisplay(loggedIn);
+    else if (role == "Administrator")
+        dashBoardWindow = new AdministratorDisplay(loggedIn);
 
     if(dashBoardWindow)
     {
