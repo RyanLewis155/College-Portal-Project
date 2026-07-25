@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
     QFontDatabase::addApplicationFont(":/assets/fonts/Inter-VariableFont_opsz,wght.ttf");
 
     Database::init(
-        "https://uociqojozasdpqprrjdx.supabase.co/rest/v1", // REST API url
-        "sb_publishable_q-VAOvGZijflk2pl0iTyaA_8GlwxFIz" // publishable DB key
+        "", // REST API url
+        "" // publishable DB key
         );
 
     MainWindow w;
