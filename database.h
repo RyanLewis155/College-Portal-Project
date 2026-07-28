@@ -20,26 +20,23 @@ public:
     static void init(const QString &baseUrl, const QString &apiKey);
     // API methods
     static QVector<CourseSection> getCourseData(const QStringList &crns = {},
-                                                const QString &room = "",
-                                                const QString &professor = "",
-                                                const QString &days = "",
-                                                const QString &term = "",
-                                                const QString &course = "",
-                                                const int &sectionNum = 0,
+                                                const QString &Room = "",
+                                                const QString &Professor = "",
+                                                const QString &Days = "",
+                                                const QString &Term = "",
+                                                const QString &Course = "",
+                                                const int &SectionNum = 0,
                                                 const QString &level = "",
-                                                const QString &subject = "",
-                                                const QString &courseNum = ""
-                                                );
+                                                const QString &Subject = "",
+                                                const QString &CourseNum = "");
 
     static QJsonArray getCourseNameData(const int &CourseID = -1,
-                                        const QString &Description = "",
-                                        const QString &CourseName = ""
-                                        );
+                                        const QString &Subject = "",
+                                        const QString &Number = "",
+                                        const QString &Title = "");
 
     static QJsonArray getRoomData(const QString &roomID = "",
-                                  const QString &building = "",
-                                  const int &room = 0,
-                                  const int &capacity = 0
+                                  const QString &Name = ""
                                   );
 
     static QJsonArray getUserData(const QString &email = "",

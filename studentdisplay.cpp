@@ -37,14 +37,14 @@ StudentDisplay::StudentDisplay(User* loggedIn, QWidget *parent)
     ui->label_WelcomeHeader->setText("Welcome, " + u->name);
     //deleted the hardcoded class that we had for testing
 
-    loadRegisteredClasses();
+    //loadRegisteredClasses();
 
     QGridLayout *registrationLayout = qobject_cast<QGridLayout*>(ui->widget_Register->layout());
-    QGridLayout *viewPlanLayout = qobject_cast<QGridLayout*>(ui->widget_ViewPlans->layout());
+    //QGridLayout *viewPlanLayout = qobject_cast<QGridLayout*>(ui->widget_ViewPlans->layout());
 
 
     registrationLayout->addWidget(new StudentRegistrationForm(u));
-    viewPlanLayout->addWidget(new ViewPlanForm(loggedIn));
+    //viewPlanLayout->addWidget(new ViewPlanForm(loggedIn));
     //viewPlanLayout->addWidget(new ViewPlanForm());
 
 }

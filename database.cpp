@@ -47,77 +47,84 @@ CourseSection Database::getSingleCourseData(const QString &crn)
 }
 
 QVector<CourseSection> Database::getCourseData(const QStringList &crns,
-                                               const QString &building,
-                                               const QString &professor,
-                                               const QString &days,
-                                               const QString &term,
-                                               const QString &course,
-                                               const int &sectionNum,
+                                               const QString &Room,
+                                               const QString &Professor,
+                                               const QString &Days,
+                                               const QString &Term,
+                                               const QString &Course,
+                                               const int &SectionNum,
                                                const QString &level,
-                                               const QString &subject,
-                                               const QString &courseNum)
+                                               const QString &Subject,
+                                               const QString &CourseNum)
 {
     QueryParams params;
 
     // SELECT clause (Supabase embedded joins)
     params.select({
-        "CRN",
-        "startTime",
-        "endTime",
-        "days",
-        "section:sectionNum",
-        "subject",
-        "courseNum",
-        "level",
-        "room:Room!CourseSection_roomID_fkey(building,room,capacity)",
-        "Course!CourseSection_courseID_fkey(course:name)",
-        "User!CourseSection_profID_fkey(instructor:name)"
+        "id",
+        "term",
+        "crse_level",
+        "crn",
+        "meeting_days",
+        "meeting_times",
+        "section_number",
+        "Course(subj,number,title)",
+        "Room(name)",
+        "Prof:User!Section_Prof_ID_fkey(name,email)",
+        "SectionTA(User(name))"
     });
 
     // WHERE clauses (only if provided)
     if (!crns.isEmpty() && !crns[0].isEmpty()) {
         if (crns.size() == 1) {
-            params.where("CRN", EQ, crns[0]);
+            params.where("crn", EQ, crns[0]);
         } else {
             QStringList quoted;
             for (const QString &crn : crns)
                 quoted << crn;
 
             QString inClause = "(" + quoted.join(",") + ")";
-            params.where("CRN", IN, inClause);
+            params.where("crn", IN, inClause);
         }
     }
 
-    if(!building.isEmpty())
-        params.where("Room.building", EQ, building);
+    if(!Room.isEmpty())
+        params.where("Room.name", EQ, Room);
 
-    if(!professor.isEmpty())
-        params.where("User.name", ILIKE, QString("%" + professor + "%"));
+    if(!Professor.isEmpty())
+        params.where("User.name", ILIKE, QString("%" + Professor + "%"));
 
-    if(!course.isEmpty())
-        params.where("Course.name", ILIKE, QString("%" + course + "%"));
+    if(!Course.isEmpty())
+        params.where("Course.title", ILIKE, QString("%" + Course + "%"));
 
-    if (!term.isEmpty())
-        params.where("term", EQ, term);
+    if (!Term.isEmpty()){
+        if (Term == "Spring 2025") {
+            params.where("term", EQ, "202501");
+        } else if (Term == "Fall 2025") {
+            params.where("term", EQ, "202508");
+        } else if (Term == "Spring 2026") {
+            params.where("term", EQ, "202601");
+        }
+    }
 
-    if (sectionNum > 0)
-        params.where("sectionNum", EQ, QString::number(sectionNum));
+    if (SectionNum > 0)
+        params.where("section_number", EQ, QString::number(SectionNum));
 
-    if (!subject.isEmpty())
-        params.where("subject", EQ, subject);
+    if (!Subject.isEmpty())
+        params.where("Course.subj", EQ, Subject);
 
-    if (!courseNum.isEmpty())
-        params.where("courseNum", EQ, courseNum);
+    if (!CourseNum.isEmpty())
+        params.where("Course.number", EQ, CourseNum);
 
-    if (!days.isEmpty() && days != "")
-        params.where("days", EQ, days);
+    if (!Days.isEmpty() && Days != "")
+        params.where("meeting_days", EQ, Days);
 
-    QJsonArray raw = fetch("CourseSection", params);
+    QJsonArray raw = fetch("Section", params);
 
     QHash<QString, QStringList> flattenRules;
-    flattenRules["room"] = {"building", "capacity", "room"};
-    flattenRules["Course"] = {"course"};
-    flattenRules["User"] = {"instructor"};
+    flattenRules["Room"] = {"name"};
+    flattenRules["Course"] = {"subj", "number", "title"};
+    flattenRules["User"] = {"name", "email"};
 
     raw = flattenArray(raw, flattenRules);
 
@@ -138,15 +145,13 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
     return results;
 }
 
-QJsonArray Database::getRoomData(const QString &roomID, const QString &building, const int &room, const int &capacity)
+QJsonArray Database::getRoomData(const QString &roomID, const QString &Name)
 {
     QueryParams params;
 
     params.select({
         "id",
-        "building",
-        "room",
-        "capacity"
+        "name"
     });
 
     if (!roomID.isEmpty())
@@ -154,34 +159,26 @@ QJsonArray Database::getRoomData(const QString &roomID, const QString &building,
         params.where("id", EQ, roomID);
     }
 
-    if(!building.isEmpty())
+    if(!Name.isEmpty())
     {
-        params.where("building", EQ, building);
-    }
-
-    if(room > 0)
-    {
-        params.where("room", EQ, QString::number(room));
-    }
-
-    if(capacity > 0)
-    {
-        params.where("capacity", EQ, QString::number(capacity));
+        params.where("name", EQ, Name);
     }
 
     return fetch("Room", params);
 }
 
 QJsonArray Database::getCourseNameData(const int &CourseID,
-                                       const QString &Description,
-                                       const QString &CourseName)
+                                       const QString &Subject,
+                                       const QString &Number,
+                                       const QString &Title)
 {
     QueryParams params;
 
     params.select({
         "id",
-        "description",
-        "name"
+        "subj",
+        "number",
+        "title"
     });
 
     if (!(CourseID < 0))
@@ -189,14 +186,19 @@ QJsonArray Database::getCourseNameData(const int &CourseID,
         params.where("id", EQ, QString::number(CourseID));
     }
 
-    if(!Description.isEmpty())
+    if(!Subject.isEmpty())
     {
-        params.where("description", EQ, Description);
+        params.where("subj", EQ, Subject);
     }
 
-    if(!CourseName.isEmpty())
+    if(!Number.isEmpty())
     {
-        params.where("name", EQ, CourseName);
+        params.where("number", EQ, Number);
+    }
+
+    if(!Title.isEmpty())
+    {
+        params.where("title", EQ, Title);
     }
 
 

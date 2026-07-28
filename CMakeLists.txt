@@ -42,7 +42,6 @@ qt_add_executable(College-Portal-Project
     administratordisplay.h administratordisplay.cpp administratordisplay.ui
     coursesection.h coursesection.cpp
     userinfo.h
-    db.txt
 
 
 
