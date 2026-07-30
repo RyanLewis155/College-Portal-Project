@@ -169,13 +169,12 @@ void ViewPlanForm::loadPlanItems(const QString &planID)
         ui->tableWidget_PlanClasses->setItem(row, 1,  new QTableWidgetItem(cs.startTime));
         ui->tableWidget_PlanClasses->setItem(row, 2,  new QTableWidgetItem(cs.endTime));
         ui->tableWidget_PlanClasses->setItem(row, 3,  new QTableWidgetItem(cs.days));
-        ui->tableWidget_PlanClasses->setItem(row, 4,  new QTableWidgetItem(QString::number(cs.sectionNum)));
+        ui->tableWidget_PlanClasses->setItem(row, 4,  new QTableWidgetItem(cs.sectionNum));
         ui->tableWidget_PlanClasses->setItem(row, 5,  new QTableWidgetItem(cs.subject));
         ui->tableWidget_PlanClasses->setItem(row, 6,  new QTableWidgetItem(cs.courseNum));
-        ui->tableWidget_PlanClasses->setItem(row, 7,  new QTableWidgetItem(cs.building));
-        ui->tableWidget_PlanClasses->setItem(row, 8,  new QTableWidgetItem(cs.room));
-        ui->tableWidget_PlanClasses->setItem(row, 9,  new QTableWidgetItem(cs.coursename));
-        ui->tableWidget_PlanClasses->setItem(row, 10, new QTableWidgetItem(cs.instructorname));
+        ui->tableWidget_PlanClasses->setItem(row, 7,  new QTableWidgetItem(cs.room));
+        ui->tableWidget_PlanClasses->setItem(row, 8,  new QTableWidgetItem(cs.courseTitle));
+        ui->tableWidget_PlanClasses->setItem(row, 9, new QTableWidgetItem(cs.professorName));
     }
 }
 

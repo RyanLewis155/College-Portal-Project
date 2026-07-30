@@ -63,10 +63,6 @@ AdministratorDisplay::AdministratorDisplay(User* loggedIn, QWidget *parent)
     connect(u, &User::searchResultsReady,
             this, &AdministratorDisplay::handleSearchResults);
 
-    // conflict report handlers
-    connect(ui->pushButton_generate, &QPushButton::clicked, [=]() {
-        u->getConflictReport(ui->comboBox_term->currentText());
-    });
     connect(u, &User::conflictReportReady,
             this, &AdministratorDisplay::handleConflictReports);
 }
@@ -130,9 +126,9 @@ void AdministratorDisplay::handleSingleCourseSearch(CourseSection cs)
 {
     ui->label_modifyCRN->setText(cs.crn); // sets CRN
     ui->lineEdit_courseNumber->setText(cs.courseNum);
-    ui->lineEdit_section->setText(QString::number(cs.sectionNum));
+    ui->lineEdit_section->setText(cs.sectionNum);
     ui->lineEdit_modifySubject->setText(cs.subject);
-    ui->comboBox_modifyCourse->setCurrentText(cs.coursename);
+    ui->comboBox_modifyCourse->setCurrentText(cs.courseTitle);
     ui->timeEdit_startTime->setTime(QTime::fromString(cs.startTime));
     ui->timeEdit_endTime->setTime(QTime::fromString(cs.endTime));
     if(cs.days == "MW")
@@ -148,10 +144,9 @@ void AdministratorDisplay::handleSingleCourseSearch(CourseSection cs)
         ui->checkBox_friday->setCheckState(Qt::Checked);
     }
     
-    ui->comboBox_building->setCurrentText(cs.building);
-    ui->lineEdit_room->setText(cs.room);
+    ui->comboBox_building->setCurrentText(cs.room);
 
-    ui->comboBox_instructor->setCurrentText(cs.instructorname);
+    ui->comboBox_instructor->setCurrentText(cs.professorName);
 
 }
 
@@ -209,19 +204,18 @@ void AdministratorDisplay::on_pushButton_Save_clicked()
         cs. days = "F";
     }
 
-    cs.sectionNum = ui->lineEdit_modifySubject->text().toInt();
+    cs.sectionNum = ui->lineEdit_modifySubject->text();
 
     cs.subject = ui->lineEdit_modifySubject->text();
     cs.courseNum = ui->lineEdit_courseNumber->text();
     cs.term = ui->comboBox_term->currentText();
-    cs.buildingID = ui->comboBox_building->currentData().toInt();
-    cs.room = ui->lineEdit_room->text();
-    cs.courseID = ui->comboBox_modifyCourse->currentData().toInt();
-    cs.professorID = ui->comboBox_instructor->currentData().toInt();
+    cs.room = ui->comboBox_building->currentData().toString();
+    cs.courseTitle = ui->comboBox_modifyCourse->currentData().toString();
+    cs.professorName = ui->comboBox_instructor->currentData().toString();
 
     QJsonObject SectionData = toJson(cs);
 
-    QJsonObject result = Database::upsertCourseSection("CourseSection", SectionData);
+    QJsonObject result = Database::upsertCourseSection("Section", SectionData);
 
     if(!result.isEmpty())
     {

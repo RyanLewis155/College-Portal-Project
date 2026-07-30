@@ -17,27 +17,33 @@ CourseSection fromJson(const QJsonObject &obj)
 {
     CourseSection cs;
 
-    cs.crn = QString::number(obj.value("CRN").toInt());
+    cs.crn = obj["crn"].toString();
+    QString meeting_times = obj["meeting_times"].toString();
 
-    cs.startTime = getString(obj, "startTime");
-    cs.endTime   = getString(obj, "endTime");
-    cs.days      = getString(obj, "days");
+    if (!meeting_times.isEmpty()){
+        QStringList split_times = meeting_times.split(" - ");
+        cs.startTime = split_times[0];
+        cs.endTime = split_times[1];
+    } else {
+        cs.startTime = "TBD";
+        cs.endTime = "TBD";
+    }
 
-    cs.sectionNum = obj.value("section").toInt();
+    cs.days      = getString(obj, "meeting_days");
+    cs.level         = getString(obj, "crse_level");
+    cs.sectionNum = obj["section_number"].toString();
 
-    cs.subject   = getString(obj, "subject");
-    cs.courseNum = getString(obj, "courseNum");
-    cs.term      = getString(obj, "term");
+    QJsonObject course = obj["Course"].toObject();
+    cs.subject   = course["subj"].toString();
+    cs.courseNum = course["number"].toString();
+    cs.courseTitle = course["title"].toString();
 
-    cs.level    = getString(obj, "level");
+    QJsonObject room = obj["Room"].toObject();
+    cs.room    = room["name"].toString();
 
-    cs.building    = getString(obj, "building");
-    cs.room        = getString(obj, "room");
-    cs.capacity    = getString(obj, "capacity");
+    QJsonObject professor = obj["Prof"].toObject();
+    cs.professorName = professor["name"].toString();
 
-    cs.coursename    = getString(obj, "course");
-    cs.instructorname = getString(obj, "instructor");
-    cs.level         = getString(obj, "level");
 
     // if (obj.contains("room") && obj["room"].isObject()) {
     //     QJsonObject r = obj["room"].toObject();
@@ -60,22 +66,32 @@ CourseSection fromJson(const QJsonObject &obj)
 }
 QJsonObject toJson(const CourseSection &cs)
 {
-    QJsonObject obj;
-    obj["CRN"] = cs.crn;
-    obj["roomID"] = cs.buildingID;
-    obj["profID"] = cs.professorID;
-    obj["startTime"] = cs.startTime;
-    obj["endTime"] = cs.endTime;
-    obj["days"] = cs.days;
-    obj["term"] = cs.term;
-    obj["courseID"] = cs.courseID;
-    obj["sectionNum"] = cs.sectionNum;
+    QJsonObject course;
+    course["subj"] = cs.subject;
+    course["number"] = cs.courseNum;
+    course["title"] = cs.courseTitle;
+
+    QJsonObject room;
+    room["name"] = cs.room;
+
+    QJsonObject prof;
+    prof["name"] = cs.professorName;
+    prof["email"] = cs.professorEmail;
+
+    QJsonObject section;
+    section["Course"] = course;
+    section["Prof"] = prof;
+    section["Room"] = room;
+    section["crn"] = cs.crn;
+    QString combined_times = cs.startTime + " - " + cs.endTime;
+    section["meeting_times"] = combined_times;
+
+    section["meeting_days"] = cs.days;
+    section["term"] = cs.term;
     if(!cs.level.isEmpty())
     {
-        obj["level"] = cs.level;
+        section["crse_level"] = cs.level;
     }
-    obj["subject"] = cs.subject;
-    obj["courseNum"] = cs.courseNum;
 
-    return obj;
+    return section;
 }

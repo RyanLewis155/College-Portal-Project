@@ -11,24 +11,20 @@ struct CourseSection
     QString startTime;
     QString endTime;
     QString days;
+    QString term;
+    QString level;
 
-    int sectionNum = 0;
+    QString sectionNum;
 
     QString subject;
     QString courseNum;
-    QString term;
+    QString courseTitle;
 
-    QString building;
-    int buildingID = 0;
     QString room;
-    QString capacity;
 
-    QString coursename;
-    int courseID = 0;
-    QString instructorname;
-    int professorID = 0;
+    QString professorName;
+    QString professorEmail;
 
-    QString level;
 };
 
 CourseSection fromJson(const QJsonObject &obj);

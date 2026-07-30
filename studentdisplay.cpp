@@ -61,9 +61,7 @@ QString StudentDisplay::buildMeetingText(const CourseSection& cs)
 {
     QString roomText;
 
-    if (!cs.building.isEmpty() && !cs.room.isEmpty())
-        roomText = cs.building + " " + cs.room;
-    else if (!cs.room.isEmpty())
+    if (!cs.room.isEmpty())
         roomText = cs.room;
     else
         roomText = "Room TBA";
@@ -85,9 +83,6 @@ void StudentDisplay::loadRegisteredClasses()
 
     QString studentId = u->id;
     QJsonArray registrations = Database::getRegistrations(studentId);
-
-    qDebug() << "Student ID:" << studentId;
-    qDebug() << "Registration count:" << registrations.size();
 
     if (registrations.isEmpty()) {
         qDebug() << "No registrations found for student:" << studentId;
@@ -111,9 +106,6 @@ void StudentDisplay::loadRegisteredClasses()
         else if (crnValue.isDouble())
             crn = QString::number(crnValue.toInt());
 
-        qDebug() << "Registration object:" << obj;
-        qDebug() << "CRN read:" << crn;
-
         if (!crn.isEmpty())
             crns.append(crn);
     }
@@ -132,7 +124,7 @@ void StudentDisplay::loadRegisteredClasses()
         ClassScheduleItem* item = new ClassScheduleItem();
 
         QString courseCode = buildCourseCode(cs);
-        QString courseName = cs.coursename.isEmpty() ? "Unnamed Course" : cs.coursename;
+        QString courseName = cs.courseTitle.isEmpty() ? "Unnamed Course" : cs.courseTitle;
         QString meetText = buildMeetingText(cs);
 
         item->setFields(courseCode, courseName, meetText);
@@ -163,8 +155,6 @@ void StudentDisplay::handleSearchResults(QStandardItemModel* model)
         qDebug() << "Received null model";
         return;
     }
-
-    qDebug() << "Received model with rows:" << model->rowCount();
 
     // -----------------------------
     // Clean up previous model safely

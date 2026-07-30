@@ -28,16 +28,16 @@ void Database::init(const QString &baseUrl, const QString &apiKey)
 CourseSection Database::getSingleCourseData(const QString &crn)
 {
     QueryParams params;
-    params.select({"CRN"});
+    params.select({"crn"});
 
-    params.where("CRN", EQ, crn);
+    params.where("crn", EQ, crn);
 
-    QJsonArray raw = fetch("CourseSection", params);
+    QJsonArray raw = fetch("Section", params);
 
     QHash<QString, QStringList> flattenRules;
-    flattenRules["Room"] = {"building", "capacity", "room"};
-    flattenRules["Course"] = {"course"};
-    flattenRules["User"] = {"instructor"};
+    flattenRules["Room"] = {"name"};
+    flattenRules["Course"] = {"subj", "number", "title"};
+    flattenRules["User"] = {"professor"};
 
     const QJsonValue &val = raw.at(0);
     CourseSection result = fromJson(val.toObject());
@@ -120,13 +120,6 @@ QVector<CourseSection> Database::getCourseData(const QStringList &crns,
         params.where("meeting_days", EQ, Days);
 
     QJsonArray raw = fetch("Section", params);
-
-    QHash<QString, QStringList> flattenRules;
-    flattenRules["Room"] = {"name"};
-    flattenRules["Course"] = {"subj", "number", "title"};
-    flattenRules["User"] = {"name", "email"};
-
-    raw = flattenArray(raw, flattenRules);
 
     QVector<CourseSection> results;
     results.reserve(raw.size());

@@ -43,8 +43,6 @@ public:
                                const QString &CourseNum
                          );
 
-    void getConflictReport(const QString &term);
-
     QList<UserInfo> getProfessors();
     
 
@@ -62,8 +60,6 @@ signals:
     void registrationComplete(const QString &message);
 
 private:
-    // helpers for checking course conflicts
-    QHash<QString, QStringList> validateCourses(const QString &term, const QStringList &crns = {});
 
 };
 

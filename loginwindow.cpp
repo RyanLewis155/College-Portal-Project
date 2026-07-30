@@ -94,12 +94,12 @@ void LoginWindow::on_pushButton_GoToLogin_clicked()
 
 void LoginWindow::on_pushButton_Login_clicked()
 {
-    bool validEmail = validateEmail(ui->lineEdit_Email->text());
-    bool validPassword = validatePassword(ui->lineEdit_Password->text());
+    bool validEmail = validateEmail(qEnvironmentVariable("USERNAME")); //ui->lineEdit_Email->text()
+    bool validPassword = validatePassword(qEnvironmentVariable("PASSWORD")); //ui->lineEdit_Password->text()
 
     if(validEmail && validPassword)
     {
-        handleLoginReqest(ui->lineEdit_Email->text(), ui->lineEdit_Password->text());
+        handleLoginReqest(qEnvironmentVariable("USERNAME"), qEnvironmentVariable("PASSWORD")); //ui->lineEdit_Email->text(), ui->lineEdit_Password->text()
     } else {
         QMessageBox::warning(this, "Error", "Invalid email or password.");
     }
